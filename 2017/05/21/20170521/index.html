@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Java中的“GC”是什么呢？它的英文是Garbage Collection，翻译过来就是垃圾回收，是JVM用来帮你回收Java程序中产生的垃圾的一种机制。对于Java工程师(码农)来说，了解垃圾回收机制（GC）有哪些好处呢？首先，可以装逼，哦，不不，可以满足Java工程师(码农)求知欲；其次，可以帮你写出更好的Java应用程序。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有GC就是爽，再也不用自己清理垃圾了">
+<meta property="og:url" content="http://www.lovoedu.com/2017/05/21/20170521/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="Java中的“GC”是什么呢？它的英文是Garbage Collection，翻译过来就是垃圾回收，是JVM用来帮你回收Java程序中产生的垃圾的一种机制。对于Java工程师(码农)来说，了解垃圾回收机制（GC）有哪些好处呢？首先，可以装逼，哦，不不，可以满足Java工程师(码农)求知欲；其次，可以帮你写出更好的Java应用程序。">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170521/01.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170521/02.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170521/03.png">
+<meta property="og:updated_time" content="2017-05-21T14:00:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有GC就是爽，再也不用自己清理垃圾了">
+<meta name="twitter:description" content="Java中的“GC”是什么呢？它的英文是Garbage Collection，翻译过来就是垃圾回收，是JVM用来帮你回收Java程序中产生的垃圾的一种机制。对于Java工程师(码农)来说，了解垃圾回收机制（GC）有哪些好处呢？首先，可以装逼，哦，不不，可以满足Java工程师(码农)求知欲；其次，可以帮你写出更好的Java应用程序。">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170521/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/05/21/20170521/"/>
+
+
+
+
+
+  <title>有GC就是爽，再也不用自己清理垃圾了 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/05/21/20170521/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">有GC就是爽，再也不用自己清理垃圾了</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T21:49:03+08:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java中的“GC”是什么呢？它的英文是Garbage Collection，翻译过来就是垃圾回收，是JVM用来帮你回收Java程序中产生的垃圾的一种机制。<br>对于Java工程师(码农)来说，了解垃圾回收机制（GC）有哪些好处呢？首先，可以装逼，哦，不不，可以满足Java工程师(码农)求知欲；其次，可以帮你写出更好的Java应用程序。<br><a id="more"></a></p>
+<h3 id="想了解GC，你得先了解它们："><a href="#想了解GC，你得先了解它们：" class="headerlink" title="想了解GC，你得先了解它们："></a>想了解GC，你得先了解它们：</h3><p>首先，来看JVM在运行时的内存图：<br><img src="/img/20170521/01.png" width="400" height="400"><br>这里呢，咱们只说说堆内存和栈内存<br>堆内存：Java 中的堆是 JVM 所管理的最大的一块内存空间，主要用于存放各种类的实例对象。你也可以这么理解，(敲黑板，往下划重点了)它是管理对象的，凡是new出来的对象，都在堆内存里。<br>这块内存呢，是可以调配大小的，这里有参数：<br>-Xms:设置JVM启动时最小的堆内存大小<br>-Xmx:设置JVM堆的最大内存大小<br>栈内存：(敲黑板，往下划重点了)一些基本类型的变量和对象的引用变量都是在函数的栈内存中分配。通过这个参数可以调配它的大小，<br>-Xss：这个参数就是用来指定栈的大小<br>这里咱们举个例子再来说明堆和栈，假如有这样两句话：<br>int i=10;<br>LovoStudent s = new LovoStudent();<br>它们在JVM的内存中如何分配呢？看图：<br><img src="/img/20170521/02.png" width="450" height="300"><br>为何让大家看内存图呢？是为了说明什么是Java中的垃圾。那这个垃圾到底是什么呢？<br>你可以这么理解，(敲黑板，往下划重点了)凡是不被引用变量引用的对象都是垃圾。哦豁，什么意思，自己去揣摩10分钟。揣摩完回来，咱们拿上面的例子来说，还是这句话，LovoStudent s = new LovoStudent(); 我把这个堆内存中的new LovoStudent();变成垃圾怎么来写？直接写 s=null;引用变量不再引用堆内存的对象，那这个对象就是垃圾。<br><img src="/img/20170521/03.png" width="200" height="150"><br>那么我问个智障问题，咱们所说的垃圾，会存在于JVM中哪块内存里？</p>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>明白了以上的内容，垃圾回收原理就很容易理解了。<br>垃圾回收机制就是JVM根据一定的算法和线程调度(这里只做简单认识，感兴趣的关注朗沃博客，后续有文章会详解哪些算法和线程调度)来处理产生的垃圾。这种机制对程序员来说，比10个G的高清无码岛国动作片都来的爽，因为你不用手动释放内存了，也不用担心内存泄漏问题。在其它语言中，比如C，手动释放内存很蛋疼呐！<br>说到回收，不得不提Object类中的finalize()方法，当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法。也就是说当一个对象被当作垃圾回收时，会调用该方法。既然如此，那咱们是不是可以写个类继承一下Object(废话，你能写个类不继承自Object么)，覆写finalize()，比如写个输出语句：System.out.println(“我成垃圾了，正在被回收”);来显式的看一看对象什么时候被回收的呢？完全可以。说完这个finalize()方法，还得说说System.gc()方法，这个方法又是干嘛的？运行垃圾回收器。调用 gc 方法意味着JVM做了一些努力(注意是一些努力，并不是100%，通常还是能回收的)来回收未用对象，以便能够快速地重用这些对象当前占用的内存。<br>说完这些前提，咱们就可以设个场景，假如你去饭馆吃饭，首先得占个桌子，占了桌子之后呢就点菜上菜，假设你是土豪，可以点很多菜，陆续上来，先上的菜一来，你一顿的胡吃海塞留下很多垃圾，后来的菜再来，可能没地方放。开饭馆的肯定考虑这个问题啊，毕竟顾客是上帝嘛，于是安排了个服务员小妹儿，不定时的在场子里巡回，来收走你吃完菜的盘子。好像这问题就解决了，但是，不排除你是个吃货，吃的太快了，小妹儿来不及巡回到你这儿，你就有很多垃圾了，此时你是不是得大喊一声，“哎，小妹儿，到这儿收空盘子”，然后小妹儿对你微微一笑，“好的，我马上来收”(当然小妹儿也可能会说“哎呀，客官稍等，马上就来”)。至于在收盘子时候你们再发生点啥，那就得看自个了⋯⋯（嘿嘿嘿⋯⋯）<br>好，打住，不是说好的讲GC的嘛，怎么扯到饭馆小妹儿了，咳咳⋯⋯是这样子，<br>饭馆——JVM<br>桌子——堆内存<br>菜——对象<br>空盘子等垃圾——未被引用的对象<br>小妹儿不定时巡回收垃圾——JVM的一定算法和线程调度回收垃圾<br>你喊小妹儿收盘子——调用System.gc()方法<br>好了，只能解释到这儿了⋯⋯<br>口说无凭，代码为证。写点代码验证一下：<br>定义一个GCTest类代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GCTest</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GCTest</span><span class="params">(String name)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.name= name;</div><div class="line">	&#125;  </div><div class="line">    </div><div class="line">	<span class="comment">//覆写finalize()方法</span></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">super</span>.finalize();</div><div class="line">		System.out.println(<span class="keyword">this</span>.name+<span class="string">"是垃圾，正在被回收"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">//创建三个对象</span></div><div class="line">		GCTest gt1 = <span class="keyword">new</span> GCTest(<span class="string">"gt1"</span>);</div><div class="line">		GCTest gt2 = <span class="keyword">new</span> GCTest(<span class="string">"gt2"</span>);</div><div class="line">		GCTest gt3 = <span class="keyword">new</span> GCTest(<span class="string">"gt3"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//把对象去掉引用，变成垃圾</span></div><div class="line">		gt1=<span class="keyword">null</span>;</div><div class="line">		gt2=<span class="keyword">null</span>;</div><div class="line">		gt3=<span class="keyword">null</span>;</div><div class="line">		<span class="comment">//调用gc()方法，主动回收垃圾</span></div><div class="line">		System.gc();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>运行结果留给大家去测试了⋯⋯</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/18/20170518/" rel="prev" title="向上转型，向下转型，还在头疼？">
+                向上转型，向下转型，还在头疼？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#想了解GC，你得先了解它们："><span class="nav-number">1.</span> <span class="nav-text">想了解GC，你得先了解它们：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收"><span class="nav-number">2.</span> <span class="nav-text">垃圾回收</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
