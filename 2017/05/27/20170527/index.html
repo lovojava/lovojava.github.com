@@ -1,0 +1,788 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Java的这三个兄弟final、finally和finalize，你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有">
+<meta property="og:url" content="http://www.lovoedu.com/2017/05/27/20170527/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="Java的这三个兄弟final、finally和finalize，你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170527/1.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170527/2.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170527/3.jpg">
+<meta property="og:updated_time" content="2017-05-27T09:55:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有">
+<meta name="twitter:description" content="Java的这三个兄弟final、finally和finalize，你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170527/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/05/27/20170527/"/>
+
+
+
+
+
+  <title>别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/05/27/20170527/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T17:40:18+08:00">
+                2017-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java的这三个兄弟final、finally和finalize，你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。<br><a id="more"></a></p>
+<img src="/img/20170527/1.png">
+<p>最近小马云在网上火了，马云凭空多出来一个儿子，也真够衰的，哈哈。我还真百度搜了一下马云的真儿子，叫马元坤；估计比较低调，不像王思聪深怕没人知道他老爸就是王健林。这娃一看就是一枚小鲜肉，还好长得一点都不像他老爸，不然肯定会误认为是“孙悟空转世”。 </p>
+<img src="/img/20170527/2.png" width="200" height="200">
+<p>还是回过头来，看一下我们Java的这三个假兄弟final、finally和finalize。你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。</p>
+<p>你老说它们半毛钱关系也没有，那么他们究竟是哪里来的？别着急！我们马上就让这三兄弟各回各家，各找各妈。</p>
+<ul>
+<li><strong>final</strong></li>
+</ul>
+<p>final从字面上理解含义为“<em>最后的，最终的</em>”。在Java中也同样表示出此种含义。</p>
+<p>final可以用来修饰变量（<em>包括类属性、对象属性、局部变量和形参</em>）、方法（<em>包括类方法和对象方法</em>）和类。</p>
+<ol>
+<li>final修饰类</li>
+</ol>
+<blockquote>
+<p>final修饰类即表示此类已经是“最后的、最终的”含义。因此，用final修饰的类不能被继承，即不能拥有自己的子类，俗称“<em>太监类</em>”。如果试图对一个已经用final修饰的类进行继承，在编译期间就会发生错误。<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;　<span class="comment">//被final修饰的类不能被继承</span></div><div class="line">	…</div><div class="line">&#125;</div><div class="line">      </div></pre></td></tr></table></figure><br>那有哪些类是太监类呀？String就是一个被final修饰的类，我们只能用，不能继承。</p>
+</blockquote>
+<p>2.　final修饰方法</p>
+<blockquote>
+<p>final修饰的方法表示此方法已经是“<em>最后的、最终的</em>”含义，亦即此方法不能被重写（<em>可以重载多个final修饰的方法</em>）。</p>
+<p>此处需要注意的一点是：因为重写的前提是子类可以从父类中继承此方法，如果父类中final修饰的方法同时访问控制权限为private，将会导致子类中不能直接继承到此方法，因此，此时可以在子类中定义相同的方法名和参数，此时不再产生重写与final的矛盾，而是在子类中重新定义了新的方法。<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</div><div class="line">   		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">   	&#125;</div><div class="line">   </div><div class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">   	&#125;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">   </div><div class="line">   	<span class="comment">/**</span></div><div class="line">    	 * 因为private修饰，子类中不能继承到此方法，因此，子类中的getName方法是重新定义的、 属于子类本身的方法</div><div class="line">       */</div><div class="line">   	<span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">()</span> </span>&#123; <span class="comment">//编译正常</span></div><div class="line">   </div><div class="line">   	&#125;</div><div class="line">   </div><div class="line">      <span class="comment">/**</span></div><div class="line">       * 因为pblic修饰，子类可以继承到此方法，导致重写了父类的final方法</div><div class="line">      */</div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">()</span> </span>&#123; <span class="comment">//编译出错</span></div><div class="line">   </div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   </div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>3.　final修饰变量</p>
+<blockquote>
+<p>final修饰的变量表示此变量是“<em>最后的、最终的</em>”含义。一旦定义了final变量并在首次为其显示初始化后，final修饰的变量值不可被改变。</p>
+<p><em>final修饰的实例变量</em></p>
+<p>被final修饰的实例变量必须显示指定初始值，而且只能在如下3个位置指定初始值：</p>
+<p>1.定义final实例变量时指定初始值；</p>
+<p>2.在非静态初始化块中为final实例变量指定初始值</p>
+<p>3.在构造器中为final实例变量指定初始值</p>
+<p>对于普通实例变量，Java程序可以对它执行默认的初始化，也就是将实力变量的值指定为默认的初始值0或null，但对于final实例变量，则必须由程序员显示指定初始值。</p>
+<p>final实例变量必须显示地被赋初始值，而且本质上final实例变量只能在构造器中被赋初始值。在定义final实例变量时指定初始值，和在初始化块中为final实例变量指定初始值本质上是一样的。除此之外，final实例变量将不能被再次赋值。</p>
+<p><em>final修饰的类变量</em></p>
+<p>对于final类变量而言，同样必须显示指定初始值，而且final类变量只能在2个地方指定初始值：</p>
+<p>1.定义final类变量时指定初始值；</p>
+<p>2.在静态初始化块中为final类变量指定初始值；</p>
+<p>这两种方式都会被抽取到静态初始化块中赋初始值。定义final类变量时指定初始值和在静态初始化块中为final类变量指定初始值，本质是一样的。除此之外final类变量将不能被再次赋值。</p>
+<p><em>final修饰局部变量</em></p>
+<p>final修饰的局部变量一样需要被显式地赋初始值，因为Java本来就要求局部变量必须被显式地赋初始值。与普通变量不同的是，final修饰的局部变量被赋初始值之后，将不能再被重新赋值。</p>
+<p>final修饰符的第一简单的功能就是一旦被赋初始值，将不可改变。<br>final的另一个简单的功能就是在定义了该final类变量时指定了初始值，且该初始值可以在编译时就被确定下来，系统将不会在静态初始化块中对该类变量赋初始值，而将是在类定义中直接使用该初始化值代替该final变量。</p>
+<p>对于一个使用final修饰的变量而言，如果定义该final变量时就指定初始值，而且这个初始值可以在编译时就确定下来，那么这个final变量将不再是一个变量，系统会将其变成“宏变量”处理。所有出现该变量的地方，系统将直接把它当成对应的值处理。</p>
+<p><em>执行“宏替换”的变量</em></p>
+<p>对于一个final变量，不管它是类变量、实例变量还是局部变量，定义了该变量时使用了final修饰符修饰，并在定义该final类变量时指定了初始值，而且该初始值可以在编译时就被确定下来，那么这个final变量本质上已经不再是变量，而是想当于一个直接的变量。</p>
+<p>final修饰符的一个重要用途就是定义“<em>宏变量</em>“，当定义final变量时就为该变量指定了初始值，而且该初始值可以在编译的时候就确定下来，那么这个final变量本质上就是一个”宏变量“，编译器会把程序中所用到该变量的地方直接替换成该变量的值。如果被赋的表达式只是基本的算术运算表达式或字符串连接运算，没有访问普通变量，调用方法，Java编译器同样会将这种final变量当成”宏变量“处理。</p>
+<p>对于实例变量而言，可以在定义该变量时赋初始值之外，还可以在非静态初始化块、构造器中对它赋初始值，在这三个地方指定初始值的效果基本一样。但对于final实例变量而言，只有在定义该变量时指定初始值才会有”宏变量“的效果，在非静态初始化块、构造器中为final实例变量指定初始值则不会有这种效果。对于普通类变量而言，在定义时指定初始值，在静态初始化块中赋初始值的效果基本一样。但对于final类变量而言，只有在定义final类变量时指定初始值，系统才会对该final类变量执行”<em>宏替换</em>“</p>
+<p><em>内部类中的局部变量</em></p>
+<p>不仅匿名内部类，即使是普通内部类，在任何内部类中访问的局部变量都应该使用final修饰。</p>
+<p>此处说的内部类指的是局部内部类，只有局部内部类（包括匿名内部类）才可以访问局部变量，普通静态内部类、非静态内部类不可能访问方法体内的局部变量。<br>Java要求所有被内部类访问的局部变量都使用final修饰，对于普通局部变量而言，它的作用域就是停留在该方法内，当方法执行结束，该局部变量也随之消失。但内部类则可能产生隐式的”闭包“闭包将使得局部变量脱离它所在的方法继续存在。</p>
+<p>匿名内部类的实例生命周期没有结束的话，将一直可以访问局部变量的值，这就是内部类会扩大局部变量作用域的实例。<br>由于内部类可能扩大局部变量的作用域，如果再加上这个被内部类访问的局部变量没有使用final修饰，也就是说该变量的值可以随意改变，就会引起大乱。因此Java编译器要求所有被内部类访问的局部变量必须使用final修饰。</p>
+</blockquote>
+<ul>
+<li><strong>finally</strong></li>
+</ul>
+<blockquote>
+<p>finally从字面上理解含义为“<em>最后的；决定性地；最终的</em>”。在Java中的finally关键字一般与try/catch一起使用，如下图：</p>
+</blockquote>
+<img src="/img/20170527/3.jpg" width="500" height="300">
+<blockquote>
+<p>在程序进入try块之后，无论程序是因为异常而中止或其它方式返回终止的，finally块的内容一定会被执行，还是写个例子来说明下：<br>        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TryAndFinallyTest</span> </span>&#123; </div><div class="line">  </div><div class="line">  		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123; </div><div class="line">			<span class="keyword">try</span>&#123; </div><div class="line">				<span class="keyword">int</span> a = testFinally(<span class="number">2</span>); </div><div class="line">				System.out.println(<span class="string">"异常返回的结果a:"</span>+a); </div><div class="line">			&#125;<span class="keyword">catch</span>(Exception e)&#123; </div><div class="line"> 				 <span class="keyword">int</span> b = testFinally(<span class="number">1</span>); </div><div class="line">  				System.out.println(<span class="string">"正常返回的结果b:"</span>+b); </div><div class="line">			&#125; </div><div class="line"></div><div class="line">			<span class="keyword">int</span> b = testFinally(<span class="number">3</span>); </div><div class="line">			System.out.println(<span class="string">"break返回的结果:"</span>+b); </div><div class="line"> 			b = testFinally(<span class="number">4</span>); </div><div class="line">			System.out.println(<span class="string">"return返回的结果:"</span>+b); </div><div class="line"> 		 &#125; </div><div class="line"></div><div class="line">  		<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">testFinally</span><span class="params">(<span class="keyword">int</span> i)</span> <span class="keyword">throws</span> Exception</span>&#123; </div><div class="line">			<span class="keyword">int</span> flag = i; </div><div class="line">			<span class="keyword">try</span>&#123;<span class="comment">//一旦进去try范围无论程序是抛出异常或其它中断情况，finally的内容都会被执行 </span></div><div class="line">  				<span class="keyword">switch</span>(i)&#123; </div><div class="line">					<span class="keyword">case</span> <span class="number">1</span>:++i;<span class="keyword">break</span>;<span class="comment">//程序 正常结束 </span></div><div class="line">					<span class="keyword">case</span> <span class="number">2</span>:<span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"测试下异常情况"</span>); </div><div class="line">					<span class="keyword">case</span> <span class="number">3</span>:<span class="keyword">break</span>; </div><div class="line">					<span class="keyword">default</span> :<span class="keyword">return</span> -<span class="number">1</span>; </div><div class="line">  			&#125; </div><div class="line">			&#125;<span class="keyword">finally</span>&#123; </div><div class="line">  				System.out.println(<span class="string">"finally coming when i="</span>+flag); </div><div class="line">			&#125; </div><div class="line">			<span class="keyword">return</span> i; </div><div class="line">  		&#125; </div><div class="line">&#125; </div><div class="line"> </div></pre></td></tr></table></figure></p>
+<p>执行结果如下:</p>
+</blockquote>
+<pre><code>finally coming when i=2
+finally coming when i=1
+正常返回的结果b:2
+finally coming when i=3
+break返回的结果:3
+finally coming when i=4
+return返回的结果:-1
+</code></pre><blockquote>
+<p>结果说明无论上述什么情况，finally块总会被执行。      </p>
+<p>与其他语言的模型相比，finally 关键字是对 Java 异常处理模型的最佳补充。finally 结构使代码总会执行，而不管有无异常发生。使用 finally 可以维护对象的内部状态，并可以清理非内存资源。 如果没有 finally，您的代码就会很费解。</p>
+<p>例如，下面的代码说明，在不使用 finally 的情况下您必须如何编写代码来释放非内存资源：<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.net.*; </div><div class="line"><span class="keyword">import</span> java.io.*; </div><div class="line">  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WithoutFinally</span>  </span>&#123; </div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> <span class="keyword">throws</span> IOException  </span>&#123; </div><div class="line">			<span class="comment">//在任一个空闲的端口上创建一个套接字 </span></div><div class="line">			ServerSocket ss = <span class="keyword">new</span> ServerSocket(<span class="number">0</span>); </div><div class="line">			<span class="keyword">try</span> &#123; </div><div class="line">				Socket socket = ss.accept(); </div><div class="line">				<span class="comment">//此处的其他代码... </span></div><div class="line">			&#125;  <span class="keyword">catch</span> (IOException e)  &#123; </div><div class="line">				ss.close();   <span class="comment">//1 </span></div><div class="line">				<span class="keyword">throw</span> e; </div><div class="line">			&#125; </div><div class="line">			<span class="comment">//... </span></div><div class="line">			ss.close();<span class="comment">//2 </span></div><div class="line">		&#125; </div><div class="line">&#125; </div><div class="line"> </div></pre></td></tr></table></figure></p>
+<p>这段代码创建了一个套接字，并调用 accept 方法。在退出该方法之前，您必须关闭此套接字，以避免资源漏洞。为了完成这一任务，我们在 //2 处调用 close，它是该方法的最后一条语句。</p>
+<p>但是，如果 try 块中发生一个异常会怎么样呢？在这种情况下，//2 处的 close 调用永远不会发生。因此，您必须捕获这个异常，并在重新发出这个异常之前在 //1 处插入对 close 的另一个调用。这样就可以确保在退出该方法之前关闭套接字。</p>
+<p>这样编写代码既麻烦又易于出错，但在没有 finally 的情况下这是必不可少的。不幸的是，在没有 finally 机制的语言中，程序员就可能忘记以这种方式组织他们的代码，从而导致资源漏洞。Java 中的 finally 子句解决了这个问题。有了 finally，前面的代码就可以重写为以下的形式：<br>    <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">import</span> java.net.*; </div><div class="line"> <span class="keyword">import</span> java.io.*; </div><div class="line">   </div><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WithoutFinally</span>  </span>&#123; </div><div class="line"> 		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> <span class="keyword">throws</span> IOException  </span>&#123; </div><div class="line"> 			<span class="comment">//在任一个空闲的端口上创建一个套接字 </span></div><div class="line"> 			ServerSocket ss = <span class="keyword">new</span> ServerSocket(<span class="number">0</span>); </div><div class="line"> 			<span class="keyword">try</span> &#123; </div><div class="line"> 				Socket socket = ss.accept(); </div><div class="line"> 				<span class="comment">//此处的其他代码... </span></div><div class="line"> 			&#125;  <span class="keyword">finally</span> &#123;</div><div class="line"> 				ss.close();</div><div class="line">&#125; </div><div class="line"> 		&#125; </div><div class="line"> &#125; </div><div class="line"> </div></pre></td></tr></table></figure></p>
+<p>finally 块确保 close 方法总被执行，而不管 try 块内是否发出异常。因此，可以确保在退出该方法之前总会调用 close 方法。这样您就可以确信套接字被关闭并且您没有泄漏资源。</p>
+<p>在此方法中不需要再有一个 catch 块。在第一个示例中提供 catch 块只是为了关闭套接字，现在这是通过 finally 关闭的。如果您确实提供了一个 catch 块，则 finally 块中的代码在 catch 块完成以后执行。</p>
+<p>finally 块必须与 try 或 try/catch 块配合使用。此外，不可能退出 try 块而不执行其 finally 块。如果 finally 块存在，则它总会执行。</p>
+<p><em>那有没有办法退出try而不执行finally块？答案是：有</em></p>
+<p>如果代码在 try 内部执行一条 System.exit(0); 语句，则应用程序终止而不会执行 finally 执行。</p>
+<p>如果您在 try 块执行期间快速拨掉电源，finally 也不会执行。</p>
+</blockquote>
+<ul>
+<li><strong>finalize</strong><blockquote>
+<p>finalize从字面上理解含义为“完成; 使结束; 使落实;”。Java的垃圾回收器要回收对象的时候，首先要调用这个类的finalize方法。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>一般的纯Java编写的Class不需要重新覆盖这个方法，因为Object已经实现了一个默认的，除非我们要实现特殊的功能(这 里面涉及到很多东西，比如对象空间树等内容)。 </p>
+<p>不过用Java以外的代码编写的Class(比如JNI，C++的new方法分配的内存)，垃圾回收器并不能对这些部分进行正确的回收，这时就需要我们覆盖默认的方法来实现对这部分内存的正确释放和回收(比如C++需要delete)。 </p>
+<p>总之，finalize相当于析构函数，它是垃圾回收器回收一个对象的时候第一个要调用的方法。不过由于Java的垃圾回收机制能自动为我们做这些事情，所以我们在一般情况下是不需要自己来手工释放的。</p>
+<p>有时当撤消一个对象时，需要完成一些操作。例如，如果一个对象正在处理的是非Java 资源，如文件句柄或window 字符字体，这时你要确认在一个对象被撤消以前要保证这些资源被释放。为处理这样的状况，Java 提供了被称为收尾（finalization ）的机制。使用该机制你可以定义一些特殊的操作，这些操作在一个对象将要被垃圾回收程序释放时执行。 </p>
+<p>要给一个类增加收尾（finalizer ），你只要定义finalize ( ) 方法即可。Java 回收该类的一个对象时，就会调用这个方法。在finalize ( )方法中，你要指定在一个对象被撤消前必须执行的操作。垃圾回收周期性地运行，检查对象不再被运行状态引用或间接地通过其他对象引用。就在对象被释放之 前，Java 运行系统调用该对象的finalize( ) 方法。<br>       <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//finalize()方法的通用格式如下</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">( )</span> </span>&#123;</div><div class="line">	<span class="comment">// finalization code here</span></div><div class="line">&#125;</div><div class="line">      </div></pre></td></tr></table></figure><br>其中，关键字protected是防止在该类之外定义的代码访问finalize()标识符。</p>
+<p>理解finalize( ) 正好在垃圾回收以前被调用非常重要。例如当一个对象超出了它的作用域时，finalize( ) 并不被调用。这意味着你不可能知道何时——甚至是否——finalize( ) 被调用。因此，你的程序应该提供其他的方法来释放由对象使用的系统资源，而不能依靠finalize( ) 来完成程序的正常操作。</p>
+<p><em>注意</em>：如果你熟悉C++，那你知道C++允许你为一个类定义一个撤消函数（destructor ），它在对象正好出作用域之前被调用。Java不支持这个想法也不提供撤消函数。finalize() 方法只和撤消函数的功能接近。当你对Java 有丰富经验时，你将看到因为Java使用垃圾回收子系统，几乎没有必要使用撤消函数。</p>
+<p><em>finalize的工作原理是这样的：</em></p>
+<p>一旦垃圾收集器准备好释放对象占用的存储空间，它首先调用finalize()，而且只有在下一次垃圾收集过程中，才会真正回收对象的内存.所以如果使用finalize()，就可以在垃圾收集期间进行一些重要的清除或清扫工作.</p>
+<p>finalize()在什么时候被调用?有以下三种情况：</p>
+<p>1.所有对象被Garbage Collection（垃圾回收器）时自动调用,比如运行System.gc()的时候.</p>
+<p>2.程序退出时为每个对象调用一次finalize方法。</p>
+<p>3.显式的调用finalize方法</p>
+<p>除此以外,正常情况下,当某个对象被系统收集为无用信息的时候,finalize()将被自动调用,但是jvm不保证finalize()一定被调用,也就是说,finalize()的调用是不确定的,这也就是为什么sun公司并不提倡使用finalize()的原因。</p>
+</blockquote>
+<p>总算把final、finally和finalize介绍完了，渴死了，先喝口水。大家现在应该不会被他们骗到了吧。其他它们是不会骗人的，只是被人利用了，是谁呀，还有谁，Java门神-面试官。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/24/20170524/" rel="prev" title="JAVA中常见的排序算法有哪些？---冒泡排序">
+                JAVA中常见的排序算法有哪些？---冒泡排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
