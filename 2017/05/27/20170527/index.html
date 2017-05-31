@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://www.lovoedu.com/img/20170527/1.png">
 <meta property="og:image" content="http://www.lovoedu.com/img/20170527/2.png">
 <meta property="og:image" content="http://www.lovoedu.com/img/20170527/3.jpg">
-<meta property="og:updated_time" content="2017-05-27T10:12:50.000Z">
+<meta property="og:updated_time" content="2017-05-31T14:06:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有">
 <meta name="twitter:description" content="Java的这三个兄弟final、finally和finalize，你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。">
@@ -359,10 +359,7 @@
 <img src="/img/20170527/2.png" width="200" height="200">
 <p>还是回过头来，看一下我们Java的这三个假兄弟final、finally和finalize。你别说，他们三个看起来还真像，不把眼睛睁大点还真分辨不出来。难怪在Java面试时，面试官就喜欢拿来糊弄我们这些Java菜鸟。</p>
 <p>你老说它们半毛钱关系也没有，那么他们究竟是哪里来的？别着急！我们马上就让这三兄弟各回各家，各找各妈。</p>
-<ul>
-<li><strong>final</strong></li>
-</ul>
-<p>final从字面上理解含义为“<em>最后的，最终的</em>”。在Java中也同样表示出此种含义。</p>
+<h2 id="final"><a href="#final" class="headerlink" title="final"></a><strong>final</strong></h2><p>final从字面上理解含义为“<em>最后的，最终的</em>”。在Java中也同样表示出此种含义。</p>
 <p>final可以用来修饰变量（<em>包括类属性、对象属性、局部变量和形参</em>）、方法（<em>包括类方法和对象方法</em>）和类。</p>
 <ol>
 <li>final修饰类</li>
@@ -403,10 +400,7 @@
 <p>此处说的内部类指的是局部内部类，只有局部内部类（包括匿名内部类）才可以访问局部变量，普通静态内部类、非静态内部类不可能访问方法体内的局部变量。<br>Java要求所有被内部类访问的局部变量都使用final修饰，对于普通局部变量而言，它的作用域就是停留在该方法内，当方法执行结束，该局部变量也随之消失。但内部类则可能产生隐式的”闭包“闭包将使得局部变量脱离它所在的方法继续存在。</p>
 <p>匿名内部类的实例生命周期没有结束的话，将一直可以访问局部变量的值，这就是内部类会扩大局部变量作用域的实例。<br>由于内部类可能扩大局部变量的作用域，如果再加上这个被内部类访问的局部变量没有使用final修饰，也就是说该变量的值可以随意改变，就会引起大乱。因此Java编译器要求所有被内部类访问的局部变量必须使用final修饰。</p>
 </blockquote>
-<ul>
-<li><strong>finally</strong></li>
-</ul>
-<blockquote>
+<h2 id="finally"><a href="#finally" class="headerlink" title="finally"></a><strong>finally</strong></h2><blockquote>
 <p>finally从字面上理解含义为“<em>最后的；决定性地；最终的</em>”。在Java中的finally关键字一般与try/catch一起使用，如下图：</p>
 </blockquote>
 <img src="/img/20170527/3.jpg" width="500" height="300">
@@ -435,13 +429,8 @@ return返回的结果:-1
 <p>如果代码在 try 内部执行一条 System.exit(0); 语句，则应用程序终止而不会执行 finally 执行。</p>
 <p>如果您在 try 块执行期间快速拨掉电源，finally 也不会执行。</p>
 </blockquote>
-<ul>
-<li><strong>finalize</strong><blockquote>
+<h2 id="finalize"><a href="#finalize" class="headerlink" title="finalize"></a><strong>finalize</strong></h2><blockquote>
 <p>finalize从字面上理解含义为“完成; 使结束; 使落实;”。Java的垃圾回收器要回收对象的时候，首先要调用这个类的finalize方法。</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
 <p>一般的纯Java编写的Class不需要重新覆盖这个方法，因为Object已经实现了一个默认的，除非我们要实现特殊的功能(这 里面涉及到很多东西，比如对象空间树等内容)。 </p>
 <p>不过用Java以外的代码编写的Class(比如JNI，C++的new方法分配的内存)，垃圾回收器并不能对这些部分进行正确的回收，这时就需要我们覆盖默认的方法来实现对这部分内存的正确释放和回收(比如C++需要delete)。 </p>
 <p>总之，finalize相当于析构函数，它是垃圾回收器回收一个对象的时候第一个要调用的方法。不过由于Java的垃圾回收机制能自动为我们做这些事情，所以我们在一般情况下是不需要自己来手工释放的。</p>
@@ -553,8 +542,17 @@ return返回的结果:-1
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/JAVA.jpg"
@@ -607,6 +605,22 @@ return返回的结果:-1
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">1.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finalize"><span class="nav-number">3.</span> <span class="nav-text">finalize</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
