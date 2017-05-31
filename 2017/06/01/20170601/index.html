@@ -1,0 +1,730 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么老鸟要告诉你优先使用组合而不是继承？">
+<meta property="og:url" content="http://www.lovoedu.com/2017/06/01/20170601/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23lzz.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23angel.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23fish.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23plane.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23ship.jpg">
+<meta property="og:updated_time" content="2017-05-31T13:39:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么老鸟要告诉你优先使用组合而不是继承？">
+<meta name="twitter:description" content="大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23lzz.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/06/01/20170601/"/>
+
+
+
+
+
+  <title>为什么老鸟要告诉你优先使用组合而不是继承？ | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/01/20170601/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">为什么老鸟要告诉你优先使用组合而不是继承？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T21:19:17+08:00">
+                2017-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。<br><a id="more"></a></p>
+<p>继承的起源，来自于多个类中相同特征和行为的抽象。子类可以通过继承父类，那么可以调用父类中定义的方法和属性，从而达到代码重用的目的。另外，子类除了重用父类的代码以外，还可以扩展自身的属性和方法，来描述子类特有的特征和行为。</p>
+<p>例如：人类和马类这两个类，有什么共同的特征和行为呢？都有年龄，都要呼吸，都可以行动，都要吃奶。我们可以把人类和马类相同的特征和行为抽取出来，形成一个父类：哺乳动物。人类和马类只要继承哺乳动物这个父类。那么，就可以直接重用哺乳动物父类中定义的属性和行为，相同的属性和行为就可以不用再重复描述。所以，通过继承，可以达到代码很大的重用。</p>
+<p>除此之外，人类和马类还可以再定义自己本身的特征和行为。比如，马要吃草，人可以说话。那么，人类和马类可以在继承了哺乳动物父类的同时，再定义说话或吃草的行为，来扩展自身的特征和行为。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mammal</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breath</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManKind</span> <span class="keyword">extends</span> <span class="title">Mammal</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">……</div><div class="line"></div><div class="line"></div><div class="line">ManKind m = <span class="keyword">new</span> ManKind();</div><div class="line">m.spaeak();<span class="comment">//本类中定义的方法</span></div><div class="line">m.breath();<span class="comment">//父类中继承的方法</span></div><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<p>使用继承有很多优点，父类的大部分功能可以通过继承关系自动进入子类；修改或扩展继承而来的属性和方法较为容易。那么，如何判断两个类之间是否有继承关系呢？很简单，用”是”来判断。比如：马是动物。那么马继承于动物。玫瑰是植物。那么玫瑰继承于植物。骂人的时候，我们会说：你是畜牲，那么这个人继承于畜牲，象畜牲一样没有人性。你是猪，那么这个人继承于猪，象猪一样愚笨。这就是所谓的”is-a”。</p>
+<p>但是，继承同样有很多缺点。人类在大千世界中，不断的认识世界，也不断的改造世界。人类曾经梦想，在天空中飞翔。那么，人类如何飞行呢？鸟可以飞行，那是因为鸟有翅膀这个特征，才会拥有飞这个行为。如果人类继承于鸟类，象鸟一样长出翅膀，那么也就可以有飞行的行为了。</p>
+<p><img src="/img/20170601/zcf2017-05-23lzz.jpg" width="200" height="150"><br><img src="/img/20170601/zcf2017-05-23angel.jpg" width="200" height="150"></p>
+<p>《封神榜》中的雷震子和天使，其实就是人类想在天空中飞行的一种想法。那就是继承鸟这个类，拥有鸟类的翅膀和飞行的行为。</p>
+<p>那么，人类想下海应该怎么办呢？于是人类又在想，只要将人类继承于鱼类，拥有鱼的尾巴，那么就可以下海了。随着这种想法的产生，美人鱼就出现了。</p>
+<p><img src="/img/20170601/zcf2017-05-23fish.jpg" width="150" height="200"></p>
+<p>那么，如果人类既想飞行，又想下海应该怎么办呢？有人说，那还不简单，把人类同时继承于鸟类和鱼类不就行了吗。但是，不好意思，在java中，类只能单根继承。也就是说，一个类只能有一个父类，不能同时继承两个父类。所以，从这里就可以看出继承的其中一个缺点：无法通过继承的方式，重用多个类中的代码。</p>
+<p>除此之外，继承还有第二个缺点，那就是，父类的属性和方法，子类是无条件继承的。也就是说，不管子类愿意不愿意，都必须继承父类所有的属性和方法。比如，每个人都有自己父母，如果父母比较富有，那么子女就吃得好穿得好。如果父母是穷人，那么子女吃不饱穿不暖。很显然，所有的人都希望自己是富二代，官二代，而不想成为穷二代。不过，人是无法选择自己父母的。所以，父母的一切，自己是无条件接受的。</p>
+<p>同样道理，如果人类继承于鸟类，我们希望拥有的是：鸟的翅膀和飞的行为。但是，鸟还有吃虫的行为，鸟还有下蛋的行为。这些是我们不希望拥有的。不过，如果人类继承于鸟类的话，那么吃虫和下蛋的行为，人类就得无条件接受了。所以，使用继承很容易造成方法的污染。一旦父类的属性和方法，在子类中不能完全适用。那么，也就不应该使用继承关系了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">layEggs</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManKind</span> <span class="keyword">extends</span> <span class="title">Bird</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line">……</div><div class="line">ManKind m = <span class="keyword">new</span> ManKind();</div><div class="line">m.spaeak();</div><div class="line">m.fly();<span class="comment">//人类希望拥有的飞行行为</span></div><div class="line">m.layEggs();<span class="comment">//人类不希望拥有的下蛋行为</span></div><div class="line"></div></pre></td></tr></table></figure>
+<p>还有，从父类继承而来的实现是静态的，不能在运行时发生改变，不够灵活。比如，有一个人从春熙路到天府广场去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"前往天府广场"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CDMan</span> <span class="keyword">extends</span> <span class="title">Man</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">……</div><div class="line">CDMan c = <span class="keyword">new</span> CDMan();</div><div class="line">c.run();</div><div class="line"></div></pre></td></tr></table></figure>
+<p>当我们调用run()方法时，就只能打印从父类中继承的run方法。如果这个人想骑单车去天府广场应该怎么办呢？有人说，简单，在CDMan中重写run()不就行了吗？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CDMan</span> <span class="keyword">extends</span> <span class="title">Man</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"骑单车去天府广场"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是，如果这个人想骑单车走一段，再开汽车走一段，就没法通过继承和重写来实现了。所以，无论是从父类中继承的方法，还是子类重写的父类方法，实现的都是一种静态的复用。不能在运行时发生改变，灵活性比较差。</p>
+<hr>
+<p>那么，如何解决继承的这些缺点呢？荀子在《劝学》中，有这样的一段话：”假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。君子生非异也，善假于物也。”就是说，人可以骑马，即使这个人跑得不快，也可以到达千里之外。人可以坐船，即使这个人不会游泳，也可以到达江河的任何位置。君子其实没什么太多特别的地方，只不过善于利用工具而已。这就是所谓的”has-a”。拥有什么，或者使用什么。</p>
+<p>荀子的这段话，指出了解决继承缺陷办法，那就是使用聚合/组合达到代码的复用。比如，人想上天怎么办呢？可以利用飞机上天。人想下海怎么办呢，可以利用轮船下海。并不要求人要长出翅膀，人要长出鱼尾。</p>
+<p><img src="/img/20170601/zcf2017-05-23plane.jpg" width="200" height="150"><br><img src="/img/20170601/zcf2017-05-23ship.jpg" width="200" height="150"></p>
+<p>这样的解决方案，其实就是告诉我们，与其我们”是什么”，倒不如我们”用什么”。也就是用聚合/组合复用，去代替继承复用。把一些特征和行为抽取出来，形成工具类。然后通过聚合/组合成为当前类的属性。再调用其中的属性和行为达到代码重用的目的。</p>
+<p>换句话说，用”has-a”(有什么或用什么)去替代”is-a”(是什么)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plane</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ship</span></span>&#123;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManKind</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Plane p = <span class="keyword">new</span> Plane();</div><div class="line">    <span class="keyword">private</span> Ship s = <span class="keyword">new</span> Ship();</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;</div><div class="line">        p.fly();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">()</span></span>&#123;</div><div class="line">        s.swim();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从以上代码可以看出，通过聚合/组合关系，可以解决继承的缺点。由于一个类可以建多个属性，也就是可以聚合多个类。所以，可以通过聚合/组合关系，重用多个类中的代码。</p>
+<p>另外，我们可以选择一个类中是否应该具有某种行为，从而决定应该聚合那些类，不应该聚合那些类。这样，通过聚合/组合关系，也可以避免继承所带的方法污染问题。所以，使用聚合/组合，具有很强的代码重用性和灵活性。</p>
+<p>聚合/组合复用也可以在运行时动态进行。新对象可以使用聚合/组合关系，将新的责任委派到合适的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//交通工具接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Vehicle</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//自行车实现类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bike</span> <span class="keyword">implements</span> <span class="title">Vehicle</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"骑单车行走"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//汽车实现类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Vehicle</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"开汽车行走"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//人类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CDMan</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Vehicle  v;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		v.run();</div><div class="line">	&#125;</div><div class="line"><span class="comment">//更换交通工具</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeVehicle</span><span class="params">(Vehicle  v)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.v = v;</div><div class="line">	&#125;  </div><div class="line">&#125;</div><div class="line">……</div><div class="line">CDMan c = <span class="keyword">new</span> CDMan();</div><div class="line">c.changeVehicle(<span class="keyword">new</span> Bike());</div><div class="line">c.run();<span class="comment">//骑单车行走</span></div><div class="line"></div><div class="line">c.changeVehicle(<span class="keyword">new</span> Car());</div><div class="line">c.run();<span class="comment">//开汽车行走</span></div><div class="line"></div></pre></td></tr></table></figure>
+<p>从这里可以看出，人类可以随时改换交通工具，达到行走的目的。这种方式可以在运行期间，随时改变接口属性的实现类。从而调用不同实现类描述的具体方法，灵活性很强。</p>
+<p><strong> 总结：</strong></p>
+<p>继承和聚合/组合都可以达到代码重用的目的。继承有自身的优点，父类的大部分功能可以通过继承关系自动进入子类；修改或扩展继承而来的实现较为容易。</p>
+<p>但是，继承同样有缺点，</p>
+<ol>
+<li>无法通过继承达到多个类代码的重用。</li>
+<li>父类的方法子类无条件继承，很容易造成方法污染。</li>
+<li>从父类中继承的方法，是一种静态的复用。不能在运行时发生改变，不够灵活。</li>
+</ol>
+<p>继承可以用，但使用继承需要谨慎。一般来说，使用继承有两个条件：</p>
+<ol>
+<li>父类中所有的属性和方法，在子类中都适用。</li>
+<li>子类不需要再去重用别的类中的代码。<br>如果不能满足这两个条件，那么就应该使用聚合/组合关系去替代继承，来达到代码的复用。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/27/20170527/" rel="prev" title="别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有">
+                别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
