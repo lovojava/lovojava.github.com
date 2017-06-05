@@ -1,0 +1,773 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="我要学编程:我叫周大牛，或许你会想到一个卖手链、吊坠什么的一个叫周大福的人，没错，我们仅仅是名字相似而  已。我一直很讨厌被别人联想我和他之间关系的原因在于他永远比不上我的帅气：">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识计算机硬件">
+<meta property="og:url" content="http://www.lovoedu.com/2017/06/04/20170604/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="我要学编程:我叫周大牛，或许你会想到一个卖手链、吊坠什么的一个叫周大福的人，没错，我们仅仅是名字相似而  已。我一直很讨厌被别人联想我和他之间关系的原因在于他永远比不上我的帅气：">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/daniu.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/xiaomei.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/shifu.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/xiaoshou.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/i7.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/neicun.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/pan.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/zhu.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/zhuji.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/dian.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/xianshi.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170604/shujian.jpg">
+<meta property="og:updated_time" content="2017-06-05T01:38:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="认识计算机硬件">
+<meta name="twitter:description" content="我要学编程:我叫周大牛，或许你会想到一个卖手链、吊坠什么的一个叫周大福的人，没错，我们仅仅是名字相似而  已。我一直很讨厌被别人联想我和他之间关系的原因在于他永远比不上我的帅气：">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170604/daniu.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/06/04/20170604/"/>
+
+
+
+
+
+  <title>认识计算机硬件 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/04/20170604/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">认识计算机硬件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-04T09:04:03+08:00">
+                2017-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="我要学编程"><a href="#我要学编程" class="headerlink" title="我要学编程:"></a>我要学编程:</h4><p>我叫周大牛，或许你会想到一个卖手链、吊坠什么的一个叫周大福的人，没错，我们仅仅是名字相似而  已。我一直很讨厌被别人联想我和他之间关系的原因在于他永远比不上我的帅气：<br><img src="/img/20170604/daniu.jpg" alt="&quot;我很帅&quot;"><br><a id="more"></a><br>先做个自我介绍：20岁之前我是一个网管，年纪轻轻就月入2000，掌管整个网吧30台电脑，不管初中还是高中的小孩见我都要叫一声周哥，连吃泡面都要加两个蛋，穿鞋只穿李宁，而且一定要福建产的。曾经我一度是我们村唯一的希望。村花小美从小就崇拜我，整个城乡结合部一致认为小美一定是我的女人，直到21岁生日那天我看到小美上了我头上的那个男人(网吧老板)的车:<br><img src="/img/20170604/xiaomei.jpg" alt="&quot;小美走了&quot;"><br>那一刻开始，我发誓我要出去闯出自已的事业(其实是老板让我滚蛋)。那是我离开家乡的第15天，我依旧来到临时工市场，穿着我帅气的拖鞋，在我的心里默默给自己加油：看了那么多小说，男主落难的时候一定会出现白富美哭着喊着求约。我的白富美，你快出现啊，再不出现我可吃不起晚饭了。    </p>
+<p>这个时候，那个男子终于出现了，我永远忘记不了这一刻，我的人生就这样被他改变了：<br><img src="/img/20170604/shifu.jpg" alt="&quot;小美走了&quot;">    </p>
+<p>至于原因嘛:他告诉我，通过这本书你可以拥有很多很多对象，用一个换一个。善良的我最后用25块钱买下了这本书，为什么这么便宜，因为书上很多地方都有像血一样的痕迹，他告诉我这是以前买这本书的人激动的喷血，给你这么便宜因为不再接受退货了。就这样，最终我走向了学习程序的道路  </p>
+<h4 id="我要买电脑"><a href="#我要买电脑" class="headerlink" title="我要买电脑:"></a>我要买电脑:</h4><p>以前我一直是我们乡村结合部的电脑高手，熟悉各种电脑的开关机。但是买电脑还是第一次，总不能去以前的网吧像那个和我有夺妻之恨的人借吧，不行我要买一台属于自己的电脑，免得和以前一样公用电脑，导致我的很多电影被人误删了(我的葫芦娃全集就这样离我而去)。说干就干，明天就去电脑城，今晚回去把家里的牛卖掉换钱，这样就可以完成走向人生巅峰的第一步了。。。  </p>
+<h4 id="电脑城艳遇"><a href="#电脑城艳遇" class="headerlink" title="电脑城艳遇:"></a>电脑城艳遇:</h4><p>看来老头说的没错，写程序果然会走上人生巅峰，买电脑都能遇到比小美还要漂亮的，莫非她就是上天给我的安排？看来这条路选对了，暗暗为自己点个赞。拿出我500块钱买个苹果6，换了块电池(外国手机就是费电)，赶紧偷偷拍一张：<br><img src="/img/20170604/xiaoshou.PNG" alt="&quot;小美走了&quot;">  </p>
+<p>整理了下我那件才穿几十次的条纹衬衣，用最霸道方式走向了她，在她的惊讶注释下，我无比优越的说：给我买台电脑，私人电脑，如果你想要我的电话也行。我偷偷看了下她胸口的吊牌，上边写着她的名字:苍小优。    </p>
+<h4 id="小苍老师带你学"><a href="#小苍老师带你学" class="headerlink" title="小苍老师带你学:"></a>小苍老师带你学:</h4><p>苍小优：好的帅哥(看看果然大城市的美女才能品味出我独特的帅气)，请问你是买品牌机还是自己DIY呢？    </p>
+<p>周大牛：。。。D啥Y，这是个什么东西，你能不能解释一下。   </p>
+<p>苍小优：DIY是英文Do It Yourself的缩写，可以正式译为自己动手做，一般对电脑熟悉的人都是自己购买电脑的硬件然后组装在一起，当然这可能存在电脑硬件兼容性问题，不过一般只要你告诉销售人员你电脑其他硬件，他们会帮你参考解决兼容性问题。当然如果你不了解电脑的话也可以购买整体电脑，就是我们说的品牌机  </p>
+<p>周大牛：我可是要成为程序员的男人，必须D个Y，不过小姐姐你可不可以给我仔细讲解下我需要购买哪些硬件呢，玩游戏我在行，可是电脑的这些东西我是都不认识。  </p>
+<p>苍小优：没问题程序员先生，那我现在就给你讲讲计算机硬件的组成，首先我们我们必须认识CPU，这个可是计算机最核心的东西:</p>
+<p><img src="/img/20170604/i7.jpg" alt="&quot;cpu&quot;">   </p>
+<blockquote>
+<p>中央处理器（CPU，Central Processing Unit）是一块超大规模的集成电路，是一台计算机的运算核心（Core）和控制核心（ Control Unit）。它的功能主要是解释计算机指令以及处理计算机软件中的数据。  </p>
+</blockquote>
+<p>再通俗的说呢：CPU就是电脑的中央处理器,就好比人的心脏.你的计算机要做什么事情都是由它去发布命令。所以呢，这也是购买电脑的时候的一个主要开销了。目前CPU最大的两个品牌分别是Intel和AMD，等下你可以在它们之间根据喜好购买  </p>
+<p>接着呢我们来认识下一个非常厉害的东东：内存<br><img src="/img/20170604/neicun.jpg" alt="&quot;内存&quot;">   </p>
+<blockquote>
+<p>内存(Memory)是计算机中重要的部件之一，它是与CPU进行沟通的桥梁。计算机中所有程序的运行都是在内存中进行的，因此内存的性能对计算机的影响非常大计算机运行程序的时候，CPU就会把需要运算的数据调到内存中进行运算，当运算完成后CPU再将结果传送出来，内存的运行也决定了计算机的稳定运行  </p>
+</blockquote>
+<p>目前市场上流行的计算机内存的生产厂商有金士顿、现代、三星、威刚等。当然如果你平时如果对电脑反应速度快点的话可以购买一些比较大的内存，目前比较多的选择是8G、16G，当然如果有需要可以购买多个内存条让你电脑运行更快，而且内存的价格没有CPU那么贵哦。    </p>
+<p>接着我们再看电脑下一个必需品：硬盘<br><img src="/img/20170604/pan.jpg" alt="&quot;硬盘&quot;">   </p>
+<blockquote>
+<p>硬盘是电脑主要的存储媒介之一，由一个或者多个铝制或者玻璃制的碟片组成。碟片外覆盖有铁磁性材料，平时你存放在电脑上的资料其实都在这里边，注意：CPU和内存都是运行软件的地方，真正存储资料的地方在硬盘中  </p>
+</blockquote>
+<p>硬盘呢有很多种类，主要有这几种：固态硬盘（SSD）、机械硬盘（HDD ）、混合硬盘（HHD 一块基于传统机械硬盘诞生出来的新硬盘）； </p>
+<p>其中ssd里面是由闪存颗粒组成的 读取速度要比HDD快的多 但是使用寿命的话ssd没有hdd这么久 他的读取次数是有限的 还有就是目前ssd价格较高 目前来看还是用HDD比较划算。    </p>
+<p><img src="/img/20170604/zhu.jpg" alt="&quot;主板&quot;"><br>这个呢，就是大名鼎鼎的主板，刚才我们所说的CPU,内存，硬盘什么的为了统一管理，我们把它们全部安装到主板上，这样它们之间就能共同合作，完成你所要完成的所有事情了  </p>
+<blockquote>
+<p>主板（英语：Motherboard,Mainboard，简称Mobo）供处理器、显卡、声效卡、硬盘、存储器、对外设备等设备接合  </p>
+</blockquote>
+<p>目前比较流行的主板的品牌有：华硕（ASUS） 技嘉（GIGABYTE） 微星（MSI）等，主板的价格也稍微贵一点，同样也是你购买计算机的时候主要的开销之一</p>
+<p>当然咯，主板上这么多插口到底做什么用的呢，除了方才我们所说的这些必需品(cpu、内存、硬盘)之外，如果你对电脑音质和画质有高品质要求，你可以购买单独的声卡和显卡(如果打游戏必备)。</p>
+<blockquote>
+<p>声卡 (Sound Card)也叫音频卡（港台称之为声效卡），是多媒体技术中最基本的组成部分，是实现声波/数字信号相互转换的一种硬件。声卡的基本功能是把来自话筒、磁带、光盘的原始声音信号加以转换，输出到耳机、扬声器、扩音机、录音机等声响设备，或通过音乐设备数字接口(MIDI)使乐器发出美妙的声音       </p>
+<p>显示接口卡（Video card，Graphics card），又称为显示适配器（Video adapter）显卡的用途是将计算机系统所需要的显示信息进行转换驱动显示器，并向显示器提供行扫描信号，控制显示器的正确显示，是连接显示器和个人电脑主板的重要元件，是“人机对话”的重要设备之一。  </p>
+</blockquote>
+<p>当然如果不购买也没关系，主板上有集成的声卡和显卡，当然效果就没那么好了 </p>
+<p>接下来，我们刚才列举的这些计算机必备品，我们需要找个东西把它们集中管理装起来，那就是我们的主机箱咯：<br><img src="/img/20170604/zhuji.jpg" alt="&quot;机箱&quot;">  </p>
+<blockquote>
+<p>机箱作为电脑配件中的一部分，它起的主要作用是放置和固定各电脑配件，起到一个承托和保护作用，此外，电脑机箱具有电磁辐射的屏蔽的重要作用，由于机箱不像CPU、显卡、主板等配件能迅速提高整机性能，所以在DIY中一直不被列为重点考虑对象。  </p>
+</blockquote>
+<p>我们将刚才的硬件全部按照说明安装到主机箱里边就可以正常工作了。主机箱的价格比较便宜。所以选择一个你喜欢样子的主机箱吧。    </p>
+<p>当然要启动你的电脑还需要一个必须用品，那就是电源：<br><img src="/img/20170604/dian.jpg" alt="&quot;电源&quot;"></p>
+<blockquote>
+<p>电脑电源是把220V交流电，转换成直流电，并专门为电脑配件如CPU、主板、硬盘、内存条、显卡、光盘驱动器等供电的设备，是电脑各部件供电的枢纽，是电脑的重要组成部分。目前PC电源大都是开关型电源。  </p>
+</blockquote>
+<p>同样的电源价格也不是很贵，但我们需要选择一个比较大的品牌，质量过关的电源才可以，目前市场上大品牌主要有     航嘉 | 鑫谷 | aigo | 金河田 | 先马 | 长城机电 | Tt | 安钛克  等  </p>
+<p>这样一台电脑基本上核心部分就完成了，剩下的就不需要太多解释了，每个使用电脑的人都知道还有这些需要配置的：  </p>
+<p>显示器<br><img src="/img/20170604/xianshi.jpg" alt="&quot;显示器&quot;"> </p>
+<p>显示器有贵的有便宜的，价格相差比较大，你可以选择普通偏上的1000-1500左右的就可以了，目前主流品牌有：AOCSamsung/三星飞利浦Benq/明基Dell/戴尔HKC/惠科等  </p>
+<p>鼠标、键盘<br><img src="/img/20170604/shujian.jpg" alt="&quot;鼠标键盘&quot;">  </p>
+<p>顺手的鼠标键盘能让你事半功倍，当然也不需要苛求太好了，价格也不是很贵，几百块钱之内就能买到很好的键盘鼠标了  </p>
+<p>有了这些东西，一台计算机就算配完了，当然了，音箱什么的你可以以后慢慢自己配置了  </p>
+<p>现在我就带你去购买这些东西吧。。。  </p>
+<h4 id="又一名程序员"><a href="#又一名程序员" class="headerlink" title="又一名程序员:"></a>又一名程序员:</h4><p>最终我花了5000块钱购买了电脑，并且顺利约小优导购一起吃了闻名中外的开封菜，并且得到了她的QQ号码。从明天起，我就要程序程序员的男人了，努力啊，奋斗啊！！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/01/20170601/" rel="prev" title="为什么老鸟要告诉你优先使用组合而不是继承？">
+                为什么老鸟要告诉你优先使用组合而不是继承？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我要学编程"><span class="nav-number">1.</span> <span class="nav-text">我要学编程:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我要买电脑"><span class="nav-number">2.</span> <span class="nav-text">我要买电脑:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电脑城艳遇"><span class="nav-number">3.</span> <span class="nav-text">电脑城艳遇:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小苍老师带你学"><span class="nav-number">4.</span> <span class="nav-text">小苍老师带你学:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#又一名程序员"><span class="nav-number">5.</span> <span class="nav-text">又一名程序员:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
