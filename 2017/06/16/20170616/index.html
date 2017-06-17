@@ -1,0 +1,780 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1.1 异常的概念异常指的是运行期出现的错误，也就是当程序开始执行以后执行期出现的错误。出现错误时观察错误的名字和行号最为重要。在这个世界不可能存在完美的东西，不管完美的思维有多么缜密，细心，我们都不可能考虑所有的因素，这就是所谓的智者千虑必有一失。同样的道理，计算机的世界也是不完美的，异常情况随时都会发生，我们所需要做的就是避免那些能够避免的异常，处理那些不能避免的异常。这里我将记录如何利用异常">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本微博书写教程：异常处理">
+<meta property="og:url" content="http://www.lovoedu.com/2017/06/16/20170616/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="1.1 异常的概念异常指的是运行期出现的错误，也就是当程序开始执行以后执行期出现的错误。出现错误时观察错误的名字和行号最为重要。在这个世界不可能存在完美的东西，不管完美的思维有多么缜密，细心，我们都不可能考虑所有的因素，这就是所谓的智者千虑必有一失。同样的道理，计算机的世界也是不完美的，异常情况随时都会发生，我们所需要做的就是避免那些能够避免的异常，处理那些不能避免的异常。这里我将记录如何利用异常">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170616/异常概念1.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170616/异常分类2.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170616/异常结构3.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170616/异常捕获4.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170616/finally5.png">
+<meta property="og:updated_time" content="2017-06-17T06:37:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="本微博书写教程：异常处理">
+<meta name="twitter:description" content="1.1 异常的概念异常指的是运行期出现的错误，也就是当程序开始执行以后执行期出现的错误。出现错误时观察错误的名字和行号最为重要。在这个世界不可能存在完美的东西，不管完美的思维有多么缜密，细心，我们都不可能考虑所有的因素，这就是所谓的智者千虑必有一失。同样的道理，计算机的世界也是不完美的，异常情况随时都会发生，我们所需要做的就是避免那些能够避免的异常，处理那些不能避免的异常。这里我将记录如何利用异常">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170616/异常概念1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/06/16/20170616/"/>
+
+
+
+
+
+  <title>本微博书写教程：异常处理 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/16/20170616/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">本微博书写教程：异常处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T00:00:00+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-1-异常的概念"><a href="#1-1-异常的概念" class="headerlink" title="1.1 异常的概念"></a>1.1 异常的概念</h2><p>异常指的是运行期出现的错误，也就是当程序开始执行以后执行期出现的错误。出现错误时观察错误的名字和行号最为重要。<br>在这个世界不可能存在完美的东西，不管完美的思维有多么缜密，细心，我们都不可能考虑所有的因素，这就是所谓的智者千虑必有一失。同样的道理，计算机的世界也是不完美的，异常情况随时都会发生，我们所需要做的就是避免那些能够避免的异常，处理那些不能避免的异常。这里我将记录如何利用异常还程序一个“完美世界”。<br><a id="more"></a></p>
+<img src="/img/20170616/异常概念1.png">  
+<p>异常情况例如：  </p>
+<ol>
+<li>工厂生产，原料用尽</li>
+<li>高速路上车没油</li>
+<li>家里灯泡断电</li>
+</ol>
+<h2 id="1-2-异常分类"><a href="#1-2-异常分类" class="headerlink" title="1.2 异常分类"></a>1.2 异常分类</h2><img src="/img/20170616/异常分类2.png">  
+<p> <strong><em>错误:</em></strong><br>      错误不是异常，是用户和程序无法控制的问题，这是系统内部的错误。</p>
+<p> <strong><em>检查异常:</em></strong><br>     检查异常通常是用户错误或者不能被程序所预见的问题，例如，打开一个文件，但是文件不存在，这中错误称为检查异常，必须由java语言来处理。</p>
+<p> <strong><em>运行时异常:</em></strong><br> 运行时异常是程序在运行过程中可能发生的，可以被程序员避免的异常，可以被忽略，提示我们开发人员进行处理。</p>
+<h2 id="1-3-异常的控制流程"><a href="#1-3-异常的控制流程" class="headerlink" title="1.3 异常的控制流程"></a>1.3 异常的控制流程</h2><p>首先来看一段代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"进入main方法"</span>);</div><div class="line">		method1();</div><div class="line">		System.out.println(<span class="string">"退出main方法"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"进入method1方法"</span>);</div><div class="line">		method2();</div><div class="line">		System.out.println(<span class="string">"退出method1方法"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"进入method2方法"</span>);</div><div class="line">		System.out.println(<span class="string">"excute method2"</span>);</div><div class="line">		System.out.println(<span class="string">"退出method2方法"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">进入main方法</div><div class="line">进入method1方法</div><div class="line">进入method2方法</div><div class="line">excute method2</div><div class="line">退出method2方法</div><div class="line">退出method1方法</div><div class="line">退出main方法</div><div class="line"></div></pre></td></tr></table></figure></p>
+<font color="red" size="4">总结：方法调用栈中的顺序为先进后出。</font>
+
+<p>上面的三个方法都被押入到内存的方法栈中，如果说某一段代码出现了异常那代码会如何执行呢？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</div><div class="line">	System.out.println(<span class="string">"进入method2方法"</span>);</div><div class="line">	<span class="keyword">int</span> n = <span class="number">10</span>/<span class="number">0</span>;</div><div class="line">	System.out.println(<span class="string">"退出method2方法"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure> </p>
+<p>在method2中加入了 <code>int n ＝ 10/0；</code>程序运行到这句话是肯定要抛出异常。那我们会得到什么结果呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">Exception in thread <span class="string">"main"</span> 进入main方法</div><div class="line">进入method1方法</div><div class="line">进入method2方法</div><div class="line">java.lang.ArithmeticException: / by zero</div><div class="line">	at com.lovo.test.Demo01.method2(Demo01.java:<span class="number">17</span>)</div><div class="line">	at com.lovo.test.Demo01.method1(Demo01.java:<span class="number">12</span>)</div><div class="line">	at com.lovo.test.Demo01.main(Demo01.java:<span class="number">6</span>)</div><div class="line"></div></pre></td></tr></table></figure>   
+<ol>
+<li>main方法在调用栈的最底部，method2在最顶部，如果method2抛出一个异常，method2就会从栈中被取出，</li>
+<li>同时将异常继续抛给调用他的method1方法，发现method1并没有处理这个异常，那直接抛给main方法，并从栈中退出。</li>
+<li>这时main方法方法也没有处理异常，就有java虚拟机来处理这个异常，虚拟机会创建一个exception对象将信息打印到控制台，然后结束程序。</li>
+</ol>
+<p>通过画图来分析异常抛出的流程！</p>
+<h2 id="1-4-异常的体系结构"><a href="#1-4-异常的体系结构" class="headerlink" title="1.4 异常的体系结构"></a>1.4 异常的体系结构</h2><img src="/img/20170616/异常结构3.png">  
+<p> 通过api来进行异常类的查看和分析。</p>
+<h2 id="1-5-捕获异常"><a href="#1-5-捕获异常" class="headerlink" title="1.5 捕获异常"></a>1.5 捕获异常</h2><p>在网上看了这样一个搞笑的话：世界上最真情的相依，是你在try我在catch。无论你发神马脾气，我都默默承受，静静处理。对于初学者来说异常就是try…catch<br>如果我们发现程序某段代码会抛出异常，那我们要去捕获这个异常。</p>
+<p>Java异常处理的五个关键字：try、catch、finally、throw、throws</p>
+<img src="/img/20170616/异常捕获4.png">  
+<p>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 定义一个try块</div><div class="line"> * 在try块中定义两个变量，int x，int y；</div><div class="line"> * 每次循环，x－－ y+＝10/x；</div><div class="line"> * catch块捕获异常，如果出现异常那就输出 异常</div><div class="line"> * 返回一个y的值</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">int</span> x = <span class="number">100</span>;</div><div class="line">		<span class="keyword">int</span> y = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(x&gt;-<span class="number">1</span>)&#123;</div><div class="line">			x--;</div><div class="line">			y +=<span class="number">100</span>/x;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> y;</div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">		System.out.println(<span class="string">"执行try循环抛出异常了"</span>);</div><div class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure><br>多个catch块使用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line"> * 如果有多个catch块，一定要注意异常的类型必须从小到大的定义，从子类父类</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">		System.out.println(<span class="string">"请输入一个数字"</span>);</div><div class="line">		<span class="keyword">int</span> num = sc.nextInt();</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> res = <span class="number">100</span>/num;</div><div class="line">	&#125;<span class="keyword">catch</span> (ArithmeticException e) &#123;</div><div class="line">		System.out.println(<span class="string">"输入的数字不能为0"</span>);</div><div class="line">	&#125;<span class="keyword">catch</span> (InputMismatchException e) &#123;</div><div class="line">		System.out.println(<span class="string">"请输入数字"</span>);</div><div class="line">	&#125;<span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		System.out.println(<span class="string">"未知的错误"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">finally</span>&#123;</div><div class="line">		System.out.println(<span class="string">"代码执行完毕，即将保存数据"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure> </p>
+<img src="/img/20170616/finally5.png"> 
+<h2 id="1-6-申明并抛出异常"><a href="#1-6-申明并抛出异常" class="headerlink" title="1.6 申明并抛出异常"></a>1.6 申明并抛出异常</h2><h3 id="1-6-1-throw和throws"><a href="#1-6-1-throw和throws" class="headerlink" title="1.6.1 throw和throws"></a>1.6.1 throw和throws</h3><pre><code>throw：将异常进行抛出（动作）
+throws：声明将要抛出何种类型的异常（声明）
+</code></pre><hr>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">   </div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * throws Exception代表当前方法一旦发生异常将这个异常抛给调用中进行处理</div><div class="line"> * 如果不知道具体什么异常，可以用exception来代替</div><div class="line"> * throw 就表示执行抛出异常这个动作</div><div class="line"> * <span class="doctag">@throws</span> Exception</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">(<span class="keyword">int</span> m)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">	System.out.println(<span class="string">"进入method2方法"</span>);</div><div class="line">	</div><div class="line">	<span class="keyword">if</span>(m==<span class="number">0</span>)&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> Exception();</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">int</span> n = <span class="number">10</span>/m;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	System.out.println(<span class="string">"退出method2方法"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
+<hr>
+<p>在method方法里面就必须要处理这个异常  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</div><div class="line">	System.out.println(<span class="string">"进入method1方法"</span>);</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		method2(<span class="number">0</span>);</div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">	System.out.println(<span class="string">"退出method1方法"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
+<h3 id="1-6-2-重写方法异常"><a href="#1-6-2-重写方法异常" class="headerlink" title="1.6.2 重写方法异常"></a>1.6.2 重写方法异常</h3><ol>
+<li>父类中未抛出异常<br> 创建一个parent父类  </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="comment">//父类中的测试方法，打印相应语句以便测试</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"parent test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>  
+<p>子类继承没有抛出异常的父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        System.out.println(<span class="string">"child test"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Parent test = <span class="keyword">new</span> Child();</div><div class="line">        test.test();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>  
+<p>结果：编译不通过。IDE告诉我们“overridden method does not throw ‘java.lang.Exception’”，好尴尬不是么！不过还好，我们吸取了教训，知道了父类未抛出异常时，子类也不能抛出异常的约定，至少没在项目发布上线后才发现问题，万幸万幸。</p>
+<ol>
+<li>父类中抛出异常</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="comment">//和上面类似，只是抛出了一个异常</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        System.out.println(<span class="string">"parent test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
+<p>同样的，再搞一个子类出来，或者也可以将上面的子类稍作修改。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"child test"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Parent test = <span class="keyword">new</span> Child();</div><div class="line">        test.test();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+<font color="orange" size="3">总结：编译…又报错了。main函数中test.test()这一行有问题，必须要抛出一个异常。try..catch一下，再次编译运行，屏幕打印出child test字样。</font>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"child test"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">         Child test = <span class="keyword">new</span> Child();</div><div class="line">        test.test();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+<font color="orange" size="3">总结：编译通过。引用句柄是不是父类类型时，子类可以不用抛出异常。</font>
+
+<p>如果…我子类不是抛出Exception，而是其子类比如IOException呢？ </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">           System.out.println(<span class="string">"child test"</span>);</div><div class="line">   &#125;</div></pre></td></tr></table></figure> 
+<font color="orange" size="3">总结：编译通过，main方法里面正常打印出<code>child test</code></font>  
+
+<p>那我把子类和父类的异常掉个包应该也没问题吧：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="comment">//父类抛出IOException</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        System.out.println(<span class="string">"parent test"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        System.out.println(<span class="string">"child test"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Parent test = <span class="keyword">new</span> Child();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            test.test();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
+<font color="orange" size="3">总结：竟然又报错了。看来街坊邻居们传的没错，继承体系就是这么“小气”，子类的异常类型必须和父类相同或者是其子类<br></font>    
+
+
+
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/13/20170613/" rel="prev" title="自增（++） 与 自减（--）">
+                自增（++） 与 自减（--） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-异常的概念"><span class="nav-number">1.</span> <span class="nav-text">1.1 异常的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-异常分类"><span class="nav-number">2.</span> <span class="nav-text">1.2 异常分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-异常的控制流程"><span class="nav-number">3.</span> <span class="nav-text">1.3 异常的控制流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-异常的体系结构"><span class="nav-number">4.</span> <span class="nav-text">1.4 异常的体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-捕获异常"><span class="nav-number">5.</span> <span class="nav-text">1.5 捕获异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-申明并抛出异常"><span class="nav-number">6.</span> <span class="nav-text">1.6 申明并抛出异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-1-throw和throws"><span class="nav-number">6.1.</span> <span class="nav-text">1.6.1 throw和throws</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-2-重写方法异常"><span class="nav-number">6.2.</span> <span class="nav-text">1.6.2 重写方法异常</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
