@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="OOA（面向对象分析）、OOD（面向对象设计）、OOP（面向对象编程），这3个概念，对于我们JAVA程序员来讲，或多或少应该都有所了解，或者说至少都听说过。但是要谈到对其理解，可能对于多数入行不深的从业者来说，确实不是那么容易做到。特别是对于绝大多数的3年以内的低中级软件工程师而言。因为他们的工作更多是需要按照项目经理分配的任务来编写功能代码，很少有多余的时间去阅读或者思考一些概念性的东西。说起这">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试经典问题，谈谈你对OOA,OOD,OOP的理解">
+<meta property="og:url" content="http://www.lovoedu.com/2017/06/19/20170619/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="OOA（面向对象分析）、OOD（面向对象设计）、OOP（面向对象编程），这3个概念，对于我们JAVA程序员来讲，或多或少应该都有所了解，或者说至少都听说过。但是要谈到对其理解，可能对于多数入行不深的从业者来说，确实不是那么容易做到。特别是对于绝大多数的3年以内的低中级软件工程师而言。因为他们的工作更多是需要按照项目经理分配的任务来编写功能代码，很少有多余的时间去阅读或者思考一些概念性的东西。说起这">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170619/01.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170619/02.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170619/03.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170619/04.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170619/05.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170619/06.png">
+<meta property="og:updated_time" content="2017-06-17T06:50:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试经典问题，谈谈你对OOA,OOD,OOP的理解">
+<meta name="twitter:description" content="OOA（面向对象分析）、OOD（面向对象设计）、OOP（面向对象编程），这3个概念，对于我们JAVA程序员来讲，或多或少应该都有所了解，或者说至少都听说过。但是要谈到对其理解，可能对于多数入行不深的从业者来说，确实不是那么容易做到。特别是对于绝大多数的3年以内的低中级软件工程师而言。因为他们的工作更多是需要按照项目经理分配的任务来编写功能代码，很少有多余的时间去阅读或者思考一些概念性的东西。说起这">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170619/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/06/19/20170619/"/>
+
+
+
+
+
+  <title>面试经典问题，谈谈你对OOA,OOD,OOP的理解 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/19/20170619/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试经典问题，谈谈你对OOA,OOD,OOP的理解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T14:46:34+08:00">
+                2017-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OOAD/" itemprop="url" rel="index">
+                    <span itemprop="name">OOAD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>OOA（面向对象分析）、OOD（面向对象设计）、OOP（面向对象编程），这3个概念，对于我们JAVA程序员来讲，或多或少应该都有所了解，或者说至少都听说过。但是要谈到对其理解，可能对于多数入行不深的从业者来说，确实不是那么容易做到。特别是对于绝大多数的3年以内的低中级软件工程师而言。因为他们的工作更多是需要按照项目经理分配的任务来编写功能代码，很少有多余的时间去阅读或者思考一些概念性的东西。说起这个问题，我也在网络上也搜索过很多的资料，大多摘录至书籍，比较官方化。让初学者无从理解。<br>为了广大的新从业者或者应聘者，在这里，我们以一种实例的方式来对这3个概念进行重新的阐述：<br><a id="more"></a></p>
+<p><strong>业务场景：</strong><br>建行卡持有者，张三与李四两人，现在需要张三给李四转账人民币5000元整。按照业务分析后的流程图如下:<br><img src="/img/20170619/01.png" width="1043" height="550"></p>
+<h2 id="对于分析业务流程，常见的2种：面向过程分析（POA），面向对象分析（OOA）"><a href="#对于分析业务流程，常见的2种：面向过程分析（POA），面向对象分析（OOA）" class="headerlink" title="对于分析业务流程，常见的2种：面向过程分析（POA），面向对象分析（OOA）"></a>对于分析业务流程，常见的2种：面向过程分析（POA），面向对象分析（OOA）</h2><p><strong>面向过程分析</strong>（Procedure Oriented Analysis）：是一种以过程为中心的编程思想，以数据流向为主要导向。为了解决问题，将解决问题的业务过程，按照一定的顺序划分成为一个又一个的事件，然后再封装成一个又一个的函数，最后由一个函数统一的按照顺序一步一步的调用即可。在面向过程分析中，顺序很重要，要实现功能只需要按照一定的顺序相互调用函数即可。  </p>
+<p>上述业务场景按照面向过程分析出来的结果就是：  </p>
+<ol>
+<li>程序检查张三卡中余额是否足够5000元人民币（事件1，满足则调用事件2）  </li>
+<li>程序从张三卡中扣除5000元人民币（事件2）  </li>
+<li>程序向李四卡中加入5000元人民币（事件3）   </li>
+<li>程序检测李四卡中是否正常入账（事件4，满足则结束整个业务）  </li>
+<li>程序向张三卡中加入5000元人民币（事件5）  </li>
+</ol>
+<p>在上述过程中，我们将这个业务过程，分成了5个步骤，也叫做5个事件，那么如果需要在程序中完成该转账业务的话，那么我们只需要按照1-2-3-4-5这样的顺序依次调用函数方法即可。在这个过程中，你会发现我们函数调用的顺序一定是不能变化的，变了就出问题了……  </p>
+<p><strong>面向对象分析</strong>（Object Oriented Analysis）:是一种以对象为中心的编程思想。利用从问题域中的词汇表中找到类与对象。那么说到这里，很多人对问题域又不是很清楚了，问题域：说的简单直接一点，问题域就是客户告诉你的要求，他要干什么。问题域并不特指需求，很多时候，客户所提的需求很多地方都有关联，所以在很多场合，客户所提的需求，还需要需求分析师多角度的帮助客户理清与完善。那么在客户需求范围中，衍生出来的他想要告诉你做的事，就是问题域，包括后期需求发生的变化，同样隶属于问题域的范围。<br>用一个图来表示：需求分析文档，规格说明文档，以及程序之间的关系：</p>
+<img src="/img/20170619/02.png" width="666" height="243">  
+<p>从上述业务场景的分析中，我们可以抽离出的类与对象有：<br><img src="/img/20170619/03.png" width="433" height="309"><br>抽离出来的类型有：汇钱者类，收钱者类，货币类。而张三只能算是汇钱者类中的一个实例，也被称之为汇钱者对象，李四只能算是一个收钱者类中的一个实例，也被称之为收钱者对象。那么额度为5000的人民币也只是货币类的一个具体实例。通常汇钱者类，收钱者类，货币类，我们都统一称之为：领域模型类，张三，李四，5000元人民币我们都统一称之为：领域对象。作为面向对象分析来说，我们最为重要的就是要分析出领域对象的行为。领域对象的行为主要是为后期的<strong>面向对象设计</strong>（OOD）提供接口依据，而属性作为分析阶段不是我们的重点。<br><img src="/img/20170619/04.png" width="861" height="401"><br>就上述3种领域对象而言，张三这个实例，可以查询自己卡中余额，可以从余额中取出5000元，也可以将外来的钱加入到自己的账户中。<br>李四这个实例，可以查询自己卡中余额，可以将外来的钱加入到自己的账户中。而5000元人民币只是数据的传输携带者，没有任何行为可言。  </p>
+<h2 id="在JAVAEE项目中，组织业务逻辑的方式：事务脚本（面向过程设计-POD）、领域模型（面向对象设计-OOD）"><a href="#在JAVAEE项目中，组织业务逻辑的方式：事务脚本（面向过程设计-POD）、领域模型（面向对象设计-OOD）" class="headerlink" title="在JAVAEE项目中，组织业务逻辑的方式：事务脚本（面向过程设计 POD）、领域模型（面向对象设计 OOD）"></a>在JAVAEE项目中，组织业务逻辑的方式：事务脚本（面向过程设计 POD）、领域模型（面向对象设计 OOD）</h2><p><strong>事务脚本（面向过程设计 POD）：</strong>它是纯面向过程的一种组织业务逻辑的方式，在JAVAEE项目，是一种非常常见的设计方式，做法很简单，将POA分析后的结果封装成JAVA对应的方法即可，然后在业务层中统一按照顺序调用接口。将领域对象（人民币）去掉行为，只保留属性即可，用于数据传输。以数据流向为主要导向。</p>
+<p>按照上述的业务场景来设计：保留失去行为的领域对象（人民币），同时抽离出一个业务层的接口类，多个持久层的数据访问接口类，在业务层接口中提供一个统一的业务调用方法transferAccount(),在数据库发生关系的持久层，提供一系列事件方法：queryBalance(),reduceBalance(),increaseBalance();使用UML类图表示为：</p>
+<img src="/img/20170619/05.png" width="1200" height="891">  
+<p>当然还有一系列的表示手段，比如：包图，对象图，序列图，用例图…… 这里就不一一设计了。  </p>
+<p><strong>领域模型（面向对象设计 OOD）</strong>（Object Oriented Design）：主要是正确有效的构造出复杂系统的抽象结构，将<strong>面向对象分析</strong>后的结果，作为面向对象设计的模型，通常用于展示被设计系统的逻辑模型（业务逻辑如何设计），物理模型（系统如何划分，层次如何划分，如何部署……），静态模型（组成系统的元素：类，接口）和动态模型（对象的调用……）。将OOA分析的结果作进一步的规范化整理，以便能够被OOP直接接受。</p>
+<p>概念可能比较生硬，那么说的直白点，设计阶段的任务就是：  </p>
+<ol>
+<li>按照面向对象的方式将系统分解成不同的模块化，或者系统再次划分为子系统，直到划分到可设计的最小粒度为止【垂直分块，水平分层】。</li>
+<li>使用不同的表示方法来展示被设计系统的逻辑模型（业务逻辑如何设计），物理模型（系统如何划分，层次如何划分，如何部署……），静态模型（组成系统的元素：类，接口）和动态模型（对象的调用……）【常用的表示法手段：UML各种图形】。</li>
+</ol>
+<p><strong>需要注意的是：</strong>层次结构并非就一定是三层结构，也可以是多层，具体分几层需要根据项目的复杂度来决定，如果没有过多的业务逻辑，只有简单的CRUD的话，那么三层结构足以应付一切。</p>
+<p>按照上述的业务场景来设计：对于领域逻辑来说，三层结构就不能满足其业务逻辑复杂度了，可能这时整个系统可能是四层，五层，或者多层……，我们这个例子，暂时定为四层结构：控制层、业务层、领域逻辑层、数据访问层。在设计领域对象时，保留失去行为的领域对象（人民币），转钱对象，收钱对象，同时抽象出一个业务层的业务接口用于简单的调度业务逻辑，多个持久层的数据访问接口类。</p>
+<p>在OOA阶段，我们分析出张三这个实例，可以查询自己卡中余额，可以从余额中取出5000元，也可以将外来的钱加入到自己的账户中。那么它就应该对应着对应的3种行为方法。<br>李四这个实例，可以查询自己卡中余额，可以将外来的钱加入到自己的账户中，那么它就应该对应着对应的2种行为方法。而5000元人民币只是数据的传输携带者，没有任何行为可言  </p>
+<p>如果采用UML中类图的表示法来看，图形应该如下：<br><img src="/img/20170619/06.png" width="1061" height="1239"><br>（在同一个图中，相同名称的元素代表同一元素）<br>在这张图中，我们的层次就是4层结构，甚至我们还可以再分为5层，6层等，所以一般领域模型适用于业务需求较为复杂的情况。业务层仅仅是为了梳理业务流程，而真正的业务逻辑则交由领域层的领域对象之间相互调用对方的方法来实现业务逻辑。比如要转钱，就需要转钱者领域对象，减少自己的余额后，调用收钱者领域对象，添加自己的余额。当然真正的银行转钱复杂度，绝对远高于这个场景。 还需要使用到事件驱动模型，以及消息队列等一系列的技术，当然具体情况具体分析。</p>
+<h2 id="面向对象编程（OOP）"><a href="#面向对象编程（OOP）" class="headerlink" title="面向对象编程（OOP）"></a>面向对象编程（OOP）</h2><p>面向对象编程（Object Oriented programming）：将面向对象设计后的抽象，采用面向对象的方式来实现的方法，就叫做面向对象编程。在这种方法中，程序被组织成许多相互协作的对象，每个对象都是一个类的实例。利用对象构成业务逻辑的组成基本元素（组合模式的层次结构），而不是采用算法。组成程序的基本元素是一个又一个的基础组件（类），那么组件就是我们层次结构所对应的接口或接口的实现类，那么程序就是由一个又一个实现类的实例相互协作来完成业务逻辑的实现。</p>
+<p><strong>总体来说：</strong> 面向对象分析的结果可以作为面向对象设计的模型，而面向对象设计的结果则可以作为面向对象编程的蓝图，应用程序需要由编程才能实现。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/16/20170616/" rel="prev" title="异常处理概述">
+                异常处理概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于分析业务流程，常见的2种：面向过程分析（POA），面向对象分析（OOA）"><span class="nav-number">1.</span> <span class="nav-text">对于分析业务流程，常见的2种：面向过程分析（POA），面向对象分析（OOA）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在JAVAEE项目中，组织业务逻辑的方式：事务脚本（面向过程设计-POD）、领域模型（面向对象设计-OOD）"><span class="nav-number">2.</span> <span class="nav-text">在JAVAEE项目中，组织业务逻辑的方式：事务脚本（面向过程设计 POD）、领域模型（面向对象设计 OOD）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程（OOP）"><span class="nav-number">3.</span> <span class="nav-text">面向对象编程（OOP）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
