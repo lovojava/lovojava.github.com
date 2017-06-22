@@ -1,0 +1,741 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="面向对象程序设计(OOP)是当今主流的程序设计规范，它已经基本取代了结构化、过程化的程序设计。Java就是面向对象的，使用java开发程序，不管做什么样的操作，我们第一步都是从创建对象、获取对象开始，有了对象我们就可以完成一切我们所需要的程序了。 那怎么样才能创建对象？java中有哪些创建对象的方法？我们今天就来详细了解一下。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你应该知道的Java创建对象的四种方式">
+<meta property="og:url" content="http://www.lovoedu.com/2017/06/22/20170622/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="面向对象程序设计(OOP)是当今主流的程序设计规范，它已经基本取代了结构化、过程化的程序设计。Java就是面向对象的，使用java开发程序，不管做什么样的操作，我们第一步都是从创建对象、获取对象开始，有了对象我们就可以完成一切我们所需要的程序了。 那怎么样才能创建对象？java中有哪些创建对象的方法？我们今天就来详细了解一下。">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170622/come.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170622/dui3.png">
+<meta property="og:updated_time" content="2017-06-19T08:02:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你应该知道的Java创建对象的四种方式">
+<meta name="twitter:description" content="面向对象程序设计(OOP)是当今主流的程序设计规范，它已经基本取代了结构化、过程化的程序设计。Java就是面向对象的，使用java开发程序，不管做什么样的操作，我们第一步都是从创建对象、获取对象开始，有了对象我们就可以完成一切我们所需要的程序了。 那怎么样才能创建对象？java中有哪些创建对象的方法？我们今天就来详细了解一下。">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170622/come.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/06/22/20170622/"/>
+
+
+
+
+
+  <title>你应该知道的Java创建对象的四种方式 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/22/20170622/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">你应该知道的Java创建对象的四种方式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-22T23:59:59+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>面向对象程序设计(OOP)是当今主流的程序设计规范，它已经基本取代了结构化、过程化的程序设计。Java就是面向对象的，使用java开发程序，不管做什么样的操作，我们第一步都是从创建对象、获取对象开始，有了对象我们就可以完成一切我们所需要的程序了。</p>
+<p>那怎么样才能创建对象？java中有哪些创建对象的方法？我们今天就来详细了解一下。</p>
+<img src="/img/20170622/come.png"> 
+<a id="more"></a>
+<h2 id="一：new运算的方式创建对象"><a href="#一：new运算的方式创建对象" class="headerlink" title="一：new运算的方式创建对象"></a>一：new运算的方式创建对象</h2><p>首先我们有一个关于宠物的类Dog<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="keyword">int</span> age;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"我叫"</span>+<span class="keyword">this</span>.name+<span class="string">"今年"</span>+<span class="keyword">this</span>.age+<span class="string">"岁了"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;  </div></pre></td></tr></table></figure><br>当我们程序中需要出现一只狗狗的时候，我们就可以使用new来创建一个具体的对象了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog dog1=<span class="keyword">new</span> Dog();</div><div class="line">dog1.name=<span class="string">"xiaohei"</span>;</div><div class="line">dog1.age=<span class="number">3</span>;</div></pre></td></tr></table></figure><br>在这里我们就通过了new的方式获得了一个具体的对象，并且起名为小黑，年龄为3岁。  </p>
+<img src="/img/20170622/dui3.png">   
+<p>现在，dog1就带表了堆中刚才所实例化出来的对象。以后我们要操作刚才new出来的对象就可以通过dog1来操作了，例如我们让小狗打个招呼(调用Dog类的show方法)：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dog1.show();</div></pre></td></tr></table></figure>      </p>
+<h2 id="二：通过反射的方式创建对象"><a href="#二：通过反射的方式创建对象" class="headerlink" title="二：通过反射的方式创建对象"></a>二：通过反射的方式创建对象</h2><p>Java的反射技术是java程序的特征之一，它允许运行中的Java程序对自身进行检查，或者说“自审”，并能直接操作程序的内部属性。  </p>
+<blockquote>
+<p>反射的作用：<br>1）可以通过反射机制发现对象的类型，找到类中包含的方法、属性和构造器<br>2）可以通过反射创建对象并访问任意对象方法和属性</p>
+</blockquote>
+<p>第二种创建java对象的方式就是通过反射来创建了。</p>
+<p>还是我们之前用过的Dog类，首先JVM利用ClassLoader(类加载器)先将Dog类加载到内存，然后马上产生了一个Class类型的对象，该对象可以看成是一个模型，以后无论创建多少个Dog类的实例都是利用该模型来生成(一个类所对应的Class类型的对象只有一个)。  </p>
+<p>通过反射创建对象第一步：需要获得class对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class clazz = Dog.class;  </div></pre></td></tr></table></figure><br>这样获取到类对象之后就可以通过newInstance()这个方法来获取具体的对象了，需要注意的是这个方法的返回值是Object类型，我们需要进行转型操作<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class clazz = Dog.class;</div><div class="line">Dog dog = (Dog)clazz.newInstance();</div></pre></td></tr></table></figure><br>这样我们就通过反射的方式创建好了java对象,newInstance()和new的区别如下：</p>
+<blockquote>
+<p>newInstance: 弱类型。低效率。只能调用无参构造。<br>new: 强类型。相对高效。能调用任何public构造。  </p>
+</blockquote>
+<p>在这里需要注意的是，newInstance()这个方法只能够调用无参的构造函数(其实这也符合javabean规范，一个类必须拥有一个无参构造函数)，现在我们在Dog类中写有参构造函数(默认覆盖无参构造函数)，值得注意的是，当我们写了有参构造函数之后，系统将不再提供默认的无参构造函数，如果需要的话，需要你自己写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    String name;</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.name=name;</div><div class="line">        <span class="keyword">this</span>.age=age;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>现在再去调用newInstance()方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Class clazz=Dog.class;</div><div class="line">Dog dog=(Dog) clazz.newInstance();  </div></pre></td></tr></table></figure><br>现在程序运行结果为java.lang.InstantiationException，着就是程序没有无参构造函数而使用newInstance()方法引发的错误了  </p>
+<p>当然如果你需要调用有参构造函数的话，可以通过以下的办法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Class clazz=Dog.class;</div><div class="line">Constructor constructor=clazz.getConstructor(String.class,<span class="keyword">int</span>.class&#125;);</div><div class="line">Dog dog=(Dog) constructor.newInstance(<span class="string">"xiaohei"</span>,<span class="number">3</span>&#125;);</div><div class="line">System.out.println(dog.name+<span class="string">" "</span>+dog.age);  </div></pre></td></tr></table></figure><br>程序的第二行我们调用Class对象的getConstructor方法，然后在参数列表中传入String和int，因为我们的有参构造函数的参数列表就是这样规定的，现在我们就获取到了前边定义好的Dog类的有参构造函数了<br>第三行我们通过获取的Constructor对象调用newInstance方法，然后在方法中传入Object类型的参数列表，因为我们的有参构造函数需要这些值，这样就可以通过反射的方式创建只有有参构造函数的对象了</p>
+<h2 id="三：通过对象反序列化的方式来创建"><a href="#三：通过对象反序列化的方式来创建" class="headerlink" title="三：通过对象反序列化的方式来创建"></a>三：通过对象反序列化的方式来创建</h2><p>当我们使用反序列化一个对象的时候，JVM会给我们创建一个对象。但是，反序列化的时候JVM并不会去调用类的构造函数(前边两种方式都会去调用构造函数)来创建对象，而是通过之前序列化对象的字节序列来创建的。</p>
+<blockquote>
+<p>序列化对象必须实现Serializable这个接口<br>把对象转为字节序列的过程称为对象的序列化<br>把字节序列恢复为对象的过程称为对象的反序列化   </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</div><div class="line">    String name;</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"我叫"</span>+<span class="keyword">this</span>.name+<span class="string">"今年"</span>+<span class="keyword">this</span>.age+<span class="string">"岁了"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要注意的是：Dog类需要实现Serializable这个接口才可以被序列化/反序列化，否则会出现java.io.NotSerializableException异常    </p>
+<p>对象序列化通常有两种用途：  </p>
+<h3 id="1）将对象的字节序列永久的保存到硬盘上"><a href="#1）将对象的字节序列永久的保存到硬盘上" class="headerlink" title="1）将对象的字节序列永久的保存到硬盘上"></a>1）将对象的字节序列永久的保存到硬盘上</h3><p>例如web服务器把某些对象保存到硬盘让他们离开内存空间，节约内存，当需要的时候再从硬盘上取回到内存中使用   </p>
+<h3 id="2）在网络上传递字节序列"><a href="#2）在网络上传递字节序列" class="headerlink" title="2）在网络上传递字节序列"></a>2）在网络上传递字节序列</h3><p>当两个进程进行远程通讯的时候，发送方将java对象转换成字节序列发送(序列化)，接受方再把这些字节序列转换成java对象(反序列化)  </p>
+<p>当Dog类实现了Serializable接口后，我们现在将Dog对象序列化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Dog dog=<span class="keyword">new</span> Dog();</div><div class="line">dog.name=<span class="string">"xiaohei"</span>;</div><div class="line">dog.age=<span class="number">3</span>;</div><div class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"dog.txt"</span>);</div><div class="line">ObjectOutputStream ops = <span class="keyword">new</span> ObjectOutputStream(fos);</div><div class="line">ops.writeObject(dog);</div><div class="line">System.out.println(<span class="string">"dog对象序列化完成"</span>);</div></pre></td></tr></table></figure><br>通过ObjectOutputStream的writeObject方法，我们就将一个对象完成了序列化</p>
+<p>现在我们再次将刚才序列化后的对象反序列化回来，这次用到的是ObjectInputStream的readObject方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">FileOutputStream fos=<span class="keyword">new</span> FileOutputStream(<span class="string">"dog.txt"</span>);</div><div class="line">ObjectInputStream ois=<span class="keyword">new</span> ObjectInputStream(fos);</div><div class="line">Dog dog=(Dog) ois.readObject();</div><div class="line">System.out.println(<span class="string">"我叫"</span>+dog.name+<span class="string">"今年"</span>+dog.age+<span class="string">"岁了"</span>);</div><div class="line">System.out.println(<span class="string">"对象反序列化完成"</span>);  </div></pre></td></tr></table></figure><br>这样我们就使用了对象的序列化完成了java对象的创建</p>
+<h2 id="四：通过clone的方式来创建"><a href="#四：通过clone的方式来创建" class="headerlink" title="四：通过clone的方式来创建"></a>四：通过clone的方式来创建</h2><p>clone方法来源于java中object类，在jdk中的解释为：该方法返回一个此对象的副本。clone顾名思义就是复制的意思。所谓复制对象就是在内存中分配一个和原一模一样的空间，在此创建新的对象。 </p>
+<p>我们现在就来完成clone的实验，首先我们需要在需要clone的类中实现Cloneable接口，否则会出现java.lang.CloneNotSupportedException异常,由于Object类中clone方法是protected  修饰的，所以我们必须在需要克隆的类中重写克隆方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</div><div class="line">    String name;</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</div><div class="line">        <span class="comment">//TODO Auto-generated method stub</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.clone();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>现在进入实验1：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog d1=<span class="keyword">new</span> Dog();</div><div class="line">Dog d2=d1;</div><div class="line">System.out.println(d1==d2);</div></pre></td></tr></table></figure><br>返回值为true，因为在这个地方只有d1是真实创建了对象，d2来源于d1的赋值，引用地址值一样(代表是同一个对象)，所以==判断结果为true  </p>
+<p>现在进入实验2：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">Dog d1=<span class="keyword">new</span> Dog();</div><div class="line">Dog d2=(Dog) d1.clone();</div><div class="line">System.out.println(d1==d2);  </div></pre></td></tr></table></figure><br>实验结果为false，因为clone是真实在内存中重新划分一块区域来存储新的对象，d1和d2是两个不同的对象所以返回结果值为false    </p>
+<p>这样我们就使用了对象的克隆的方式完成了java对象的创建</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/19/20170619/" rel="prev" title="面试经典问题，谈谈你对OOA,OOD,OOP的理解">
+                面试经典问题，谈谈你对OOA,OOD,OOP的理解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一：new运算的方式创建对象"><span class="nav-number">1.</span> <span class="nav-text">一：new运算的方式创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二：通过反射的方式创建对象"><span class="nav-number">2.</span> <span class="nav-text">二：通过反射的方式创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三：通过对象反序列化的方式来创建"><span class="nav-number">3.</span> <span class="nav-text">三：通过对象反序列化的方式来创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）将对象的字节序列永久的保存到硬盘上"><span class="nav-number">3.1.</span> <span class="nav-text">1）将对象的字节序列永久的保存到硬盘上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）在网络上传递字节序列"><span class="nav-number">3.2.</span> <span class="nav-text">2）在网络上传递字节序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四：通过clone的方式来创建"><span class="nav-number">4.</span> <span class="nav-text">四：通过clone的方式来创建</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
