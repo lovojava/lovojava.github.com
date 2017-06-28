@@ -1,0 +1,822 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="作为一个Java初学者，很多同学的精力都放到了Java语言本身的语法当中，或是开始纠结于各种算法，或是专研OO思想，还有人对各种设计模式趋之若鹜，总之开启了各种“高大上”的装逼模式……少年人，你可知道：  “生活不止眼前的苟且，还有诗和远方的田野。”———————— 高晓松  今天就让我们先放下冷冰冰的代码，虚无缥缈的编程思想，来看点关于Java你应该知道的一些“趣知识”吧。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么！你用的Java版本叫“Tiger”？">
+<meta property="og:url" content="http://www.lovoedu.com/2017/06/28/20170628/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="作为一个Java初学者，很多同学的精力都放到了Java语言本身的语法当中，或是开始纠结于各种算法，或是专研OO思想，还有人对各种设计模式趋之若鹜，总之开启了各种“高大上”的装逼模式……少年人，你可知道：  “生活不止眼前的苟且，还有诗和远方的田野。”———————— 高晓松  今天就让我们先放下冷冰冰的代码，虚无缥缈的编程思想，来看点关于Java你应该知道的一些“趣知识”吧。">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/1.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/2.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/10.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/3.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/4.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/5.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/6.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/7.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/8.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170628/9.PNG">
+<meta property="og:updated_time" content="2017-06-28T06:15:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么！你用的Java版本叫“Tiger”？">
+<meta name="twitter:description" content="作为一个Java初学者，很多同学的精力都放到了Java语言本身的语法当中，或是开始纠结于各种算法，或是专研OO思想，还有人对各种设计模式趋之若鹜，总之开启了各种“高大上”的装逼模式……少年人，你可知道：  “生活不止眼前的苟且，还有诗和远方的田野。”———————— 高晓松  今天就让我们先放下冷冰冰的代码，虚无缥缈的编程思想，来看点关于Java你应该知道的一些“趣知识”吧。">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170628/1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/06/28/20170628/"/>
+
+
+
+
+
+  <title>什么！你用的Java版本叫“Tiger”？ | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/28/20170628/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">什么！你用的Java版本叫“Tiger”？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T00:00:00+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作为一个Java初学者，很多同学的精力都放到了Java语言本身的语法当中，或是开始纠结于各种算法，或是专研OO思想，还有人对各种设计模式趋之若鹜，总之开启了各种“高大上”的装逼模式……<br>少年人，你可知道：</p>
+<blockquote>
+<p>“生活不止眼前的苟且，还有诗和远方的田野。”<br>———————— 高晓松</p>
+</blockquote>
+<p>今天就让我们先放下冷冰冰的代码，虚无缥缈的编程思想，来看点关于Java你应该知道的一些“趣知识”吧。<br><a id="more"></a></p>
+<h2 id="Java之父"><a href="#Java之父" class="headerlink" title="Java之父"></a>Java之父</h2><img src="/img/20170628/1.jpeg" width="300" height="300">
+<p>这位看上去亲切和蔼的“花样”大叔，相信很多人都认识。他就是著名的Java之父—-詹姆斯.高斯林（James Gosling）。别看人家现在是一脸沧桑，想当初也是以一个“天才”少年的身份闪亮登场的。<br>1955年的冬天，詹姆斯出生在加拿大的一个村庄里。12岁的时候，他用报废的电话机和电视机中的部件做了一台电子游戏机。附近农民的联合收割机出了问题也常常找他修理。14岁的时候，中学组织到附近大学参观，他记住了大学计算中心的门锁密码，从此开始偷偷地溜进计算中心，学习计算机编程。一年后（15岁），大学的天文系招他当了一名临时编程员，编写计算机程序来分析卫星天文数据。<br>1977年获得了加拿大卡尔加里大学计算机科学学士学位，1983年获得了美国卡内基梅隆大学计算机科学博士学位。毕业后到IBM工作，设计IBM第一代工作站NeWS系统，但不受重视。后来转至Sun公司。1990年，与Patrick Naughton和Mike Sheridan等人合作“绿色计划”，发展了一套语言叫做“Oak”，后改名为Java。1994年底，在硅谷召开的“技术、教育和设计大会”上詹姆斯.高斯林展示了Java程序。2000年，Java成为世界上最流行的电脑语言。<br>2009年4月，甲骨文公司花费了74亿美元收购了SUN公司。但由于理念不合，不到一年詹姆斯.高斯林宣布从甲骨文公司离职。2011年3月29日，他在个人博客上宣布将加入谷歌，但几个月以后他又离开了。2011年8月30日，他加盟一家从事海洋机器人研究的创业公司Liquid Robotics，担任首席软件架构师。2017年5月22日，詹姆斯在Facebook上宣布他将加入到亚马逊。<br>厉害吧👍👍👍，这位60多岁的IT大牛太能折腾了。有这么一位祖师爷，各位Java学员你们还怕什么？！😏😏😏</p>
+<h2 id="Java吉祥物"><a href="#Java吉祥物" class="headerlink" title="Java吉祥物"></a>Java吉祥物</h2><p>说到Java，所有同学都应该认识那杯热气腾腾的咖啡杯，那么下面这个小家伙你认识吗？<br><img src="/img/20170628/2.jpg" width="300" height="300"></p>
+<p>它叫做Duke（杜克），是由Joe Palrang在1992年创作出来的。Duke当时所扮演的角色是类似Office中小助手的功能，而那时的Java这门编程语言还不叫Java而被称之为Oak呢。另外大家也许都知道Java是开源的，那你知道Duke也是开源的吗？也就是说我们可以随意发挥我们的想象力，让Duke飞起来✈️～～～</p>
+<h2 id="Java全球排名"><a href="#Java全球排名" class="headerlink" title="Java全球排名"></a>Java全球排名</h2><p>Java初学者常常被教导说：Java是最流行的语言。说这话的人往往是微微一笑，高深莫测的样子；听这话的则是将信将疑，你们是不是王婆卖瓜，自卖自夸呀……那么编程语言有没有排名呢？谁排的，咋排的呢？<br>其实在业内，我们还真有一个可靠的编程语言榜单，它叫做<strong>TIOBE排行榜</strong>。该榜单是根据互联网上有经验的程序员、课程和第三方厂商的数量，并使用搜索引擎（如Google、Bing、Yahoo!）以及Wikipedia、Amazon、YouTube统计出排名数据。其目的只是反映某个编程语言的热门程度，并不能说明一门编程语言好不好，或者一门语言所编写的代码数量多少。TIOBE开发语言排行榜每月更新一次排名，每年评选一个年度语言。我们来看看目前的最新排名情况：<br><img src="/img/20170628/10.PNG" width="500" height="500"></p>
+<p>给你个网址，可以随时可以查看：<a href="https://www.tiobe.com/tiobe-index/" target="_blank" rel="external">TIOBE排行榜单</a>;</p>
+<h2 id="Java版本演化及别名"><a href="#Java版本演化及别名" class="headerlink" title="Java版本演化及别名"></a>Java版本演化及别名</h2><h3 id="JDK1-0"><a href="#JDK1-0" class="headerlink" title="JDK1.0"></a>JDK1.0</h3><p>这是第一个发布的版本，发布时间是1996-1-23。当时语言的名字还被叫做Oak（橡树）。直到第一个稳定版本JDK1.0.2被发布出来，才被称之为Java。</p>
+<h3 id="JDK1-1"><a href="#JDK1-1" class="headerlink" title="JDK1.1"></a>JDK1.1</h3><p>这个版本发布的时间在1997-2-19，它主要添加的内容包括：</p>
+<ol>
+<li>改进扩展了AWT的事件模型</li>
+<li>添加了内部类</li>
+<li>引入JDBC（Java数据库连接）</li>
+<li>引入RMI（远程方法调用）</li>
+<li>引入反射机制</li>
+<li>在微软的Windows平台上引入JIT编译器（Just in Time，及时编译器）。</li>
+<li>开始支持国际化和Unicode编码</li>
+</ol>
+<h3 id="J2SE1-2"><a href="#J2SE1-2" class="headerlink" title="J2SE1.2"></a>J2SE1.2</h3><p>这是Java历史上的一个“里程碑”式的版本。它发布于1998年12月8日，并且从这个版本开始出现了几个名称上的变化：</p>
+<ol>
+<li>从这个版本开始直到J2SE5.0，Java被更改为Java2；</li>
+<li>从这个版本开始，版本名称从JDK改为J2SE，以便于区分其它扩展平台J2ME、J2EE。</li>
+<li>从这个版本开始，开始公布每个Java版本的开发代号。J2SE1.2的开发代号是“playground”（操场）。意味，SUN公司给各位Java程序员提供了一个广阔的平台，大家High 起来。<img src="/img/20170628/3.jpeg" width="200" height="200">
+</li>
+</ol>
+<p>这个版本提供的新内容包括：</p>
+<ol>
+<li>增加strictfp关键字；</li>
+<li>核心类中融入Swing图形API；</li>
+<li>SUN公司的JVM（Java虚拟机）首次装备JIT编译器；</li>
+<li>引入集合框架；</li>
+<li>引入Java插件applet支持；</li>
+<li>Java IDL（交互式数据语言），支持CORBA。</li>
+</ol>
+<h3 id="J2SE1-3"><a href="#J2SE1-3" class="headerlink" title="J2SE1.3"></a>J2SE1.3</h3><p>开发代号为Kestrel（红隼），发布于2000年5月8日。<br><img src="/img/20170628/4.PNG" width="200" height="200"><br>引入新特性包括：</p>
+<ol>
+<li>HotSpot JVM首次被包含（发布是在1999年4月份）；</li>
+<li>修改RMI，使其支持CORBA；</li>
+<li>JNDI（Java命名与目录接口）被包含在核心库当中；</li>
+<li>引入JPDA（Java平台调试体系）；</li>
+<li>引入Java声音API；</li>
+<li>引入动态代理类。</li>
+</ol>
+<h3 id="J2SE1-4"><a href="#J2SE1-4" class="headerlink" title="J2SE1.4"></a>J2SE1.4</h3><p>开发代号为Merlin（灰背隼），发布于2002年2月6日。<br><img src="/img/20170628/5.PNG" width="200" height="200"><br>引入新特性：</p>
+<ol>
+<li>增加assert关键字；</li>
+<li>引入正则表达式；</li>
+<li>引入链式异常处理；</li>
+<li>提供IPV6的支持；</li>
+<li>提供非阻塞的输入输出（被称之为新的IO，NIO）；</li>
+<li>提供日志API；</li>
+<li>提供Image IO API支持读写格式为JPEG和PNG的图片；</li>
+<li>提供XML解析和XSLT的处理；</li>
+<li>引入安全和密码表达式；</li>
+<li>引入Java Web Start；</li>
+<li>引入Preferences API。</li>
+</ol>
+<h3 id="J2SE5-0"><a href="#J2SE5-0" class="headerlink" title="J2SE5.0"></a>J2SE5.0</h3><p>开发代号为Tiger（老虎），发布于2004年9月30日。<br><img src="/img/20170628/6.PNG" width="200" height="200"><br>这个版本是Java版本史上第二个“里程碑”式的突破，它不断更新，一直持续到2009年年底，经历了Orcale收购SUN这一重大事件。在名称上，也经历了从原本的J2SE1.5更改为J2SE5.0，到JavaSE5这一系列的变化。<br>引入新特性：</p>
+<ol>
+<li>引入泛型；</li>
+<li>增强循环，可以使用迭代方式；</li>
+<li>自动装箱与自动拆箱；</li>
+<li>类型安全的枚举；</li>
+<li>可变参数；</li>
+<li>静态引入；</li>
+<li>元数据（注解）；</li>
+<li>引入Instrumentation。</li>
+</ol>
+<h3 id="JavaSE6"><a href="#JavaSE6" class="headerlink" title="JavaSE6"></a>JavaSE6</h3><p>开发代号为Mustang（野马），于2006年12月11日发行，直到2017年1月17日。<br><img src="/img/20170628/7.jpeg" width="200" height="200"><br>引入的新特性包括：</p>
+<ol>
+<li>支持脚本语言；</li>
+<li>引入JDBC 4.0 API；</li>
+<li>引入Java Compiler API；</li>
+<li>可插拔注解；</li>
+<li>增加对Native PKI(Public Key Infrastructure)、Java GSS(Generic Security Service)、Kerberos和LDAP(Lightweight Directory Access Protocol)的支持；</li>
+<li>继承Web Services；</li>
+<li>深入优化。</li>
+</ol>
+<h3 id="JavaSE7"><a href="#JavaSE7" class="headerlink" title="JavaSE7"></a>JavaSE7</h3><p>开发代号为Dolphin（海豚），于2011-07-28发行，直到2017-1-17。<br><img src="/img/20170628/8.PNG" width="200" height="200"><br>引入新特性：</p>
+<ol>
+<li>switch语句块中允许以字符串作为分支条件；</li>
+<li>在创建泛型对象时应用类型推断；</li>
+<li>在一个语句块中捕获多种异常；</li>
+<li>支持动态语言；</li>
+<li>支持try-with-resources；</li>
+<li>引入Java NIO.2开发包；</li>
+<li>数值类型可以用二进制字符串表示，并且可以在字符串表示中添加下划线；</li>
+<li>钻石型语法；</li>
+<li>null值的自动处理。</li>
+</ol>
+<h3 id="JavaSE8"><a href="#JavaSE8" class="headerlink" title="JavaSE8"></a>JavaSE8</h3><p>开发代号为Spider（蜘蛛），于2014年3月18直到如今。<br><img src="/img/20170628/9.PNG" width="200" height="200"><br>引入新特性：</p>
+<ol>
+<li>Lambda表达式</li>
+<li>Stream函数式操作流元素集合</li>
+<li>接口新增：默认方法与静态方法</li>
+<li>方法引用,与Lambda表达式联合使用</li>
+<li>引入重复注解</li>
+<li>类型注解</li>
+<li>最新的Date/Time API (JSR 310)</li>
+<li>新增base64加解密API</li>
+<li>数组并行（parallel）操作</li>
+<li>JVM的PermGen空间被移除：取代它的是Metaspace（JEP 122）元空间</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/25/20170625/" rel="prev" title="打印万年历，你会吗？">
+                打印万年历，你会吗？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java之父"><span class="nav-number">1.</span> <span class="nav-text">Java之父</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java吉祥物"><span class="nav-number">2.</span> <span class="nav-text">Java吉祥物</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java全球排名"><span class="nav-number">3.</span> <span class="nav-text">Java全球排名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java版本演化及别名"><span class="nav-number">4.</span> <span class="nav-text">Java版本演化及别名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-0"><span class="nav-number">4.1.</span> <span class="nav-text">JDK1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-1"><span class="nav-number">4.2.</span> <span class="nav-text">JDK1.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J2SE1-2"><span class="nav-number">4.3.</span> <span class="nav-text">J2SE1.2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J2SE1-3"><span class="nav-number">4.4.</span> <span class="nav-text">J2SE1.3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J2SE1-4"><span class="nav-number">4.5.</span> <span class="nav-text">J2SE1.4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#J2SE5-0"><span class="nav-number">4.6.</span> <span class="nav-text">J2SE5.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaSE6"><span class="nav-number">4.7.</span> <span class="nav-text">JavaSE6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaSE7"><span class="nav-number">4.8.</span> <span class="nav-text">JavaSE7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaSE8"><span class="nav-number">4.9.</span> <span class="nav-text">JavaSE8</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
