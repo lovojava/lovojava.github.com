@@ -10,7 +10,16 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
+<script>
+    (function(){
+        if('lovo123java'){
+            if (prompt('请输入文章密码') !== 'lovo123java'){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 
@@ -102,7 +111,7 @@
 <meta property="og:image" content="http://www.lovoedu.com/img/writeCourse/3.png">
 <meta property="og:image" content="http://www.lovoedu.com/img/writeCourse/4.png">
 <meta property="og:image" content="http://www.lovoedu.com/img/writeCourse/5.png">
-<meta property="og:updated_time" content="2017-05-18T08:16:44.000Z">
+<meta property="og:updated_time" content="2017-06-30T03:20:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="本博客书写教程：关于书写格式">
 <meta name="twitter:description" content="本博客是发布在github上的，而github上提供挂载的是静态网站和静态资源，是一种低成本的公共展示手段。我们利用hexo这个工具把本地的MarkDown文件自动生成为静态页面，然后再上传到github上。所以，各位老师要为本博客提供的原文件必须是一篇能被hexo正确解析的MarkDown文件。接下来，我们就来介绍一下这种格式。">
@@ -331,6 +340,14 @@
               
             </span>
           
+          	
+          
+          
+            <span id="busuanzi_container_page_pv">&nbsp;&nbsp;|&nbsp;&nbsp;阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+          
+
+
+
 
           
             
@@ -508,6 +525,32 @@
 
         
         
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://http://www.xiaojichao.com" title="网络埋伏纪事" target="_blank">网络埋伏纪事</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hyktech.github.io" title="把酒临江" target="_blank">把酒临江</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://http://asbdk.com" title="白德柯的微博" target="_blank">白德柯的微博</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yuannima.com" title="袁的技术空间" target="_blank">袁的技术空间</a>
+                </li>
+              
+            </ul>
+          </div>
+        
 
         
 
@@ -556,14 +599,19 @@
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  由  LOVO教育驱动
 </div>
 
 <div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
+  博客 - 
+  朗沃教育Java团队
+</div>
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
 </div>
 
 
@@ -601,6 +649,8 @@
   
 
 
+  
+
 
 
 
@@ -628,6 +678,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
