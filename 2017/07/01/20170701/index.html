@@ -99,19 +99,36 @@
 
 
 
-<meta name="description" content="在学习Java编程中，最头疼事情之一就是数据类型转换。有时候它在不经意之间就完成了（自动类型转换），有时候却又要求程序员必须手动指定（强制类型转换）。基本数据类型，转换规则还可以通过类型本身空间大小和精度分析明白，而且最多就是丢失精度但运行起来至少是不会报错。可是面对引用数据类型，这个“坑”就大了：有自动转的，有强制转的，居然还有强制都转不了的；自动转了的却把对象身上的方法丢了看不见；强制转的编译">
+<meta name="description" content="这是一副在网络上流传多年的图片，你能看懂吗？">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="向上转型，向下转型，还在头疼？">
-<meta property="og:url" content="http://www.lovoedu.com/2017/05/18/20170518/index.html">
+<meta property="og:title" content="一副图片看开源">
+<meta property="og:url" content="http://www.lovoedu.com/2017/07/01/20170701/index.html">
 <meta property="og:site_name" content="风清月朗沃野千里">
-<meta property="og:description" content="在学习Java编程中，最头疼事情之一就是数据类型转换。有时候它在不经意之间就完成了（自动类型转换），有时候却又要求程序员必须手动指定（强制类型转换）。基本数据类型，转换规则还可以通过类型本身空间大小和精度分析明白，而且最多就是丢失精度但运行起来至少是不会报错。可是面对引用数据类型，这个“坑”就大了：有自动转的，有强制转的，居然还有强制都转不了的；自动转了的却把对象身上的方法丢了看不见；强制转的编译">
-<meta property="og:image" content="http://www.lovoedu.com/img/20170518/1.jpg">
-<meta property="og:updated_time" content="2017-05-21T14:01:44.000Z">
+<meta property="og:description" content="这是一副在网络上流传多年的图片，你能看懂吗？">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/opensource.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/FreeBSD.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/linux.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/duke.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/mozilla.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/stallman.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/james.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/GNU.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/evolution.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/perl.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/openBSD.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/java.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/GIMP.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/apache.PNG">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/gtk.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/xorg.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/openOffice.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170701/gnome.jpg">
+<meta property="og:updated_time" content="2017-06-29T04:55:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="向上转型，向下转型，还在头疼？">
-<meta name="twitter:description" content="在学习Java编程中，最头疼事情之一就是数据类型转换。有时候它在不经意之间就完成了（自动类型转换），有时候却又要求程序员必须手动指定（强制类型转换）。基本数据类型，转换规则还可以通过类型本身空间大小和精度分析明白，而且最多就是丢失精度但运行起来至少是不会报错。可是面对引用数据类型，这个“坑”就大了：有自动转的，有强制转的，居然还有强制都转不了的；自动转了的却把对象身上的方法丢了看不见；强制转的编译">
-<meta name="twitter:image" content="http://www.lovoedu.com/img/20170518/1.jpg">
+<meta name="twitter:title" content="一副图片看开源">
+<meta name="twitter:description" content="这是一副在网络上流传多年的图片，你能看懂吗？">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170701/opensource.jpg">
 
 
 
@@ -139,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="http://www.lovoedu.com/2017/05/18/20170518/"/>
+  <link rel="canonical" href="http://www.lovoedu.com/2017/07/01/20170701/"/>
 
 
 
 
 
-  <title>向上转型，向下转型，还在头疼？ | 风清月朗沃野千里</title>
+  <title>一副图片看开源 | 风清月朗沃野千里</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -308,7 +325,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/05/18/20170518/">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/07/01/20170701/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朗沃java团队">
@@ -325,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">向上转型，向下转型，还在头疼？</h1>
+          <h1 class="post-title" itemprop="name headline">一副图片看开源</h1>
         
 
         <div class="post-meta">
@@ -337,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T13:47:37+08:00">
-                2017-05-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T00:00:00+08:00">
+                2017-07-01
               </time>
             
 
@@ -360,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaOO</span>
+                  <a href="/categories/冷趣小知识/" itemprop="url" rel="index">
+                    <span itemprop="name">冷趣小知识</span>
                   </a>
                 </span>
 
@@ -402,18 +419,51 @@
       
 
       
-        <p>在学习Java编程中，最头疼事情之一就是数据类型转换。有时候它在不经意之间就完成了（自动类型转换），有时候却又要求程序员必须手动指定（强制类型转换）。基本数据类型，转换规则还可以通过类型本身空间大小和精度分析明白，而且最多就是丢失精度但运行起来至少是不会报错。可是面对引用数据类型，这个“坑”就大了：有自动转的，有强制转的，居然还有强制都转不了的；自动转了的却把对象身上的方法丢了看不见；强制转的编译过了运行却可能报异常。<br>    <img src="/img/20170518/1.jpg" width="300" height="200"><br>一口老血，有木有？更要命的是，这个转型还相当的重要，Java中的动态多态还非它不可了。你说要命不要命？没关系，今天就让我们花点时间聊聊它，搞定它！<br><a id="more"></a></p>
-<h3 id="对象不是你想转，想转就能转"><a href="#对象不是你想转，想转就能转" class="headerlink" title="对象不是你想转，想转就能转"></a>对象不是你想转，想转就能转</h3><p>先人说：知己知彼，百战不殆。我们先来认知一下引用数据类型的一些基本概念，以下所有分析都基于两个方面进行：Java语法 和 面向对象场景。<br>在普通情况下，我们会书写这样的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Dog snoopy = <span class="keyword">new</span> Dog();</div><div class="line">snoopy.play();<span class="comment">//调用Dog的玩耍行为</span></div><div class="line">snoopy.sitDown();<span class="comment">//调用Dog的坐下行为</span></div><div class="line">snoopy.shakeHands();<span class="comment">//调用Dog的握手行为</span></div></pre></td></tr></table></figure><br>我们看到在这个语法当中，赋值符号左右两边的数据类型是相同。赋值号左边是Dog类的引用snoopy变量，指向了右边new出来的Dog类对象。<br>这个语法在对应的日常场景中是非常形象的。我们用snoopy称呼一个狗对象，并且确定一定以及肯定snoopy就是一个狗东西。然后我们就可以大喊：snoopy来玩游戏啦，snoopy坐下，snoopy握手。你看，多自然。<br>但是，如果我们写出下面的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Dog snoopy = <span class="keyword">new</span> Cat();</div><div class="line">snoopy.sitDown();</div></pre></td></tr></table></figure><br>赋值符号左右两边的数据类型是不同。赋值号左边是Dog类的引用snoopy变量，指向了右边new出来的Cat类对象。编译后，你就发现这句代码根本通不过。为什么？<br>因为这个语法是荒谬的。snoopy明明是狗的代名词，结果你却让它指向了一只猫？还想让它执行狗才有的指令？铲屎的，你是不是不想活了？<br>这个时候有同学想到了，那就强转。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Dog snoopy = （Dog）<span class="keyword">new</span> Cat();</div><div class="line">snoopy.sitDown();</div></pre></td></tr></table></figure><br>这就更令人发指了吧，你要怎么做才能强行让一只猫咪对象变成一只汪对象？上帝也疯狂了……你觉得Java会让允许你干这种完全匪夷所思不合常理的事情吗？所以，这句代码的下场也只有一个，那就是编译不通过。<br>因此，我们得到了第一个结论：<strong>在Java当中不是任意引用数据类型之间都能进行转换！</strong>那么，哪些引用类型之间可以呢？</p>
-<h3 id="向上转型—自动转换，没问题"><a href="#向上转型—自动转换，没问题" class="headerlink" title="向上转型—自动转换，没问题"></a>向上转型—自动转换，没问题</h3><p>我们分别定义两个类：一个叫做Pet（宠物）；一个叫做Dog，并且让Dog继承于Pet。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pet</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"玩游戏"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Pet</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sitDown</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"坐下"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>那么，我们在需要调用处写下这个代码会发生什么呢？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Pet myBaby = <span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure><br>你会发现虽然在赋值符号两边的数据类型不一致，但是这句代码无论是编译还是运行都完全没有问题，也就是说<strong>Java中父类的引用指向子类对象是自动成功的。</strong> 这是为啥呢？其实无论是从语法上还是从场景分析上，我们会发现这是非常自然的，本身就应该自动成功。继承关系本就是一种is a关系，即所谓的“是一个“，所以Dog对象是一个Pet类型的呀（狗就是一种宠物嘛～～），这完全没有问题。<br>在继承关系上，我们设计时通常在继承树上把父类画在上，子类在下，由于这种转型是沿着继承树往上走，所以我们把它称为–<strong>向上转型</strong>。<br>但是，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">myBaby.play();<span class="comment">//编译通过</span></div><div class="line">myBaby.sitDown();<span class="comment">//编译失败</span></div></pre></td></tr></table></figure><br>这又是为啥呢？<br>因为myBaby是一个Pet类型的引用，所以是站在宠物的角度去看待汪对象。虽然对象还是狗狗，但是只能看到来自于父类宠物定义的play方法了。所以<strong>父类引用指向子类对象，只能调用到来自父类的属性／行为</strong><br>那如何调用到sitDown方法呢？答案很简单：换成狗的角度去看待这个汪星人。</p>
-<h3 id="向下转型—强制转换，有风险"><a href="#向下转型—强制转换，有风险" class="headerlink" title="向下转型—强制转换，有风险"></a>向下转型—强制转换，有风险</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Pet myBaby = <span class="keyword">new</span> Dog();</div><div class="line">myBaby.play();</div><div class="line">Dog snoopy = (Dog)myBaby;</div><div class="line">snoopy.sitDown();</div></pre></td></tr></table></figure>
-<p>这段代码无论编译还是运行都不会有任何问题。<br>我们先使用Pet类型的myBaby指向了狗对象，然后再换成Dog类型的snoopy去指向同一个狗对象。前者由于是父类型所以只能看到定义在父类的方法，后者是子类型，当然就可以看到狗对象身上的特有行为了。这种转型是从父类引用转为子类引用，从继承树的角度说就是<strong>向下转型</strong>。<br>那为什么在把myBaby赋给snoopy的时候要使用强转语法呢？我们假设下面这种情况：<br>如果Pet类还有一个子类叫做Cat类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Pet</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">climbTree</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"爬树"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>然后书写代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Master</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playWithPet</span><span class="params">(Pet myBaby)</span></span>&#123;</div><div class="line">        <span class="comment">//操作代码</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>那么，你告诉我传进来的myBaby到底是Dog对象呢？还是Cat对象？或者是Pet对象？由于父类引用可以指向子类对象，所以上面几种情况皆有可能了。所以我们如果想转型Dog类，就必须强制告诉Java，myBaby确实是一个Dog类型的对象。因此我们需要在注释部分书写：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Dog snoopy = (Dog)myBaby;</div></pre></td></tr></table></figure><br>不过，就算你这么书写也只能保证编译通过，这个代码运行起来还是有可能失败，这就是所谓的<strong>强转风险性</strong>吧。如果你赋给myBaby的是🐶对象，当然没有问题；但假如赋的是🐱对象呢？这是不是相当于我们又从狗的角度去看待一个猫对象了？如何让一只狗变成一只猫，这又是一个荒谬的事情了。所以，<strong>如果向下转型想要编译和运行都成功，必须使用强制转型语法，还必须要求运行起来父类引用确实指向该子类的对象。</strong><br>所以，为了降低这种风险性，我们可以使用Java中的instance运算符，在强转前进行一次判断。所以最终代码是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Master</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playWithPet</span><span class="params">(Pet myBaby)</span></span>&#123;</div><div class="line">        myBaby.play();</div><div class="line">        <span class="keyword">if</span>(myBaby <span class="keyword">instanceof</span> Dog)&#123;</div><div class="line">            Dog snoopy = (Dog)myBaby;</div><div class="line">            snoopy.sitDown();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><ol>
-<li>在引用数据类型中，只有有继承关系的类型才能进行类型转换；</li>
-<li>类型转换只是转换看待对象的引用的类型，对象本身没有也不可能参与转换；</li>
-<li>父类引用可以自动指向子类对象，但只能访问和调用到来自于父类的属性和行为；</li>
-<li>. 子类的引用不能指向父类或其它子类对象，就算强转也会导致运行失败并抛出ClassCastException；</li>
-<li>. 把父类引用赋给子类引用，语法上必须使用强制类型转换，要想运行也成功还必须保证父类引用指向的对象一定是该子类对象（最好使用instance判断后，再强转）。 </li>
-</ol>
+        <p>这是一副在网络上流传多年的图片，你能看懂吗？<br><img src="/img/20170701/opensource.jpg" width="500" height="400"><br><a id="more"></a><br>咋一看，这是一副什么图呀？4个形象有趣的卡通人物坐在一起喝着咖啡聊着天，墙上挂着的照片又是“真人秀”，总感觉有什么寓意藏在其中……其实这幅图确实是暗藏玄机，它的场景当中暗含了许许多多软件世界中的重要技术、著名人物和组织。这些技术、人物、组织都有一个共同点，那就是<strong>“开源”</strong>。所以，我们可以说这是软件开源世界中的一个大集合。【手动微笑】</p>
+<h2 id="什么是开源"><a href="#什么是开源" class="headerlink" title="什么是开源"></a>什么是开源</h2><p>一说到<em>“开源”</em>两个字，很多人的第一反应是<em>“免费”</em>（你们呀，真是够了……）。那么到底什么是开源呢？</p>
+<blockquote>
+<p>开源(Open Source)：它是软件项目上的一种公共协作，用于描述那些源码可以被公众使用的软件，并且此软件的使用、修改和发行也不受许可证的限制。</p>
+</blockquote>
+<p>在计算机发展的早期阶段，软件几乎都是开放的，任何人使用软件的同时都可以查看软件的源代码，或者根据自己的需要去修改它。在程序员的社团中大家互相分享软件，共同提高知识水平。这种自由的风气给大家带来了欢乐，也带来了进步。 </p>
+<p>但不久之后，以微软为主的一些商业公司就破坏了这种风气。这些商业公司从自由的计算机社团里雇佣了大量的技术高手，开发带有知识产权保护的专有软件。他们在分发软件的时候也不再附带源代码。从此，专有软件的时代到来了。直到现在，专有软件不公开源代码仍是默认的行业潜规则。 </p>
+<p>即使这样，崇尚自由的斗士们也没有妥协。他们认为，数字时代本应是自由的，任何人都可以自由的获取软件资源及其源代码，而不应该被少数商业公司所控制。因此由 Stallman为领袖的一群富有激情的技术高手们发起了自由软件运动，创立了“自由软件基金会”，即Free Software Foundation(FSF)。FSF 颁发了 GNU GPL 通用公共许可，GPL 明确定义了自由软件的含义，即用户拥有<strong>使用软件、修改软件、重新发布软件以及改善再利用软件</strong>等四种自由，作为前提的，自由软件必须公开所有的源代码。 </p>
+<p>GPL 成为自由软件世界中的最高精神纲领，它成功地创建了一个软件中的自由王国，并保证开发者、用户都拥有充分的自由权。另外，在自由软件的世界中，根本就不存在盗版的概念。“自由软件”的英文是“Free Software”，这不免为许多人所误解，人们经常把它和“免费软件”连系在一起，免费的恰恰都是些低级的，这使得自由软件蒙上了一层阴影。于是大家决定给自由软件一个更易理解的别名“开源软件”。开源一词则由此得来。所以，开源即是自由的化身。它讲述了一种公开的、自由的精神。软件开源的发展历程 ，为我们软件行业以及非软件行业的人都带来的巨大的参考价值.</p>
+<h2 id="看图说话"><a href="#看图说话" class="headerlink" title="看图说话"></a>看图说话</h2><p>接下来，就让我们来认识一下这幅图当中隐藏的那些有关开源的隐藏冷趣小知识吧。</p>
+<h3 id="四个主角"><a href="#四个主角" class="headerlink" title="四个主角"></a>四个主角</h3><p>从左至右：</p>
+<h4 id="红色小恶魔"><a href="#红色小恶魔" class="headerlink" title="红色小恶魔"></a>红色小恶魔</h4><img src="/img/20170701/FreeBSD.png" width="200" height="200"> 
+<p>FreeBSD是一种UNIX操作系统，是由经过BSD、386BSD和4.4BSD发展而来的Unix的一个重要分支。FreeBSD 为不同架构的计算机系统提供了不同程度的支持。</p>
+<h4 id="企鹅"><a href="#企鹅" class="headerlink" title="企鹅"></a>企鹅</h4><img src="/img/20170701/linux.PNG" width="200" height="200">
+<p>Linux是一种自由和开放源码的类Unix操作系统，存在着许多不同的Linux版本，但它们都使用了Linux内核。Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、视频游戏控制台、台式计算机、大型机和超级计算机。Linux是一个领先的操作系统，世界上运算最快的10台超级计算机运行的都是Linux操作系统。严格来讲，Linux这个词本身只表示Linux内核，但实际上人们已经习惯了用Linux来形容整个基于Linux内核，并且使用GNU 工程各种工具和数据库的操作系统。Linux得名于天才程序员林纳斯·托瓦兹。</p>
+<h4 id="Java-Duke"><a href="#Java-Duke" class="headerlink" title="Java Duke"></a>Java Duke</h4><img src="/img/20170701/duke.jpg" width="100" height="200">
+<p>这个就不多说了，Java的吉祥物Duke</p>
+<h4 id="红色恐龙"><a href="#红色恐龙" class="headerlink" title="红色恐龙"></a>红色恐龙</h4><img src="/img/20170701/mozilla.jpg" width="150" height="150">
+<p>Mozilla基金会简称Mozilla（缩写MF或MoFo），是为支持和领导开源的Mozilla项目而设立的一个非营利组织。该组织制定管理开发政策，经营关键基础组织并管理商标及其他知识产权。它拥有一个称作Mozilla公司的子公司，雇佣了一些Mozilla开发人员并协调Mozilla Firefox网页浏览器以及Mozilla Thunderbird电子邮件客户端的发行版。</p>
+<h3 id="背景墙"><a href="#背景墙" class="headerlink" title="背景墙"></a>背景墙</h3><p>从左至右：</p>
+<h4 id="第一幅照片"><a href="#第一幅照片" class="headerlink" title="第一幅照片"></a>第一幅照片</h4><img src="/img/20170701/stallman.PNG" width="150" height="150">
+<p>理查·马修·斯托曼（Richard Matthew Stallman）是美国自由软件运动的精神领袖、GNU计划以及自由软件基金会（Free Software Foundation）的创立者。作为一个著名的黑客，他的主要成就包括Emacs及后来的GNU Emacs，GNU C 编译器及GDB 调试器。他编写的GNU通用公共许可证（GNU GPL）是世上最广为采用的自由软件许可证。</p>
+<h4 id="第二副照片"><a href="#第二副照片" class="headerlink" title="第二副照片"></a>第二副照片</h4><img src="/img/20170701/james.PNG" width="200" height="200">
+<p>詹姆斯·高斯林 （James Gosling），软件专家，Java编程语言的共同创始人之一，一般公认他为“Java之父”。</p>
+<h4 id="牛头"><a href="#牛头" class="headerlink" title="牛头"></a>牛头</h4><img src="/img/20170701/GNU.PNG" width="200" height="200">
+<p>GNU计划，有译为“革奴计划”，是由理查德·斯托曼在1983年9月27日公开发起的自由软件集体协作计划。它的目标是创建一套完全自由的操作系统GNU。</p>
+<h4 id="日历"><a href="#日历" class="headerlink" title="日历"></a>日历</h4><img src="/img/20170701/evolution.jpg" width="200" height="200">
+<p>Evolution是Linux的邮件客户端，为gnome桌面环境下电子邮件、个人信息、日程安排、日历等方面提供了一整套高效的解决方案，多年来一直受到linux用户的好评。</p>
+<h3 id="壁炉上的摆件"><a href="#壁炉上的摆件" class="headerlink" title="壁炉上的摆件"></a>壁炉上的摆件</h3><h4 id="骆驼摆件"><a href="#骆驼摆件" class="headerlink" title="骆驼摆件"></a>骆驼摆件</h4><img src="/img/20170701/perl.PNG" width="200" height="200">
+<p>Perl语言，最初的设计者为拉里·沃尔（Larry Wall），他于1987年12月18日发表。Perl借取了C、sed、awk、shell scripting以及很多其他程序语言的特性。其中最重要的特性是它内部集成了正则表达式的功能，以及巨大的第三方代码库CPAN。简而言之，Perl象C一样强大，象awk、sed等脚本描述语言一样方便。Perl 一般被称为“实用报表提取语言”（Practical Extraction and Report Language），你也可能看到“perl”，所有的字母都是小写的。一般，“Perl”，有大写的P，是指语言本身，而“perl”，小写的p，是指程序运行的解释器。</p>
+<p>####鱼缸中的河豚####<br><img src="/img/20170701/openBSD.PNG" width="200" height="200"><br>OpenBSD是一个多平台的，基于4.4BSD的类UNIX操作系统，是BSD衍生出的三种免费操作系统（另外两种是NetBSD和FreeBSD）之一，被称为世界上最安全的操作系统。</p>
+<h3 id="餐桌摆件"><a href="#餐桌摆件" class="headerlink" title="餐桌摆件"></a>餐桌摆件</h3><h4 id="咖啡杯"><a href="#咖啡杯" class="headerlink" title="咖啡杯"></a>咖啡杯</h4><img src="/img/20170701/java.jpg" width="200" height="200">
+<p>Java语言的Logo，就不多说了。</p>
+<h4 id="笔筒图案"><a href="#笔筒图案" class="headerlink" title="笔筒图案"></a>笔筒图案</h4><img src="/img/20170701/GIMP.PNG" width="200" height="200">
+<p>GIMP 是跨平台的图像处理程序。GIMP 是 GNU 图像处理程序(GNU Image Manipulation Program)的缩写。包括几乎所有图象处理所需的功能，号称Linux下的PhotoShop。</p>
+<h4 id="羽毛"><a href="#羽毛" class="headerlink" title="羽毛"></a>羽毛</h4><img src="/img/20170701/apache.PNG" width="200" height="200">
+<p>Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。</p>
+<h4 id="彩色方块"><a href="#彩色方块" class="headerlink" title="彩色方块"></a>彩色方块</h4><img src="/img/20170701/gtk.jpg" width="200" height="200">
+<p>GTK+（GIMP Toolkit)是一套源码以LGPL许可协议分发、跨平台的图形工具包。最初是为GIMP写的，已成为一个功能强大、设计灵活的一个通用图形库，是GNU/Linux下开发图形界面的应用程序的主流开发工具之一。并且，GTK+也有Windows版本和Mac OS X版。</p>
+<h4 id="白色方块"><a href="#白色方块" class="headerlink" title="白色方块"></a>白色方块</h4><img src="/img/20170701/xorg.jpg" width="200" height="200">
+<p>XOrg基金会的X11开源实现 （XOrg Foundation Open Source Public Implementation of X11） (the XOrg Server) 是X Window System的官方参考实现。当前的发布版本是X11R7.0，发布于2005年2月10日。它是开放源代码的自由软件。这个项目由X.Org基金会运作，存放于freedesktop.org的主机上。</p>
+<h4 id="便签本"><a href="#便签本" class="headerlink" title="便签本"></a>便签本</h4><img src="/img/20170701/openOffice.jpg" width="200" height="200">
+<p>OpenOffice.org 是一套跨平台的办公室软件套件，能在 Windows、Linux、MacOS X (X11)、和 Solaris 等操作系统上执行。它与各个主要的办公室软件套件兼容。OpenOffice.org 是自由软件，任何人都可以免费下载、使用、及推广它。</p>
+<h4 id="桌布脚印图案"><a href="#桌布脚印图案" class="headerlink" title="桌布脚印图案"></a>桌布脚印图案</h4><img src="/img/20170701/gnome.jpg" width="200" height="200">
+<p>GNOME是一种让使用者容易操作和设定电脑环境的工具，GNOME 包含了 Panel （用来启动此程式和显示目前的状态）、桌面 （应用程式和资料放置的地方）、及一系列的标准桌面工具和应用程式，并且能让各个应用程式都能正常地运作。不管之前使用何种操作系统，都能轻易地使用 GNOME 功能强大的图形接口工具。</p>
 
       
     </div>
@@ -450,18 +500,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/21/20170521/" rel="next" title="有GC就是爽，再也不用自己清理垃圾了">
-                <i class="fa fa-chevron-left"></i> 有GC就是爽，再也不用自己清理垃圾了
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/08/contentCourse/" rel="prev" title="本博客书写教程：关于内容与风格">
-                本博客书写教程：关于内容与风格 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/28/20170628/" rel="prev" title="什么！你用的Java版本叫“Tiger🐯”？">
+                什么！你用的Java版本叫“Tiger🐯”？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -608,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象不是你想转，想转就能转"><span class="nav-number">1.</span> <span class="nav-text">对象不是你想转，想转就能转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上转型—自动转换，没问题"><span class="nav-number">2.</span> <span class="nav-text">向上转型—自动转换，没问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向下转型—强制转换，有风险"><span class="nav-number">3.</span> <span class="nav-text">向下转型—强制转换，有风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是开源"><span class="nav-number">1.</span> <span class="nav-text">什么是开源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看图说话"><span class="nav-number">2.</span> <span class="nav-text">看图说话</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四个主角"><span class="nav-number">2.1.</span> <span class="nav-text">四个主角</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#红色小恶魔"><span class="nav-number">2.1.1.</span> <span class="nav-text">红色小恶魔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#企鹅"><span class="nav-number">2.1.2.</span> <span class="nav-text">企鹅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-Duke"><span class="nav-number">2.1.3.</span> <span class="nav-text">Java Duke</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#红色恐龙"><span class="nav-number">2.1.4.</span> <span class="nav-text">红色恐龙</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景墙"><span class="nav-number">2.2.</span> <span class="nav-text">背景墙</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一幅照片"><span class="nav-number">2.2.1.</span> <span class="nav-text">第一幅照片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二副照片"><span class="nav-number">2.2.2.</span> <span class="nav-text">第二副照片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#牛头"><span class="nav-number">2.2.3.</span> <span class="nav-text">牛头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日历"><span class="nav-number">2.2.4.</span> <span class="nav-text">日历</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#壁炉上的摆件"><span class="nav-number">2.3.</span> <span class="nav-text">壁炉上的摆件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#骆驼摆件"><span class="nav-number">2.3.1.</span> <span class="nav-text">骆驼摆件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#餐桌摆件"><span class="nav-number">2.4.</span> <span class="nav-text">餐桌摆件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#咖啡杯"><span class="nav-number">2.4.1.</span> <span class="nav-text">咖啡杯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#笔筒图案"><span class="nav-number">2.4.2.</span> <span class="nav-text">笔筒图案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#羽毛"><span class="nav-number">2.4.3.</span> <span class="nav-text">羽毛</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#彩色方块"><span class="nav-number">2.4.4.</span> <span class="nav-text">彩色方块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#白色方块"><span class="nav-number">2.4.5.</span> <span class="nav-text">白色方块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#便签本"><span class="nav-number">2.4.6.</span> <span class="nav-text">便签本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#桌布脚印图案"><span class="nav-number">2.4.7.</span> <span class="nav-text">桌布脚印图案</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
