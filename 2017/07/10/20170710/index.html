@@ -106,7 +106,7 @@
 <meta property="og:url" content="http://www.lovoedu.com/2017/07/10/20170710/index.html">
 <meta property="og:site_name" content="风清月朗沃野千里">
 <meta property="og:description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
-<meta property="og:updated_time" content="2017-07-17T02:11:53.000Z">
+<meta property="og:updated_time" content="2017-07-17T02:30:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型，你也可以自定义">
 <meta name="twitter:description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
@@ -402,7 +402,7 @@
       
         <p>一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。<br><a id="more"></a></p>
 <h1 id="1、为什么要使用泛型？"><a href="#1、为什么要使用泛型？" class="headerlink" title="1、为什么要使用泛型？"></a>1、为什么要使用泛型？</h1><p>首先，我们来看一下ArrayList集合类的定义：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;</div><div class="line">	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;</div><div class="line">	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看到，ArrayList底层是使用数组实现的。而且，该数组是Object数组。这就意味着，在该数组中，我们可以存放任何类型的元素</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List list = <span class="keyword">new</span> ArrayList();</div><div class="line">list.add(<span class="string">"123"</span>);</div><div class="line">list.add(<span class="keyword">new</span> Integer(<span class="number">200</span>));</div><div class="line">list.add(<span class="keyword">new</span> JFrame());</div></pre></td></tr></table></figure>
 <p>元素存放进集合后，我们遍历数组</p>
@@ -482,6 +482,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/13/20170713/" rel="next" title="enum，你应该知道的枚举">
+                <i class="fa fa-chevron-left"></i> enum，你应该知道的枚举
+              </a>
             
           </div>
 
@@ -563,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
