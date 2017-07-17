@@ -99,23 +99,25 @@
 
 
 
-<meta name="description" content="大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。">
+<meta name="description" content="排序相关的的基本概念 排序： 将一组杂乱无章的数据按一定的规律顺次排列起来。数据表( data list): 它是待排序数据对象的有限集合。排序码(key):通常数据对象有多个属性域，即多个数据成员组成,其中有一个属性域可用来区分对象,作为排序依据。该域即为排序码。每个数据表用哪个属性域作为排序码，要视具体的应用需要而定。  我们常见的一些排序算法，如图所示：">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么老鸟要告诉你优先使用组合而不是继承？">
-<meta property="og:url" content="http://www.lovoedu.com/2017/06/01/20170601/index.html">
+<meta property="og:title" content="JAVA中常见的排序算法有哪些？---选择排序">
+<meta property="og:url" content="http://www.lovoedu.com/2017/07/16/20170716/index.html">
 <meta property="og:site_name" content="风清月朗沃野千里">
-<meta property="og:description" content="大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。">
-<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23lzz.jpg">
-<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23angel.jpg">
-<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23fish.jpg">
-<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23plane.jpg">
-<meta property="og:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23ship.jpg">
-<meta property="og:updated_time" content="2017-06-01T00:51:34.000Z">
+<meta property="og:description" content="排序相关的的基本概念 排序： 将一组杂乱无章的数据按一定的规律顺次排列起来。数据表( data list): 它是待排序数据对象的有限集合。排序码(key):通常数据对象有多个属性域，即多个数据成员组成,其中有一个属性域可用来区分对象,作为排序依据。该域即为排序码。每个数据表用哪个属性域作为排序码，要视具体的应用需要而定。  我们常见的一些排序算法，如图所示：">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/d56e15224294f03234bd35eb72802a7e4782295bf8cf5eb4dec75cf2eeb86f7952276b5bae7f14d9960e384eaa2b6ae4?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=~6D%25Z0%405%249KHWGQHEN1TT58.png&size=1024">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/9f1403a08a78c4575437011406fb719ad980f253a813bc9e9e1f5b89729004862158fbb04b8b69a7a62b78a98e43f2ff?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=VL9VJAA%24EC%7DR7O1%28%5DAN3GRF.png&size=1024">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/6222470421a2d6583abc7248ae81b03ebbc29d28678d50dcca544cba83e97526a9c351bc98ed06a9277acc26386e7a82?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=ZL%5D_%24DR6%25I4CCGW10P9%40QM0.png&size=1024">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/9f3274a56dd09cbab47f9002b944143e913a10b802cc9236c9c8d62cf0059c73629926376a006bb5d741d7eeb4f60c8c?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=XJRE%280KC%5D%254H7%24GSN%28HOR%606.png&size=1024">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/1a38c6c7677fc6bc469ab1fd4d43f220d11616561ae61fec00152aa1607cdf265cad74ba14a9273bb1883310f2e071f1?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=NQ0I8%24%7D%5D%7D%7D%402%7B%5BV%28IT%7D7A4D.png&size=1024">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/c6472d2942cc602e76b2f70bb06632b446d945203de0614deb887e172b200073f40d5677b271607d7753a600da44c5e6?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=RG%5DTKI5D7%40%24B6_%5D1JW%251FIC.png&size=1024">
+<meta property="og:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/dcc99f894d2ba03ff62888f2959617c1baca4524bfb495c80c1e5e72e1a44bdc8add68666c679bc4bdc6637b7dbd0f35?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=%60TR98%25Y%29G6ZE%25D7~%28SPQW%24B.png&size=1024">
+<meta property="og:updated_time" content="2017-07-17T02:42:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么老鸟要告诉你优先使用组合而不是继承？">
-<meta name="twitter:description" content="大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。">
-<meta name="twitter:image" content="http://www.lovoedu.com/img/20170601/zcf2017-05-23lzz.jpg">
+<meta name="twitter:title" content="JAVA中常见的排序算法有哪些？---选择排序">
+<meta name="twitter:description" content="排序相关的的基本概念 排序： 将一组杂乱无章的数据按一定的规律顺次排列起来。数据表( data list): 它是待排序数据对象的有限集合。排序码(key):通常数据对象有多个属性域，即多个数据成员组成,其中有一个属性域可用来区分对象,作为排序依据。该域即为排序码。每个数据表用哪个属性域作为排序码，要视具体的应用需要而定。  我们常见的一些排序算法，如图所示：">
+<meta name="twitter:image" content="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/d56e15224294f03234bd35eb72802a7e4782295bf8cf5eb4dec75cf2eeb86f7952276b5bae7f14d9960e384eaa2b6ae4?pictype=scale&from=30113&version=2.0.0.2&uin=285202619&fname=~6D%25Z0%405%249KHWGQHEN1TT58.png&size=1024">
 
 
 
@@ -143,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://www.lovoedu.com/2017/06/01/20170601/"/>
+  <link rel="canonical" href="http://www.lovoedu.com/2017/07/16/20170716/"/>
 
 
 
 
 
-  <title>为什么老鸟要告诉你优先使用组合而不是继承？ | 风清月朗沃野千里</title>
+  <title>JAVA中常见的排序算法有哪些？---选择排序 | 风清月朗沃野千里</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -312,7 +314,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/06/01/20170601/">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/07/16/20170716/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朗沃java团队">
@@ -329,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">为什么老鸟要告诉你优先使用组合而不是继承？</h1>
+          <h1 class="post-title" itemprop="name headline">JAVA中常见的排序算法有哪些？---选择排序</h1>
         
 
         <div class="post-meta">
@@ -341,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T21:19:17+08:00">
-                2017-06-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T00:00:00+08:00">
+                2017-07-16
               </time>
             
 
@@ -364,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaOO</span>
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
                   </a>
                 </span>
 
@@ -406,51 +408,19 @@
       
 
       
-        <p>大家知道，面向对象有三个特征：继承、封装和多态。现在，我们谈谈关于继承的一些问题。了解一下继承的优点、缺点，以及继承缺点的解决方案。<br><a id="more"></a></p>
-<p>继承的起源，来自于多个类中相同特征和行为的抽象。子类可以通过继承父类，那么可以调用父类中定义的方法和属性，从而达到代码重用的目的。另外，子类除了重用父类的代码以外，还可以扩展自身的属性和方法，来描述子类特有的特征和行为。</p>
-<p>例如：人类和马类这两个类，有什么共同的特征和行为呢？都有年龄，都要呼吸，都可以行动，都要吃奶。我们可以把人类和马类相同的特征和行为抽取出来，形成一个父类：哺乳动物。人类和马类只要继承哺乳动物这个父类。那么，就可以直接重用哺乳动物父类中定义的属性和行为，相同的属性和行为就可以不用再重复描述。所以，通过继承，可以达到代码很大的重用。</p>
-<p>除此之外，人类和马类还可以再定义自己本身的特征和行为。比如，马要吃草，人可以说话。那么，人类和马类可以在继承了哺乳动物父类的同时，再定义说话或吃草的行为，来扩展自身的特征和行为。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mammal</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breath</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManKind</span> <span class="keyword">extends</span> <span class="title">Mammal</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">……</div><div class="line"></div><div class="line"></div><div class="line">ManKind m = <span class="keyword">new</span> ManKind();</div><div class="line">m.spaeak();<span class="comment">//本类中定义的方法</span></div><div class="line">m.breath();<span class="comment">//父类中继承的方法</span></div><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<p>使用继承有很多优点，父类的大部分功能可以通过继承关系自动进入子类；修改或扩展继承而来的属性和方法较为容易。那么，如何判断两个类之间是否有继承关系呢？很简单，用”是”来判断。比如：马是动物。那么马继承于动物。玫瑰是植物。那么玫瑰继承于植物。骂人的时候，我们会说：你是畜牲，那么这个人继承于畜牲，象畜牲一样没有人性。你是猪，那么这个人继承于猪，象猪一样愚笨。这就是所谓的”is-a”。</p>
-<p>但是，继承同样有很多缺点。人类在大千世界中，不断的认识世界，也不断的改造世界。人类曾经梦想，在天空中飞翔。那么，人类如何飞行呢？鸟可以飞行，那是因为鸟有翅膀这个特征，才会拥有飞这个行为。如果人类继承于鸟类，象鸟一样长出翅膀，那么也就可以有飞行的行为了。</p>
-<p><img src="/img/20170601/zcf2017-05-23lzz.jpg" width="200" height="150"><br><img src="/img/20170601/zcf2017-05-23angel.jpg" width="200" height="150"></p>
-<p>《封神榜》中的雷震子和天使，其实就是人类想在天空中飞行的一种想法。那就是继承鸟这个类，拥有鸟类的翅膀和飞行的行为。</p>
-<p>那么，人类想下海应该怎么办呢？于是人类又在想，只要将人类继承于鱼类，拥有鱼的尾巴，那么就可以下海了。随着这种想法的产生，美人鱼就出现了。</p>
-<p><img src="/img/20170601/zcf2017-05-23fish.jpg" width="150" height="200"></p>
-<p>那么，如果人类既想飞行，又想下海应该怎么办呢？有人说，那还不简单，把人类同时继承于鸟类和鱼类不就行了吗。但是，不好意思，在java中，类只能单根继承。也就是说，一个类只能有一个父类，不能同时继承两个父类。所以，从这里就可以看出继承的其中一个缺点：无法通过继承的方式，重用多个类中的代码。</p>
-<p>除此之外，继承还有第二个缺点，那就是，父类的属性和方法，子类是无条件继承的。也就是说，不管子类愿意不愿意，都必须继承父类所有的属性和方法。比如，每个人都有自己父母，如果父母比较富有，那么子女就吃得好穿得好。如果父母是穷人，那么子女吃不饱穿不暖。很显然，所有的人都希望自己是富二代，官二代，而不想成为穷二代。不过，人是无法选择自己父母的。所以，父母的一切，自己是无条件接受的。</p>
-<p>同样道理，如果人类继承于鸟类，我们希望拥有的是：鸟的翅膀和飞的行为。但是，鸟还有吃虫的行为，鸟还有下蛋的行为。这些是我们不希望拥有的。不过，如果人类继承于鸟类的话，那么吃虫和下蛋的行为，人类就得无条件接受了。所以，使用继承很容易造成方法的污染。一旦父类的属性和方法，在子类中不能完全适用。那么，也就不应该使用继承关系了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">layEggs</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManKind</span> <span class="keyword">extends</span> <span class="title">Bird</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line">……</div><div class="line">ManKind m = <span class="keyword">new</span> ManKind();</div><div class="line">m.spaeak();</div><div class="line">m.fly();<span class="comment">//人类希望拥有的飞行行为</span></div><div class="line">m.layEggs();<span class="comment">//人类不希望拥有的下蛋行为</span></div><div class="line"></div></pre></td></tr></table></figure>
-<p>还有，从父类继承而来的实现是静态的，不能在运行时发生改变，不够灵活。比如，有一个人从春熙路到天府广场去。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"前往天府广场"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CDMan</span> <span class="keyword">extends</span> <span class="title">Man</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">……</div><div class="line">CDMan c = <span class="keyword">new</span> CDMan();</div><div class="line">c.run();</div><div class="line"></div></pre></td></tr></table></figure>
-<p>当我们调用run()方法时，就只能打印从父类中继承的run方法。如果这个人想骑单车去天府广场应该怎么办呢？有人说，简单，在CDMan中重写run()不就行了吗？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CDMan</span> <span class="keyword">extends</span> <span class="title">Man</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"骑单车去天府广场"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是，如果这个人想骑单车走一段，再开汽车走一段，就没法通过继承和重写来实现了。所以，无论是从父类中继承的方法，还是子类重写的父类方法，实现的都是一种静态的复用。不能在运行时发生改变，灵活性比较差。</p>
-<hr>
-<p>那么，如何解决继承的这些缺点呢？荀子在《劝学》中，有这样的一段话：”假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。君子生非异也，善假于物也。”就是说，人可以骑马，即使这个人跑得不快，也可以到达千里之外。人可以坐船，即使这个人不会游泳，也可以到达江河的任何位置。君子其实没什么太多特别的地方，只不过善于利用工具而已。这就是所谓的”has-a”。拥有什么，或者使用什么。</p>
-<p>荀子的这段话，指出了解决继承缺陷办法，那就是使用聚合/组合达到代码的复用。比如，人想上天怎么办呢？可以利用飞机上天。人想下海怎么办呢，可以利用轮船下海。并不要求人要长出翅膀，人要长出鱼尾。</p>
-<p><img src="/img/20170601/zcf2017-05-23plane.jpg" width="200" height="150"><br><img src="/img/20170601/zcf2017-05-23ship.jpg" width="200" height="150"></p>
-<p>这样的解决方案，其实就是告诉我们，与其我们”是什么”，倒不如我们”用什么”。也就是用聚合/组合复用，去代替继承复用。把一些特征和行为抽取出来，形成工具类。然后通过聚合/组合成为当前类的属性。再调用其中的属性和行为达到代码重用的目的。</p>
-<p>换句话说，用”has-a”(有什么或用什么)去替代”is-a”(是什么)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plane</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ship</span></span>&#123;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManKind</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Plane p = <span class="keyword">new</span> Plane();</div><div class="line">    <span class="keyword">private</span> Ship s = <span class="keyword">new</span> Ship();</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;</div><div class="line">        p.fly();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swim</span><span class="params">()</span></span>&#123;</div><div class="line">        s.swim();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从以上代码可以看出，通过聚合/组合关系，可以解决继承的缺点。由于一个类可以建多个属性，也就是可以聚合多个类。所以，可以通过聚合/组合关系，重用多个类中的代码。</p>
-<p>另外，我们可以选择一个类中是否应该具有某种行为，从而决定应该聚合那些类，不应该聚合那些类。这样，通过聚合/组合关系，也可以避免继承所带的方法污染问题。所以，使用聚合/组合，具有很强的代码重用性和灵活性。</p>
-<p>聚合/组合复用也可以在运行时动态进行。新对象可以使用聚合/组合关系，将新的责任委派到合适的对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//交通工具接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Vehicle</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//自行车实现类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bike</span> <span class="keyword">implements</span> <span class="title">Vehicle</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"骑单车行走"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//汽车实现类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Vehicle</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"开汽车行走"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//人类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CDMan</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Vehicle  v;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		v.run();</div><div class="line">	&#125;</div><div class="line"><span class="comment">//更换交通工具</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeVehicle</span><span class="params">(Vehicle  v)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.v = v;</div><div class="line">	&#125;  </div><div class="line">&#125;</div><div class="line">……</div><div class="line">CDMan c = <span class="keyword">new</span> CDMan();</div><div class="line">c.changeVehicle(<span class="keyword">new</span> Bike());</div><div class="line">c.run();<span class="comment">//骑单车行走</span></div><div class="line"></div><div class="line">c.changeVehicle(<span class="keyword">new</span> Car());</div><div class="line">c.run();<span class="comment">//开汽车行走</span></div><div class="line"></div></pre></td></tr></table></figure>
-<p>从这里可以看出，人类可以随时改换交通工具，达到行走的目的。这种方式可以在运行期间，随时改变接口属性的实现类。从而调用不同实现类描述的具体方法，灵活性很强。</p>
-<p><strong> 总结：</strong></p>
-<p>继承和聚合/组合都可以达到代码重用的目的。继承有自身的优点，父类的大部分功能可以通过继承关系自动进入子类；修改或扩展继承而来的实现较为容易。</p>
-<p>但是，继承同样有缺点，</p>
-<ol>
-<li>无法通过继承达到多个类代码的重用。</li>
-<li>父类的方法子类无条件继承，很容易造成方法污染。</li>
-<li>从父类中继承的方法，是一种静态的复用。不能在运行时发生改变，不够灵活。</li>
-</ol>
-<p>继承可以用，但使用继承需要谨慎。一般来说，使用继承有两个条件：</p>
-<ol>
-<li>父类中所有的属性和方法，在子类中都适用。</li>
-<li>子类不需要再去重用别的类中的代码。<br>如果不能满足这两个条件，那么就应该使用聚合/组合关系去替代继承，来达到代码的复用。</li>
-</ol>
+        <h3 id="排序相关的的基本概念"><a href="#排序相关的的基本概念" class="headerlink" title="排序相关的的基本概念"></a>排序相关的的基本概念</h3><p><strong> 排序： </strong><br>将一组杂乱无章的数据按一定的规律顺次排列起来。<br>数据表( data list): 它是待排序数据对象的有限集合。<br>排序码(key):通常数据对象有多个属性域，即多个数据成员组成,其中有一个属性域可用来区分对象,作为排序依据。该域即为排序码。每个数据表用哪个属性域作为排序码，要视具体的应用需要而定。</p>
+<p><strong> 我们常见的一些排序算法，如图所示： </strong><br><a id="more"></a><br><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/d56e15224294f03234bd35eb72802a7e4782295bf8cf5eb4dec75cf2eeb86f7952276b5bae7f14d9960e384eaa2b6ae4?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=~6D%25Z0%405%249KHWGQHEN1TT58.png&amp;size=1024" alt=""></p>
+<h3 id="Java中的经典算法之选择排序（SelectionSort）"><a href="#Java中的经典算法之选择排序（SelectionSort）" class="headerlink" title="Java中的经典算法之选择排序（SelectionSort）"></a>Java中的经典算法之选择排序（SelectionSort）</h3><p>原理：每一趟从待排序的记录中选出最小或最大的元素，顺序放在已排好序的序列最后，直到全部记录排序完毕。也就是：每一趟在n-i+1(i=1，2，…n-1)个记录中选取关键字最小的记录作为有序序列中第i个记录。</p>
+<p><strong>现在，我们先一起来看看什么是排序?</strong><br><!--more--><br><strong><em>简单选择排序的基本思想</em></strong>：给定数组：int[] arr={里面n个数据}；第1趟排序，在待排序数据arr[0]~arr[n-1]中选出最小的数据，将它与arrr[0]交换；第2趟，在待排序数据arr[1]~arr[n-1]中选出最小的数据，将它与r[1]交换；以此类推，第i趟在待排序数据arr[i]~arr[n]中选出最小的数据，将它与r[i]交换，直到全部排序完成。</p>
+<p>简单来说：比如在5个数据中，如果要做升序排序，我们分别要在这5个数中找出最小值放在第一个位置，第二小值放在第二个位置，依次类推，最后那个肯定就是第5小值</p>
+<p>例如:有一个整型数组int[] nums = {84,83,88,87,61};</p>
+<p>其排序后的结果，如图：<br><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/9f1403a08a78c4575437011406fb719ad980f253a813bc9e9e1f5b89729004862158fbb04b8b69a7a62b78a98e43f2ff?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=VL9VJAA%24EC%7DR7O1%28%5DAN3GRF.png&amp;size=1024" alt=""><br>接下来，我们更进一步来分析它的比较过程：<br><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/6222470421a2d6583abc7248ae81b03ebbc29d28678d50dcca544cba83e97526a9c351bc98ed06a9277acc26386e7a82?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=ZL%5D_%24DR6%25I4CCGW10P9%40QM0.png&amp;size=1024" alt=""><br><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/9f3274a56dd09cbab47f9002b944143e913a10b802cc9236c9c8d62cf0059c73629926376a006bb5d741d7eeb4f60c8c?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=XJRE%280KC%5D%254H7%24GSN%28HOR%606.png&amp;size=1024" alt=""></p>
+<p><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/1a38c6c7677fc6bc469ab1fd4d43f220d11616561ae61fec00152aa1607cdf265cad74ba14a9273bb1883310f2e071f1?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=NQ0I8%24%7D%5D%7D%7D%402%7B%5BV%28IT%7D7A4D.png&amp;size=1024" alt=""></p>
+<p><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/c6472d2942cc602e76b2f70bb06632b446d945203de0614deb887e172b200073f40d5677b271607d7753a600da44c5e6?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=RG%5DTKI5D7%40%24B6_%5D1JW%251FIC.png&amp;size=1024" alt=""></p>
+<p><img src="https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/dcc99f894d2ba03ff62888f2959617c1baca4524bfb495c80c1e5e72e1a44bdc8add68666c679bc4bdc6637b7dbd0f35?pictype=scale&amp;from=30113&amp;version=2.0.0.2&amp;uin=285202619&amp;fname=%60TR98%25Y%29G6ZE%25D7~%28SPQW%24B.png&amp;size=1024" alt=""></p>
+<h3 id="选择排序的代码实现"><a href="#选择排序的代码实现" class="headerlink" title="选择排序的代码实现"></a>选择排序的代码实现</h3><p>i:控制总轮数<br>j:控制元素的索引位置<br>分析：5个元素，需要4轮比较，也就是说n个元素，需要n-1轮比较,看上面的情况执行情况，第几轮，j就从第几个元素开始依次和后面的元素比较,则从j=i开始</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] nums = &#123;<span class="number">84</span>,<span class="number">83</span>,<span class="number">88</span>,<span class="number">87</span>,<span class="number">61</span>&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt; nums.length-<span class="number">1</span>;i++)&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt; nums.length-<span class="number">1</span>;j++)&#123;</div><div class="line">		<span class="keyword">if</span>(nums[i]  &gt; nums[j+<span class="number">1</span>])&#123;</div><div class="line">			<span class="keyword">int</span> temp ;</div><div class="line">			temp = nums[i];</div><div class="line">			nums[i] = nums[j+<span class="number">1</span>];</div><div class="line">			nums[j+<span class="number">1</span>] = temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong> 以上则是选择排序的算法原理和具体实现步骤，敬请期待java中的其他排序算法 </strong></p>
 
       
     </div>
@@ -487,18 +457,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/04/20170604/" rel="next" title="认识计算机硬件">
-                <i class="fa fa-chevron-left"></i> 认识计算机硬件
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/27/20170527/" rel="prev" title="别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有">
-                别被final、finally和finalize这三兄弟给骗了，其实它们半毛钱关系也没有 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/13/20170713/" rel="prev" title="enum，你应该知道的枚举">
+                enum，你应该知道的枚举 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,8 +512,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/JAVA.jpg"
@@ -626,6 +601,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序相关的的基本概念"><span class="nav-number">1.</span> <span class="nav-text">排序相关的的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中的经典算法之选择排序（SelectionSort）"><span class="nav-number">2.</span> <span class="nav-text">Java中的经典算法之选择排序（SelectionSort）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序的代码实现"><span class="nav-number">3.</span> <span class="nav-text">选择排序的代码实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
