@@ -1,0 +1,1196 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Lock接口,比Synchronized更强大的锁什么是并发问题？当多个进程或线程同时访问同一资源时会产生并发问题。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lock接口,比Synchronized更强大的锁">
+<meta property="og:url" content="http://www.lovoedu.com/2017/07/22/20170722/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="Lock接口,比Synchronized更强大的锁什么是并发问题？当多个进程或线程同时访问同一资源时会产生并发问题。">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170722/1.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170722/2.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170722/3.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170722/4.png">
+<meta property="og:updated_time" content="2017-07-27T05:37:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lock接口,比Synchronized更强大的锁">
+<meta name="twitter:description" content="Lock接口,比Synchronized更强大的锁什么是并发问题？当多个进程或线程同时访问同一资源时会产生并发问题。">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170722/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/07/22/20170722/"/>
+
+
+
+
+
+  <title>Lock接口,比Synchronized更强大的锁 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/07/22/20170722/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lock接口,比Synchronized更强大的锁</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T00:00:00+08:00">
+                2017-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+          	
+          
+          
+            <span id="busuanzi_container_page_pv">&nbsp;&nbsp;|&nbsp;&nbsp;阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+          
+
+
+
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Lock接口-比Synchronized更强大的锁"><a href="#Lock接口-比Synchronized更强大的锁" class="headerlink" title="Lock接口,比Synchronized更强大的锁"></a>Lock接口,比Synchronized更强大的锁</h1><h2 id="什么是并发问题？"><a href="#什么是并发问题？" class="headerlink" title="什么是并发问题？"></a>什么是并发问题？</h2><p>当多个进程或线程<font style="color: red;font-size:25px;">同时访问同一资源时</font>会产生<strong>并发</strong>问题。</p>
+ <a id="more"></a>
+<h3 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h3><blockquote>
+<h4 id="当多个卖票窗口同时出售同一航空公司的机票"><a href="#当多个卖票窗口同时出售同一航空公司的机票" class="headerlink" title="当多个卖票窗口同时出售同一航空公司的机票."></a>当多个卖票窗口同时出售<font style="color:red">同一航空公司</font>的机票.</h4></blockquote>
+<p> 当窗口A,窗口B,窗口C同时出售机票时，可能就会导致<font style="color:red">同一张</font>机票会被多次卖出。</p>
+<p>—- 示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//出售机票类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="comment">//剩余机票数量</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>  ticketNum = <span class="number">100</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//出售机票</span></div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">//让线程休眠100毫秒</span></div><div class="line">                Thread.sleep(<span class="number">100</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//当剩余大于0时，才能出售机票</span></div><div class="line">            <span class="keyword">if</span>(ticketNum&gt;<span class="number">0</span>)&#123;</div><div class="line">                System.out.println(Thread.currentThread().getName()+</div><div class="line">			 <span class="string">"正在售出剩余的第"</span>+(ticketNum--)+<span class="string">"张票。"</span>);</div><div class="line">	   &#125;<span class="keyword">else</span>&#123;</div><div class="line">	       <span class="keyword">break</span>;</div><div class="line">	   &#125;</div><div class="line">	&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>  —-  测试代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        SellTicket st = <span class="keyword">new</span> SellTicket();</div><div class="line">        Thread t1 = <span class="keyword">new</span> Thread(st,<span class="string">"窗口A"</span>);</div><div class="line">        Thread t2 = <span class="keyword">new</span> Thread(st,<span class="string">"窗口B"</span>);</div><div class="line">        Thread t3 = <span class="keyword">new</span> Thread(st,<span class="string">"窗口C"</span>);</div><div class="line">        </div><div class="line">        t1.start();</div><div class="line">        t2.start();</div><div class="line">        t3.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> —- 显示结果</p>
+ <img src="/img/20170722/1.png">
+<p>这就是<strong><em>典型的并发问题</em></strong>。如何解决？可以用<font style="color:red;font-size:25px"><strong><em>锁</em></strong></font></p>
+<h2 id="锁-是线程控制的重要途径。"><a href="#锁-是线程控制的重要途径。" class="headerlink" title="锁  是线程控制的重要途径。"></a><font style="color:red;font-size:40px;"><strong><em>锁</em></strong></font>  是线程控制的重要途径。</h2><p>Java为此也提供了2种锁机制，<font style="color:coral">synchronized  和  Lock</font>.</p>
+<h3 id="关键字-synchronized"><a href="#关键字-synchronized" class="headerlink" title="关键字 synchronized"></a>关键字 synchronized</h3><p>synchronized是java中的一个<strong><em>关键字</em></strong>，也就是Java语言内置的特性。</p>
+<p>synchronized(隐式锁)，在需要同步的对象中加入此控制，synchronized 可以加在<font style="color:red"><strong><em>方法上</em></strong></font>，也可以加在<font style="color:red "><strong><em>特定代码块中</em></strong></font>，括号中表示需要锁的对象。</p>
+<h4 id="1-synchronized-在方法上"><a href="#1-synchronized-在方法上" class="headerlink" title="1. synchronized 在方法上"></a>1. synchronized 在方法上</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">        <span class="comment">//需要同步的代码</span></div><div class="line">        .......</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2-synchronized-在特定的代码块"><a href="#2-synchronized-在特定的代码块" class="headerlink" title="2. synchronized 在特定的代码块"></a>2. synchronized 在特定的代码块</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</div><div class="line">        <span class="comment">//括号中表示需要锁的对象</span></div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">            <span class="comment">//需要同步的代码</span></div><div class="line">            ......</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
+<h4 id="使用synchronized解决并发问题"><a href="#使用synchronized解决并发问题" class="headerlink" title="使用synchronized解决并发问题"></a>使用synchronized解决并发问题</h4><p>修改代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="comment">//剩余机票数量</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>  ticketNum =<span class="number">100</span>;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//出售机票</span></div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//让线程休眠100毫秒</span></div><div class="line">            Thread.sleep(<span class="number">100</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//加上同步锁</span></div><div class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">                <span class="keyword">if</span>(ticketNum&gt;<span class="number">0</span>)&#123;</div><div class="line">                    System.out.println(Thread.currentThread().getName()+</div><div class="line">                    <span class="string">"正在售出剩余的第"</span>+(ticketNum--)+<span class="string">"张票。"</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="既然可以通过synchronized来实现同步访问，那么java为什么还需要提供Lock？"><a href="#既然可以通过synchronized来实现同步访问，那么java为什么还需要提供Lock？" class="headerlink" title="既然可以通过synchronized来实现同步访问，那么java为什么还需要提供Lock？"></a>既然可以通过synchronized来实现同步访问，那么java为什么还需要提供Lock？</h3><h4 id="synchronized的缺陷"><a href="#synchronized的缺陷" class="headerlink" title="synchronized的缺陷"></a>synchronized的缺陷</h4><p>我们了解到如果一个代码块被synchronized修饰了，当一个线程获取了对应的锁，并执行该代码块时，其他线程<font style="‘color:red’">只能一直等待</font>，等待获取锁的线程释放锁，而这里获取锁的线程释放锁只会有两种情况：</p>
+<ol>
+<li><p>获取锁的线程执行完了该代码块，然后线程释放对锁的占有；</p>
+</li>
+<li><p>线程执行发生异常，此时JVM(java虚拟机)会让线程自动释放锁。</p>
+</li>
+</ol>
+<p>如果这个获取锁的线程由于要等待IO或者其他原因（比如调用sleep方法）被阻塞了，但是又没有释放锁，那么其他线程也就只能一直无期限地等待下去，这多么影响程序的执行效率.</p>
+<p><strong><em>因此就需要有一种机制可以不让等待的线程一直无期限地等待下去（比如只等待一定的时间或者能够响应中断），通过Lock就可以办到。</em></strong></p>
+<h3 id="从java-5之后，在java-util-concurrent-locks包下提供了另外一种方式来实现同步访问，那就是Lock。"><a href="#从java-5之后，在java-util-concurrent-locks包下提供了另外一种方式来实现同步访问，那就是Lock。" class="headerlink" title="从java 5之后，在java.util.concurrent.locks包下提供了另外一种方式来实现同步访问，那就是Lock。"></a>从java 5之后，在java.util.concurrent.locks包下提供了<font style="color:red">另外一种方式来实现同步访问，那就是Lock</font>。</h3><p>Lock提供了比synchronized更多的功能。但是要注意以下几点:</p>
+<ol>
+<li><p>Lock不是Java语言内置的，synchronized是Java语言的关键字，因此是内置特性。<font style="color: red">Lock是一个接口</font>，通过它的实现类可以实现同步访问；</p>
+</li>
+<li><p>Lock和synchronized有一点非常大的不同，采用<font style="color:red"><strong><em>synchronized不需要用户手动的释放锁</em></strong></font>，当synchronized方法或者synchronized代码块执行完之后，<strong><em><font style="color:coral">系统会自动</font></em></strong>让线程释放对锁的占用；而<font style="color:red">Lock则必须要用户<strong><em>手动释放锁</em></strong></font>，如果没有主动释放锁，就有可能导致出现 <strong><em>死锁</em></strong> 现象。</p>
+</li>
+</ol>
+<h1 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h1><p>Lock（显示锁）：需要显示指定起始位置和终止位置。</p>
+<p>一般使用<font style="color:coral">ReentrantLock类做为锁</font>，多个线程中必须要使用一个ReentrantLock类做为对象才能保证锁的生效。且在<strong><em>加锁和解锁处需要通过<font style="color:red;">  lock(  ) 和  unlock(  ) </font> 显示指出</em></strong>。所以一般会<font style="color:red;font-size:25px;"><em>在finally块中写unlock(  )以防死锁</em></font>。</p>
+<p>– 先看Api</p>
+<img src="/img/20170722/2.png">
+<p>Lock 是一个接口.</p>
+<p>Lock 实现提供了比使用 synchronized 方法和语句可获得的更广泛的锁定操作,此实现允许更灵活的结构.</p>
+<p>它提供了 6 个 方法 如下：</p>
+<img src="/img/20170722/3.png">
+<p>其中获取锁的方法有 4 个：</p>
+<h2 id="lock-方法"><a href="#lock-方法" class="headerlink" title="lock(  )方法"></a>lock(  )方法</h2><p>是<font style="color:red">平常使用得最多的一个方法</font>，就是用来获取锁。如果锁已被其他线程获取，则进行等待。<br>如果采用Lock，<font style="color:red">必须主动去释放锁</font>，并且在发生异常时，不会自动释放锁。因此一般来说，<font style="color:coral;font-size:25px;">使用Lock必须在try{  }catch{  }块中进行，并且将释放锁的操作放在finally块中进行</font>，以保证锁一定被被释放，防止死锁的发生。</p>
+<h2 id="tryLock-方法"><a href="#tryLock-方法" class="headerlink" title="tryLock( ) 方法"></a>tryLock( ) 方法</h2><p>方法是有返回值的，它表示用来尝试获取锁，如果获取成功，则返回true，如果获取失败（即锁已被其他线程获取），则返回false，也就说这个方法无论如何都会立即返回。在拿不到锁时不会一直在那等待。</p>
+<h2 id="tryLock-long-time-TimeUnit-unit-方法"><a href="#tryLock-long-time-TimeUnit-unit-方法" class="headerlink" title="tryLock(long time, TimeUnit unit)方法"></a>tryLock(long time, TimeUnit unit)方法</h2><p>方法和tryLock()方法是类似的，只不过区别在于这个方法在拿不到锁时会等待一定的时间，在时间期限之内如果还拿不到锁，就返回false。如果一开始拿到锁或者在等待期间内拿到了锁，则返回true。</p>
+<h2 id="lockInterruptibly-方法"><a href="#lockInterruptibly-方法" class="headerlink" title="lockInterruptibly(  ) 方法"></a>lockInterruptibly(  ) 方法</h2><p>此方法比较特殊，当通过这个方法去获取锁时，如果线程正在等待获取锁，则这个线程能够响应中断，即中断线程的等待状态。也就使说，当两个线程同时通过lock.lockInterruptibly()想获取某个锁时，假若此时线程A获取到了锁，而线程B只有在等待，那么对线程B调用threadB.interrupt()方法能够中断线程B的等待过程</p>
+<p>以上是获取锁的4个方法。</p>
+<hr>
+<h2 id="newCondition"><a href="#newCondition" class="headerlink" title="newCondition(  )"></a>newCondition(  )</h2><p> 此方法暂且不在此讲述</p>
+<h2 id="unLock-方法"><a href="#unLock-方法" class="headerlink" title="unLock(  )方法"></a>unLock(  )方法</h2><p>方法是用来释放锁的</p>
+<h1 id="ReentrantLock-类"><a href="#ReentrantLock-类" class="headerlink" title="ReentrantLock 类"></a>ReentrantLock 类</h1><p>ReentrantLock 意思是“可重入锁”.</p>
+<p>ReentrantLock是实现了Lock接口的类，并且ReentrantLock提供了更多的方法。</p>
+<p>下面通过一些实例具体看一下如何使用ReentrantLock</p>
+<h2 id="使用-Lock-解决并发问题"><a href="#使用-Lock-解决并发问题" class="headerlink" title="使用 Lock 解决并发问题"></a>使用 Lock 解决并发问题</h2><p>修改后的出售机票类代码为：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="comment">//剩余机票数量</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>  ticketNum =<span class="number">100</span>;</div><div class="line">    <span class="comment">//创建锁</span></div><div class="line">    <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> ReentrantLock(); <span class="comment">// 注意这里的 创建了一把锁</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//出售机票</span></div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">//让线程休眠100毫秒</span></div><div class="line">                Thread.sleep(<span class="number">100</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">//使用Lock 解决并发</span></div><div class="line">            <span class="comment">//获得锁</span></div><div class="line">            lock.lock(); <span class="comment">//上锁</span></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">if</span>(ticketNum&gt;<span class="number">0</span>)&#123;</div><div class="line">                    System.out.println(Thread.currentThread().getName()+</div><div class="line">                    <span class="string">"正在售出剩余的第"</span>+(ticketNum--)+<span class="string">"张票。"</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;<span class="keyword">finally</span>&#123;</div><div class="line">                <span class="comment">//使用lock时,一定记住在finally块中释放锁防止死锁的发生。</span></div><div class="line">                lock.unlock(); <span class="comment">//释放锁</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="与锁相关的几个概念"><a href="#与锁相关的几个概念" class="headerlink" title="与锁相关的几个概念"></a>与锁相关的几个概念</h1><h2 id="1-可重入锁"><a href="#1-可重入锁" class="headerlink" title="1.可重入锁"></a>1.可重入锁</h2><p>如果锁具备可重入性，则称作为可重入锁。像synchronized和ReentrantLock都是可重入锁，可重入性实际上表明了锁的分配机制：<font style="color:red">基于线程的分配，而不是基于方法调用的分配</font>。</p>
+<p>举个简单的例子，当一个线程执行到某个synchronized方法时，比如说method1，而在method1中会调用另外一个synchronized方法method2，此时线程不必重新去申请锁，而是可以直接执行方法method2。</p>
+<p>如果两个方法method1和method2都用synchronized修饰了，假如某一时刻，线程A执行到了method1，此时线程A获取了这个对象的锁，而由于method2也是synchronized方法，假如synchronized不具备可重入性，此时线程A需要重新申请锁。但是这就会造成一个问题，因为线程A已经持有了该对象的锁，而又在申请获取该对象的锁，这样就会线程A一直等待永远不会获取到的锁。</p>
+<p>由于synchronized和Lock都具备可重入性，所以不会发生上述现象.</p>
+<h2 id="2-可中断锁"><a href="#2-可中断锁" class="headerlink" title="2. 可中断锁"></a>2. 可中断锁</h2><p>可中断锁：顾名思义，就是可以相应中断的锁。<br>在Java中，synchronized就不是可中断锁，而Lock是可中断锁。</p>
+<p>例如：</p>
+<p>如果某一线程A正在执行锁中的代码，另一线程B正在等待获取该锁，可能由于等待时间过长，线程B不想等待了，想先处理其他事情，我们可以让它中断自己或者在别的线程中中断它，这种就是可中断锁。</p>
+<h2 id="3-公平锁"><a href="#3-公平锁" class="headerlink" title="3.公平锁"></a>3.公平锁</h2><p>公平锁即尽量以请求锁的顺序来获取锁。</p>
+<p>比如同时有多个线程在等待一个锁，当这个锁被释放时，等待时间最久的线程（最先请求的线程）会获得该锁，这种就是公平锁。</p>
+<p>非公平锁即无法保证锁的获取是按照请求锁的顺序进行的。这样就可能导致某个或者一些线程永远获取不到锁。</p>
+<p>在Java中，synchronized就是<strong><em>非公平锁</em></strong>，它无法保证等待的线程获取锁的顺序。</p>
+<p>而对于ReentrantLock，它<strong><em>默认情况下是非公平锁，但是可以设置为公平锁</em></strong>。</p>
+<p>从ReentrantLock类的构造方法中可以看出</p>
+ <img src="/img/20170722/4.png">
+<h2 id="4-读写锁"><a href="#4-读写锁" class="headerlink" title="4. 读写锁"></a>4. 读写锁</h2><p>读写锁将对一个资源（比如文件）的访问分成了2个锁，一个读锁和一个写锁。</p>
+<p>正因为有了读写锁，才使得多个线程之间的读操作不会发生冲突。</p>
+<h1 id="关于面试题"><a href="#关于面试题" class="headerlink" title="关于面试题"></a>关于面试题</h1><p>1 .简述synchronized和java.util.concurrent.locks.Lock的异同 ？</p>
+<p> Lock和synchronized有以下几点不同：</p>
+<p>　　1）Lock是一个接口，而synchronized是Java中的关键字，synchronized是内置的语言实现；</p>
+<p>　　2）synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；</p>
+<p>　　3）Lock可以让等待锁的线程响应中断，而synchronized却不行，使用synchronized时，等待的线程会一直等待下去，不能够响应中断；</p>
+<p>　　4）通过Lock可以知道有没有成功获取锁，而synchronized却无法办到。</p>
+<p>　　5）Lock可以提高多个线程进行读操作的效率。</p>
+<p>　　在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/25/20170725/" rel="next" title="如何把我的Java程序变成exe文件？">
+                <i class="fa fa-chevron-left"></i> 如何把我的Java程序变成exe文件？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/20170719/" rel="prev" title="到底什么是Hash？">
+                到底什么是Hash？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xiaojichao.com" title="网络埋伏纪事" target="_blank">网络埋伏纪事</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hyktech.github.io" title="把酒临江" target="_blank">把酒临江</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://asbdk.com" title="白德柯的微博" target="_blank">白德柯的微博</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yuannima.com" title="袁的技术空间" target="_blank">袁的技术空间</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lock接口-比Synchronized更强大的锁"><span class="nav-number">1.</span> <span class="nav-text">Lock接口,比Synchronized更强大的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是并发问题？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是并发问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例如："><span class="nav-number">1.1.1.</span> <span class="nav-text">例如：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当多个卖票窗口同时出售同一航空公司的机票"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">当多个卖票窗口同时出售同一航空公司的机票.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁-是线程控制的重要途径。"><span class="nav-number">1.2.</span> <span class="nav-text">锁  是线程控制的重要途径。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字-synchronized"><span class="nav-number">1.2.1.</span> <span class="nav-text">关键字 synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-synchronized-在方法上"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1. synchronized 在方法上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-synchronized-在特定的代码块"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2. synchronized 在特定的代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用synchronized解决并发问题"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">使用synchronized解决并发问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#既然可以通过synchronized来实现同步访问，那么java为什么还需要提供Lock？"><span class="nav-number">1.2.2.</span> <span class="nav-text">既然可以通过synchronized来实现同步访问，那么java为什么还需要提供Lock？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized的缺陷"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">synchronized的缺陷</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从java-5之后，在java-util-concurrent-locks包下提供了另外一种方式来实现同步访问，那就是Lock。"><span class="nav-number">1.2.3.</span> <span class="nav-text">从java 5之后，在java.util.concurrent.locks包下提供了另外一种方式来实现同步访问，那就是Lock。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lock"><span class="nav-number">2.</span> <span class="nav-text">Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lock-方法"><span class="nav-number">2.1.</span> <span class="nav-text">lock(  )方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tryLock-方法"><span class="nav-number">2.2.</span> <span class="nav-text">tryLock( ) 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tryLock-long-time-TimeUnit-unit-方法"><span class="nav-number">2.3.</span> <span class="nav-text">tryLock(long time, TimeUnit unit)方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lockInterruptibly-方法"><span class="nav-number">2.4.</span> <span class="nav-text">lockInterruptibly(  ) 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#newCondition"><span class="nav-number">2.5.</span> <span class="nav-text">newCondition(  )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unLock-方法"><span class="nav-number">2.6.</span> <span class="nav-text">unLock(  )方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReentrantLock-类"><span class="nav-number">3.</span> <span class="nav-text">ReentrantLock 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Lock-解决并发问题"><span class="nav-number">3.1.</span> <span class="nav-text">使用 Lock 解决并发问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与锁相关的几个概念"><span class="nav-number">4.</span> <span class="nav-text">与锁相关的几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-可重入锁"><span class="nav-number">4.1.</span> <span class="nav-text">1.可重入锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-可中断锁"><span class="nav-number">4.2.</span> <span class="nav-text">2. 可中断锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-公平锁"><span class="nav-number">4.3.</span> <span class="nav-text">3.公平锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-读写锁"><span class="nav-number">4.4.</span> <span class="nav-text">4. 读写锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于面试题"><span class="nav-number">5.</span> <span class="nav-text">关于面试题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由  LOVO教育驱动
+</div>
+
+<div class="theme-info">
+  博客 - 
+  朗沃教育Java团队
+</div>
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

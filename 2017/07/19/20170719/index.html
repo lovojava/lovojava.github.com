@@ -1,0 +1,1197 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="到底什么是hashhash算法的概念Hash:    一般翻译做“散列”，也有直接音译为“哈希”的，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。   这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。简单的说就是一种将任意长度的消息压缩到某一">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="到底什么是Hash？">
+<meta property="og:url" content="http://www.lovoedu.com/2017/07/19/20170719/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="到底什么是hashhash算法的概念Hash:    一般翻译做“散列”，也有直接音译为“哈希”的，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。   这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。简单的说就是一种将任意长度的消息压缩到某一">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170719/hash函数.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170719/hash函数2.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170719/object.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170719/hashcode.jpg">
+<meta property="og:updated_time" content="2017-07-27T04:56:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="到底什么是Hash？">
+<meta name="twitter:description" content="到底什么是hashhash算法的概念Hash:    一般翻译做“散列”，也有直接音译为“哈希”的，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。   这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。简单的说就是一种将任意长度的消息压缩到某一">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170719/hash函数.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/07/19/20170719/"/>
+
+
+
+
+
+  <title>到底什么是Hash？ | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/07/19/20170719/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">到底什么是Hash？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T00:00:00+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+          	
+          
+          
+            <span id="busuanzi_container_page_pv">&nbsp;&nbsp;|&nbsp;&nbsp;阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+          
+
+
+
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="到底什么是hash"><a href="#到底什么是hash" class="headerlink" title="到底什么是hash"></a>到底什么是hash</h1><h2 id="hash算法的概念"><a href="#hash算法的概念" class="headerlink" title="hash算法的概念"></a>hash算法的概念</h2><p><strong><em>Hash:</em></strong>  </p>
+<ol>
+<li>一般翻译做“散列”，也有直接音译为“哈希”的，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。  </li>
+<li>这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来唯一的确定输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</li>
+</ol>
+<a id="more"></a>
+<p>例子：</p>
+<pre><code>你很想学太极拳，听说学校有个叫张三丰的人打得特别好，于是你到学校学生处找人，
+学生处的工作人员可能会拿出学生名单，一个一个的查找，最终告诉你，学校没这个人，
+并说张三丰几百年前就已经在武当山作古了。
+可如果你找对了人，比如在操场上找那些爱运动的同学，人家会告诉你，&quot;哦，你找张三丰呀，
+有有有，我带你去。于是他把你带到了体育馆内，并告诉你，那个教大家打太极的小伙子就是张三丰&apos;，
+原来&quot;张三丰.是因为他太极拳打得好而得到的外号。学生处的老师找张三丰，那就是顺序表查找，
+依赖的是姓名关键字的比较。而通过爱好运动的同学询问时，没有遍历，没有比较，
+就凭他们&quot;欲找太极&apos;张三丰&apos;，必在体育馆当中&quot;的经验，直接告诉你位置。
+</code></pre><p>HASH主要用于信息安全领域中加密算法，它把一些不同长度的信息转化成杂乱的128位的编码,这些编码值叫做HASH值. 也可以说，通俗的说hash就是找到一种数据内容和数据存放地址之间的映射关系。</p>
+<h2 id="hash表"><a href="#hash表" class="headerlink" title="hash表"></a>hash表</h2><p>Hash表也称散列表，也有直接译作哈希表，Hash表是一种特殊的数据结构，它同数组、链表以及二叉排序树等相比较有很明显的区别，它能够快速定位到想要查找的记录，而不是与表中存在的记录的关键字进行比较来进行查找。这个源于Hash表设计的特殊性，它采用了函数映射的思想将记录的存储位置与记录的关键字关联起来，从而能够很快速地进行查找。 </p>
+<h3 id="Hash表的设计思想"><a href="#Hash表的设计思想" class="headerlink" title="Hash表的设计思想"></a>Hash表的设计思想</h3><p>对于一般的线性表，比如链表，如果要存储联系人信息：</p>
+<table><br>    <tr><td>张三</td><td>13980593357</td></tr><br>    <tr><td>李四</td><td>15828662334</td></tr><br>    <tr><td>王五</td><td>13409821234</td></tr><br>    <tr><td>张帅</td><td>13890583472 </td></tr><br></table>
+
+<p>那么可能会设计一个结构体包含姓名，手机号码这些信息，然后把4个联系人的信息存到一张链表中。<br><strong><em>查找数据：</em></strong><br>当要查找”李四 15828662334“这条记录是否在这张链表中或者想要得到李四的手机号码时，可能会从链表的头结点开始遍历，依次将每个结点中的姓名同”李四“进行比较，直到查找成功或者失败为止，这种做法的时间复杂度为<strong><em>O(n)</em></strong>。</p>
+<p>假设能够通过”李四“这个信息直接获取到该记录在表中的存储位置，就能省掉中间关键字比较的这个环节，复杂度直接降到<strong><em>O(1)</em></strong>。Hash表就能够达到这样的效果。  </p>
+<font color="red" size="3">原理：</font>  
+
+<ol>
+<li><p>Hash表采用一个映射函数 f : key —&gt; address 将关键字映射到该记录在表中的存储位置，从而在想要查找该记录时，可以直接根据关键字和映射关系计算出该记录在表中的存储位置.</p>
+</li>
+<li><p>通常情况下，这种映射关系称作为Hash函数，而通过Hash函数和关键字计算出来的存储位置(注意这里的存储位置只是表中的存储位置，并不是实际的物理地址)称作为Hash地址.</p>
+</li>
+<li><p>比如上述例子中，假如联系人信息采用Hash表存储，则当想要找到“李四”的信息时，直接根据“李四”和Hash函数计算出Hash地址即可</p>
+</li>
+</ol>
+<h2 id="hash函数"><a href="#hash函数" class="headerlink" title="hash函数"></a>hash函数</h2><p>hash函数就是把任意长的输入字符串变化成固定长的输出字符串的一种函数。输出字符串的长度称为hash函数的位数。  </p>
+<img src="/img/20170719/hash函数.png">
+<p>一句话：散列（Hashing）通过散列函数将要检索的项与索引（散列，散列值）关联起来，生成一种便于搜索的数据结构（散列表）。</p>
+<img src="/img/20170719/hash函数2.jpeg">
+<p>散列函数的性质：</p>
+<p>同一函数的散列值不相同，那么其原始输入也不相同，上图中k1，k3和k4。（确定性）</p>
+<p>散列函数的输入和输出不是唯一对应关系的，如果两个散列值相同，两个输入值很可能是不相同的，上图中的k2，k5这种情况称为“哈希碰撞”。（不确定性）</p>
+<p>hash函数的构造准则：简单、均匀</p>
+<p>1、  散列函数的计算简单，快速；</p>
+<p>2、  散列函数能将关键字集合K均匀地分布在地址集{0,1，…，m-1}上，使冲突最小。</p>
+<h2 id="对象的获取"><a href="#对象的获取" class="headerlink" title="对象的获取"></a>对象的获取</h2><p><strong><em>思考：</em></strong><br>java虚拟机是如何去内存里面获取到我们想要的对象呢？</p>
+<img src="/img/20170719/object.png">
+<p><strong><em>问题：</em></strong><br>站在JAVA虚拟机的角度，在内存里面有好多好多个对象，这里用椭圆来代表一个个对象。那么对于JAVA虚拟机来说，它运行的时候需要找到这些对象的地址，这些对象的地址怎么找呢？</p>
+<p><strong><em>解析:</em></strong><br>JAVA虚拟机会用一张表记录每一个对象在什么位置上，而这张表一般是用哈希编码来记录，每一个对象都有自己独一无二的哈希编码，根据这个编码就可以找到相关的对象，也就是说，根据这个编码你可以独一无二地确定这个对象，并且可以非常快地确定这个对象所在的位置，可以简单这么理解哈希编码的作用。</p>
+<h3 id="hashcode方法"><a href="#hashcode方法" class="headerlink" title="hashcode方法"></a>hashcode方法</h3><p> 在object类中，hashcode()方法是本地方法，返回的是对象的地址值。<br> <img src="/img/20170719/hashcode.jpg"></p>
+<p>JAVA代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    Object obj1 = <span class="keyword">new</span> Object();</div><div class="line">    Object obj2= <span class="keyword">new</span> Object();</div><div class="line">    Object obj3 = obj2;</div><div class="line">    System.out.println(<span class="string">"obj1's hashcode: "</span>+obj1.hashCode());</div><div class="line">    System.out.println(<span class="string">"obj1's hashcode: "</span>+obj2.hashCode());</div><div class="line">    System.out.println(<span class="string">"obj1's hashcode: "</span>+obj3.hashCode());</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">结果为：</div><div class="line">obj1's hashcode: 12677476</div><div class="line">obj1's hashcode: 33263331</div><div class="line">obj1's hashcode: 33263331</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<p>从这个结果中我们可以看到。obj1和obj2的hashcode编码不相等，obj2和obj3的hashcode编码相等。我们可以这样说，obj2和obj3在内存里面引用的是同一个对象。</p>
+<h3 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h3><p>在object类中有一个方法叫equals()，用于判读两个对象是否相等。<br> <img class="／img/20170719/equals.jpg">  </p>
+<p>java代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    Object obj1 = <span class="keyword">new</span> Object();</div><div class="line">    Object obj2= <span class="keyword">new</span> Object();</div><div class="line">    Object obj3 = obj2;</div><div class="line">System.out.println(<span class="string">"obj1==obj2 ?"</span>+obj1.equals(obj2));</div><div class="line">System.out.println(<span class="string">"obj2==obj3 ?"</span>+obj2.equals(obj3));   </div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">结果是：</div><div class="line">obj1==obj2 ? false</div><div class="line">obj2==obj3 ? true</div><div class="line">*/</div></pre></td></tr></table></figure><br>API Object类中源代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</div><div class="line">&#125;</div></pre></td></tr></table></figure>  </p>
+<p>也就是当我们写了一个自己的class，然后用class new了两个对象，如果在这两个对象上用equals时，此时比较的两个引用是不是一样，也就是他们的物理地址是不是一样，如果不一样的话，就会返回false.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Student stu = <span class="keyword">new</span> Student();</div><div class="line">stu.setId(<span class="number">1</span>);</div><div class="line">stu.setUsername(<span class="string">"xiaowang"</span>);</div><div class="line">Student stu2 = <span class="keyword">new</span> Student();</div><div class="line">stu2.setId(<span class="number">1</span>);</div><div class="line">stu2.setUsername(<span class="string">"xiaowang"</span>);</div><div class="line">System.out.println(stu.equals(stu2));</div><div class="line"><span class="comment">// 输出false</span></div></pre></td></tr></table></figure> 
+<p>我们实际用的时候，往往不是希望比较两个对象的物理地址是不是一样，而比较两个对象的属性等东西是不是一样，所以Object提供的方法往往不能满足我们要求。<br><strong><em>这就需要我们覆盖Object的equals方法。</em></strong></p>
+<pre><code>如果要覆盖Object的equals的方法，一定要满足以下几个等价关系：
+</code></pre><ol>
+<li>自反性，对于任何非null的引用值x，x.equals(x)必须反回true</li>
+<li>对称性，对于任何非null的引用值x，y,当且仅当y.equals(x)返回true时，x.equals(y),才返回true.</li>
+<li>传递性，对于任何非null的引用值x，y，z，如果x.equals(y)返回true，并且y.equals(z)返回ture，那<br> 么x.equals(z)也必须返回true.</li>
+<li>一致性，对于任何非null的引用值x，y，只要equals比较操作的两个对象中所用的信息没有被修改，多次<br> 调用x.equals(y)就会一致的返回true,或者一致的返回false.<br>5.对于任何的非null的值x,x.equals(null),必须返回false .</li>
+</ol>
+<p>在Student类里面重写了父类的equals方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == obj)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">if</span> (obj == <span class="keyword">null</span>)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> Student))</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    Student other = (Student) obj;</div><div class="line">    <span class="keyword">if</span> (id != other.id)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">if</span> (username == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (other.username != <span class="keyword">null</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!username.equals(other.username))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//在来执行上面的代码，输出结果为：true</span></div></pre></td></tr></table></figure>   
+<h2 id="HashSet和HashMap"><a href="#HashSet和HashMap" class="headerlink" title="HashSet和HashMap"></a>HashSet和HashMap</h2><h3 id="HashMap的工作原理"><a href="#HashMap的工作原理" class="headerlink" title="HashMap的工作原理"></a>HashMap的工作原理</h3><p><strong><em>equals：</em></strong>是否同一个对象实例。注意，是“实例”。比如String s = new String(“test”);  s.equals(s), 这就是同一个对象实例的比较；<br><strong><em>等号(==)：</em></strong>对比对象实例的内存地址（也即对象实例的ID），来判断是否是同一对象实例；又可以说是判断对象实例是否物理相等；<br><strong><em>Hashcode：</em></strong>我觉得可以这样理解：并不是对象的内存地址，而是利用hash算法，对对象实例的一种描述符（或者说对象存储位置的hash算法映射）——对象实例的哈希码。</p>
+<p>HashMap的数据结构是基于数组和链表的。（以数组存储元素，如有hash相同的元素，在数组结构中，创建链表结构，再把hash相同的元素放到链表的下一个节点）.</p>
+<p>hashMap的结构类似这样  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">元素<span class="number">0</span>--&gt;[hashCode=<span class="number">0</span>, key.value=x1的数据]</div><div class="line">元素<span class="number">1</span>--&gt;[hashCode=<span class="number">1</span>, key.value=y1的数据]</div><div class="line">......</div><div class="line">元素n--&gt;[hashCode=n, key.value=z1的数据]</div></pre></td></tr></table></figure>   
+<p>假设没有hashCode=1的元素加入，但是有两个hashCode=0的数据，它的结构就变成这样  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">元素<span class="number">0</span>--&gt;[hashCode=<span class="number">0</span>, key.value=x1的数据].next--&gt;[hashCode=<span class="number">0</span>,   key.value=x2的数据]</div><div class="line">元素<span class="number">1</span>--&gt;[<span class="keyword">null</span>]</div><div class="line">......</div><div class="line">元素n--&gt;[hashCode=n, key.value=z1的数据]</div></pre></td></tr></table></figure> 
+<p>put和get都首先会调用hashcode方法，去查找相关的key，当有冲突时，再调用equals（这也是为什么刚开始就重温hashcode和equals的原因）！</p>
+<p>HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链表的下一个节点中。 HashMap在每个链表节点中储存键值对对象。</p>
+<h3 id="HashSet排除重复原理"><a href="#HashSet排除重复原理" class="headerlink" title="HashSet排除重复原理"></a>HashSet排除重复原理</h3><p>Java中的set是一个不包含重复元素的集合，确切地说，是不包含e1.equals(e2)的元素对。Set中允许添加null。Set不能保证集合里元素的顺序。<br>在往set中添加元素时，如果指定元素不存在，则添加成功。也就是说，如果set中不存在(e\==null ? e1\==null : e.queals(e1))的元素e1,则e1能添加到set中。</p>
+<p>下面以set的一个实现类HashSet为例，简单介绍一下set不重复实现的原理：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lovo.test;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomString</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String value;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashSetTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        String a = <span class="keyword">new</span> String(<span class="string">"A"</span>);</div><div class="line">        String b = <span class="keyword">new</span> String(<span class="string">"A"</span>);</div><div class="line">        </div><div class="line">        CustomString c = <span class="keyword">new</span> CustomString(<span class="string">"B"</span>);</div><div class="line">        CustomString d = <span class="keyword">new</span> CustomString(<span class="string">"B"</span>);</div><div class="line">        System.out.println(<span class="string">"a.equals(b) == "</span> + a.equals(b));</div><div class="line">        System.out.println(<span class="string">"c.equals(d) == "</span> + c.equals(d));</div><div class="line">        </div><div class="line">        Set&lt;Object&gt; set = <span class="keyword">new</span> HashSet&lt;Object&gt;();</div><div class="line">        set.add(a);</div><div class="line">        set.add(b);</div><div class="line">        set.add(c);</div><div class="line">        set.add(d);</div><div class="line">        </div><div class="line">        System.out.println(<span class="string">"set.size() == "</span> + set.size());</div><div class="line">        <span class="keyword">for</span> (Object object : set) &#123;</div><div class="line">            System.out.println(object);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">运行结果如下：  </div><div class="line">a.equals(b) == true  </div><div class="line">c.equals(d) == false  </div><div class="line">set.size() == 3  </div><div class="line">com.darren.test.overide.CustomString@2c39d2  </div><div class="line">A  </div><div class="line">com.darren.test.overide.CustomString@5795ce</div><div class="line">*/ 	</div></pre></td></tr></table></figure>   
+<p>通过结果来分析，我们看到a和b返回true那是因为String类重写了equals方法，但是打印集合里面的数据，却只输出了一个A,c和d都输出了。那我们就要思考，难道set集合排除重复跟equals方法有关吗？，接下来继续进行测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomString</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String value;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> CustomString) &#123;</div><div class="line">            CustomString customString = (CustomString) obj;</div><div class="line">            <span class="keyword">return</span> customString.value.equals(value);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">测试结果：  </div><div class="line">a.equals(b) == true  </div><div class="line">c.equals(d) == true  </div><div class="line">set.size() == 3  </div><div class="line">com.darren.test.overide.CustomString@12504e0  </div><div class="line">A  </div><div class="line">com.darren.test.overide.CustomString@1630eb6</div><div class="line">*/  </div></pre></td></tr></table></figure>
+<p>这次的equals返回值都为true，但是set的size还是3。<br>通过这个结果我们可以看出，重写了equals方法可以判断两个对象的值相等。所以第二个判断输出了true，但是并没有影响set集合里面的数据。<br>继续修改代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomString</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String value;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// return super.hashCode();</span></div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">a.equals(b) == true  </div><div class="line">c.equals(d) == false  </div><div class="line">set.size() == 3  </div><div class="line">com.darren.test.overide.CustomString@1  </div><div class="line">com.darren.test.overide.CustomString@1  </div><div class="line">A</div><div class="line">*/</div></pre></td></tr></table></figure><br>如果只重写hashcode方法，set集合里面的数据还是没有变化。</p>
+<p>继续来测试：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomString</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String value;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomString</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == obj) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> CustomString) &#123;</div><div class="line">            CustomString customString = (CustomString) obj;</div><div class="line">            <span class="keyword">return</span> customString.value.equals(value);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// return super.hashCode();</span></div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line">最后结果：  </div><div class="line">a.equals(b) == true  </div><div class="line">c.equals(d) == true  </div><div class="line">set.size() == 2  </div><div class="line">com.darren.test.overide.CustomString@1</div><div class="line">A</div><div class="line">*/</div></pre></td></tr></table></figure><br>现在我们获取到的集合长度为2，已经将重复的数据进行排除了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/22/20170722/" rel="next" title="Lock接口,比Synchronized更强大的锁">
+                <i class="fa fa-chevron-left"></i> Lock接口,比Synchronized更强大的锁
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/16/20170716/" rel="prev" title="JAVA中常见的排序算法有哪些？---选择排序">
+                JAVA中常见的排序算法有哪些？---选择排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xiaojichao.com" title="网络埋伏纪事" target="_blank">网络埋伏纪事</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hyktech.github.io" title="把酒临江" target="_blank">把酒临江</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://asbdk.com" title="白德柯的微博" target="_blank">白德柯的微博</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yuannima.com" title="袁的技术空间" target="_blank">袁的技术空间</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#到底什么是hash"><span class="nav-number">1.</span> <span class="nav-text">到底什么是hash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hash算法的概念"><span class="nav-number">1.1.</span> <span class="nav-text">hash算法的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash表"><span class="nav-number">1.2.</span> <span class="nav-text">hash表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash表的设计思想"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hash表的设计思想</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash函数"><span class="nav-number">1.3.</span> <span class="nav-text">hash函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的获取"><span class="nav-number">1.4.</span> <span class="nav-text">对象的获取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hashcode方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">hashcode方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals方法"><span class="nav-number">1.4.2.</span> <span class="nav-text">equals方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashSet和HashMap"><span class="nav-number">1.5.</span> <span class="nav-text">HashSet和HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap的工作原理"><span class="nav-number">1.5.1.</span> <span class="nav-text">HashMap的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet排除重复原理"><span class="nav-number">1.5.2.</span> <span class="nav-text">HashSet排除重复原理</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由  LOVO教育驱动
+</div>
+
+<div class="theme-info">
+  博客 - 
+  朗沃教育Java团队
+</div>
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
