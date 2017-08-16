@@ -1,0 +1,1159 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为随机数。接下来就给大家简单讲解下这个不确定的随机数。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有了随机数，生活总算有点变化了">
+<meta property="og:url" content="http://www.lovoedu.com/2017/08/12/20170812/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为随机数。接下来就给大家简单讲解下这个不确定的随机数。">
+<meta property="og:updated_time" content="2017-08-16T03:35:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有了随机数，生活总算有点变化了">
+<meta name="twitter:description" content="相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为随机数。接下来就给大家简单讲解下这个不确定的随机数。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/08/12/20170812/"/>
+
+
+
+
+
+  <title>有了随机数，生活总算有点变化了 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/08/12/20170812/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">有了随机数，生活总算有点变化了</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-12T00:00:00+08:00">
+                2017-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaOO/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaOO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+          	
+          
+          
+            <span id="busuanzi_container_page_pv">&nbsp;&nbsp;|&nbsp;&nbsp;阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+          
+
+
+
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。<br>但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？<br>答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为<strong>随机数</strong>。<br>接下来就给大家简单讲解下这个不确定的随机数。<br><a id="more"></a></p>
+<h1 id="什么是随机数？"><a href="#什么是随机数？" class="headerlink" title="什么是随机数？"></a>什么是随机数？</h1><p><strong>随机数</strong>：简单的说就是在程序运行中生成一个不能确定的值，而且每次生成的数都是不确定的，随机的。<br>比如说：在登录一些网站时，屏幕上显示的验证码就是一个随机数。每一次生成的验证码都是不确定的，随机的，这就是我们程序中的随机数。<br>当然，除了上述的随机数，游戏中的概率性技能都会有随机数的影子，同样，我们生活中也有很多随机数的例子。<br>如：买彩票。彩票对于我们每一个人都不算陌生，知道彩票的人都应该了解，每一期的彩票号码都是随机的，不确定的，这里的彩票号码就是一个随机数。<br>当然，除了彩票、验证码等这些例子，还有很多使用了随机数的例子，就不一一列举了。</p>
+<h1 id="在Java程序中产生一个随机数呢？"><a href="#在Java程序中产生一个随机数呢？" class="headerlink" title="在Java程序中产生一个随机数呢？"></a>在Java程序中产生一个随机数呢？</h1><p>在Java中，如果我们想要产生一个随机数，有两种方式：</p>
+<h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><p><strong>使用java.lang.Math类中的random()方法</strong><br>先给大家举个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">double</span> num = Math.random();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上述代码中，大家可以看到可以直接使用Math类来调用random()方法。<br>相信聪明的你已经发现了，我们并没有使用import关键字去导入什么Math类，原因是Math类在java.lang包中默认会导入。</p>
+<p>其次，我们是使用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Math.random();</div></pre></td></tr></table></figure><br>的方式来得到一个double类型的数据，也就是说<strong>random()方法是静态方法</strong>，无需使用Math类的对象调用，并且该方法返回的是一个double类型的数据，当然，输出num就可以得到一个<em>[0,1)的数字<strong>，而且</strong>每次运行的结果都是不确定的**。<br>当然，在这里有同学会问了：拿到这个[0,1)的数字有啥用，这个区间也太小了吧，那我要是想要一个更大范围的int数字怎么弄了？<br>下面给大家看看，我们如何去生成一个更大范围的int的随机数字：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> num = (<span class="keyword">int</span>)(Math.random()*<span class="number">50</span>)+<span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>既然我们可以得到一个[0,1)的数字，那我们就可以把这个数字进行处理，大家看看，上述的num的取值范围是多少啊？<br>答案是：[10,59]，相信这个问题难不倒大家，一个[0,1)的数字</em>50，区间变大为：[0,50)再强转为int类型得[0,49]，加上10，最终得到[10,59]，那么上述的num则可以得到[10,59]之间一个随机的整数。<br>当然，写法的不同会对产生的随机数造成不同的影响：<br>大家来看看下面的几种随机数的取值范围：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">10</span>) + <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> num2 = (<span class="keyword">int</span>)Math.random() * <span class="number">10</span> + <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> num3 = (<span class="keyword">int</span>)(Math.random() * <span class="number">10</span> + <span class="number">10</span>);</div></pre></td></tr></table></figure></p>
+<p>相信大家很快就可以找出这三段代码的不同，在执行中会发现，不管怎么运行，num2的值永远都为10，怎么回事呢？<br>原因是，在num2产生随机数的过程中，是将[0,1)先强转为int类型，这下就尴尬了，不管是什么0.1还是0.999…，只要一强转，统统的都转为了0，然后*10，也为0，再加上10，结果永远都为10了。</p>
+<p>所以请同学们一定要<strong>注意</strong>：在使用Math生成随机数的过程中如果需要强转为其它类型，一定要注意是应该先强转，还是后强转，一定要想清楚再写，不然会出现上述的问题。</p>
+<p>而生成num1和num3的这两种写法都是一样的，区别在于：<br>num1:先得到double类型的[0,1)→再<em>10得[0,10)→再强转为int类型的[0,9]→再+10→得[10,19]；<br>num2:先得出double类型的[0,1)→再</em>10得[0,10)→再+10→得[10,20),再强转为int类型[10,19];<br>上面给大家讲解了如何获得一个随机数。</p>
+<h3 id="那我们如何获得一个指定区间的随机数呢？"><a href="#那我们如何获得一个指定区间的随机数呢？" class="headerlink" title="那我们如何获得一个指定区间的随机数呢？"></a>那我们如何获得一个指定区间的随机数呢？</h3><p>在上面的讲解中，相信同学们都可以按照代码算出其区间，那如果要写出能产生指定区间的随机数，那我们该如何书写呢？<br>其实并不难，不知道同学们在刚刚的代码中有没有发现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">10</span>) + <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码中，我们可以按照代码的执行过程来描述出：<br>num1:先得到double类型的[0,1)→再<em>10得[0,10)→再强转为int类型的[0,9]→再+10→得[10,19]；<br>那如果我们有一个区间[3,15]，那我们能不能反过来求出该随机数的代码呢？<br>目标很明确，根据区间[3,15]来逆推出代码，也就是完成(int)(Math.random()</em>A)+B;中A，B的值<br>不难发现，强转为int类型的[0,9]→再+10→得[10,19]</p>
+<p>那开始进行反推：<br>(1)第一步：[3,15]如何得到起始位0的区间[0,?),其中?是需要求出来的数，那简单了，同时-3不就好了→-3得[0,12]，而B就应该是3<br>(2)第二步：得出强转为int型之前的区间–由[0,10)→再强转为int类型的[0,9]→得知强转前的区间为[0,13);<br>(3)第三步：由[0,13)来找出[0,1)乘了多少→*13，而A就应该是13<br>(4)第四步：还原代码为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">13</span>) + <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
+<p>不知道你是否理解了<br>我们再来一个例题：计算得出区间为[-3,10]的代码<br>(1)同上面的步骤一样，先得把区间变为[0,?]→得[0,13]，+3(注意：这里加了3，反过来应该-3)–B：-3；<br>(2)变成强转前的样子→[0,14)<br>(3)算出乘了多少→*15–A：15<br>(4)第四步：还原代码为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">15</span>) - <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
+<p>从上述代码中不难找到区间与代码中的关系<br>(1)区间的起始值和B一致，包括正负号<br>(2)区间的(末值-起始值+1)的结果等于A的值<br>验算一次：求出随机数范围为[6-21]的区间<br>OK，按照推出的结论：B：6，A：(21 - 6 + 1) = 16;</p>
+<p>最终结果为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//求取[6-21]区间的随机数</span></div><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">16</span>) + <span class="number">6</span>;</div></pre></td></tr></table></figure></p>
+<p>怎么样，简单吧！<br>上面已经给大家讲解了第一种随机数的产生方式与求得指定区间随机数的算法。<br>接下来给大家介绍第二种产生随机数和生成指定区间的方式。</p>
+<h2 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h2><p><strong>使用java.util.Random类中的方法</strong><br>在Random类中也有相应的产生随机数方法，并且，在Random类中，可以产生不同类型的随机数。<br>代码演示如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Random ran = <span class="keyword">new</span> Random();</div><div class="line">ran.nextBoolean();</div><div class="line">ran.nextDouble();</div><div class="line">ran.nextInt();</div></pre></td></tr></table></figure></p>
+<p><strong>注意事项一：</strong>由于Random类并不是java.lang包中的类，所以需要使用import关键字来导入java.util.Random；<br><strong>注意事项二：</strong>从上述代码中，同学们可以了解到，在Random类中想要得到一个随机数，需要先创建Random类的一个对象，然后再通过对象来调用产生随机数的方法，当然这点比Math类要麻烦一点。<br><strong>注意事项三：</strong>虽然Random类在使用上要比Math类麻烦一点点，但是Random类不仅可以创建整型的随机数，还可以创建实型、布尔型等等类型的随机数，所以在不同的应用领域上，Math和Random有着不同的使用优点。</p>
+<p>这里我们只拿整型的来举例，如果同学们感兴趣，可以在网上自行查阅。<br>如果我们要生成一个简单的[1,10]的随机数，则：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Random ran = <span class="keyword">new</span> Random();</div><div class="line">        <span class="keyword">int</span> num = ran.nextInt(<span class="number">10</span>)+<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从上述代码中看到：使用Random类，需要先创建Random类对象然后再调用nextInt()方法。<br>不过和Math不同的是：nextInt()可以传入一个数字，而这个数字相当于*10的意思。<br>也就是说，下列效果是相等的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num = ran.nextInt(<span class="number">10</span>) + <span class="number">1</span>;</div><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>) (Math.random() * <span class="number">10</span>) + <span class="number">1</span>;</div></pre></td></tr></table></figure></p>
+<p>同样，我们也可以按照Math的推导方式，推导出Random中生成指定区间的随机数的代码格式：<br>例：求出指定范围[17-32]的代码<br>int num = ran.nextInt(A) + B;<br>B：17，A：（32-17+1）= 16；</p>
+<p>所以Math和Random在生成指定范围随机的代码上有很多相似之处。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>生成随机数的方式：1.使用Math类中的random方法；2.使用Random类中不同的next…()方法<br>相似之处：两种方法要得到指定区间的随机数的算法都是一样的。<br>不同之处：</p>
+<ol>
+<li>Math类是java.lang包中的类，不需要使用import关键字导入，而Random是java.util包中的，需要导入；</li>
+<li>Math类中的random()方法是静态方法，可以直接使用类名.的方式来调用，而Random类则需要先创建对象，再使用对象.的方式调用产生不同数据类型的next…()方法。</li>
+</ol>
+<p>至此，希望同学们对在Java程序中如何产生随机数和如何产生指定区间的随机数的方法有所了解。<br>当然，当同学们想再进一步去探寻随机数的原理时会发现一个问题–程序中的随机数并不是真正意义上的随机数！！！<br>这是怎么一回事呢？<br>下面将继续给大家讲解随机数的相关内容。</p>
+<h2 id="Java中，我们所看到的随机数是假的？"><a href="#Java中，我们所看到的随机数是假的？" class="headerlink" title="Java中，我们所看到的随机数是假的？"></a>Java中，我们所看到的随机数是假的？</h2><p>随机数怎么还会是假的呢？<br>原来随机数也分为两种：真随机数和伪随机数。<br>那什么是真随机数，什么是伪随机数呢？<br><strong>真随机数</strong>是：在某次产生过程中是按照实验过程中表现的分布概率随机产生的，其结果是不可预测的，是不可见的。<br><strong>伪随机数</strong>是：在计算机中的随机数是按照一定算法模拟产生的，其结果是确定的，是可见的。<br>我们可以这样认为这个可预见的结果其出现的概率是100%。所以用计算机随机函数所产生的<strong>随机数</strong>并不随机，是<strong>伪随机数</strong>。<br><strong>伪随机数</strong>看似随机实质是固定的周期性序列,也就是有规则的随机，其由确定算法生成的，通过不断算法优化,使随机数更接近真随机数；<br>请注意一点：通过真实随机事件取得的随机数才是真随机数。</p>
+<p>而Java随机数产生原理，是通过线性同余公式产生的,也就是说通过一个复杂的算法生成的–生成的是<strong>伪随机数</strong>。<br>那伪随机数在程序中使用会有什么问题吗？<br>Java自带的随机数函数是很容易被黑客破解的,因为黑客可以通过获取一定长度的随机数序列来推出你的种子,然后就可以预测下一个随机数。<br>这个种子有什么作用呢？<br>种子就是产生随机数的第一次使用值，相同的种子会产生出相同的随机数。</p>
+<p>不用种子的不随机性会增大的原因：<br>在Java中，Math.random()这个方法实际是在内部调用java.util.Random()的，并且使用一个和当前系统时间有关的数字作为种子数。两个随机数就很可能相同。</p>
+<p>当然如果我们想去设置这个种子，可以让Random类的对象去调用setSeed(int long)方法，并传入一个long型的数字，不管什么时候产生随机数，这些随机数的值都相等。</p>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Random rand = <span class="keyword">new</span> Random();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            rand.setSeed(<span class="number">100</span>);</div><div class="line">            System.out.println(rand.nextInt(<span class="number">100</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码中生成的随机数根据在setSeed()中传入同一个值时，会得到相同的数值。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li><p>我们可以通过两个类：Math类和Random类的方法来得到随机数。</p>
+</li>
+<li><p>在得到随机数的基础上，我们还可以通过其推导过程来写出得到指定区间的随机数的代码。</p>
+</li>
+<li><p>在生成随机数是，如果我们使用同一个种子,不管生成多少个随机数,当你设定种子的时候,这些随机数是什么已经确定。相同次数生成的随机数字是完全相同的。</p>
+</li>
+<li><p>尽管我们可以通过不同的两个类的方法来生成随机数，但实际上，Java的随机数都是通过算法实现的,Math.random()本质上属于Random()类。</p>
+</li>
+<li><p>在Java中Math类可以直接通过random()方法得到一个double类型的随机数，而使用Random类中的不同方法，可以得到不同类型的随机数，相对来说Random类使用起来比较灵活一些。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/15/20170815/" rel="next" title="SQL注入攻击，吓死宝宝了">
+                <i class="fa fa-chevron-left"></i> SQL注入攻击，吓死宝宝了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/09/20170809/" rel="prev" title="5分钟搞定数据类型和变量的关系">
+                5分钟搞定数据类型和变量的关系 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xiaojichao.com" title="网络埋伏纪事" target="_blank">网络埋伏纪事</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hyktech.github.io" title="把酒临江" target="_blank">把酒临江</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://asbdk.com" title="白德柯的微博" target="_blank">白德柯的微博</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yuannima.com" title="袁的技术空间" target="_blank">袁的技术空间</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是随机数？"><span class="nav-number">1.</span> <span class="nav-text">什么是随机数？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Java程序中产生一个随机数呢？"><span class="nav-number">2.</span> <span class="nav-text">在Java程序中产生一个随机数呢？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一"><span class="nav-number">2.1.</span> <span class="nav-text">方式一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#那我们如何获得一个指定区间的随机数呢？"><span class="nav-number">2.1.1.</span> <span class="nav-text">那我们如何获得一个指定区间的随机数呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二"><span class="nav-number">2.2.</span> <span class="nav-text">方式二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中，我们所看到的随机数是假的？"><span class="nav-number">2.4.</span> <span class="nav-text">Java中，我们所看到的随机数是假的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由  LOVO教育驱动
+</div>
+
+<div class="theme-info">
+  博客 - 
+  朗沃教育Java团队
+</div>
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
