@@ -1,0 +1,1177 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="作为程序猿，要想熟练操纵电脑使其为我们工作，那么久必须学会一些常用的DOS命令。我们现在使用的系统开发环境大多是采用的Windows系列操作系统，其实是构建在DOS内核的基础上的。因此，掌握一些DOS命令的用法，可以大大方便我们日常的维护工作，那么有哪些DOS命令是需要我们做为程序猿要掌握的呢？">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="撩妹？你就得知道的几个DOS命令。">
+<meta property="og:url" content="http://www.lovoedu.com/2017/08/18/20170818/index.html">
+<meta property="og:site_name" content="风清月朗沃野千里">
+<meta property="og:description" content="作为程序猿，要想熟练操纵电脑使其为我们工作，那么久必须学会一些常用的DOS命令。我们现在使用的系统开发环境大多是采用的Windows系列操作系统，其实是构建在DOS内核的基础上的。因此，掌握一些DOS命令的用法，可以大大方便我们日常的维护工作，那么有哪些DOS命令是需要我们做为程序猿要掌握的呢？">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/1.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/2.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/3.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/4.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/5.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/6.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/7.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/8.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/9.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/10.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/11.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/12.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/13.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/14.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/15.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/16.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/17.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/18.jpeg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170818/19.jpeg">
+<meta property="og:updated_time" content="2017-08-18T00:39:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="撩妹？你就得知道的几个DOS命令。">
+<meta name="twitter:description" content="作为程序猿，要想熟练操纵电脑使其为我们工作，那么久必须学会一些常用的DOS命令。我们现在使用的系统开发环境大多是采用的Windows系列操作系统，其实是构建在DOS内核的基础上的。因此，掌握一些DOS命令的用法，可以大大方便我们日常的维护工作，那么有哪些DOS命令是需要我们做为程序猿要掌握的呢？">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170818/1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lovoedu.com/2017/08/18/20170818/"/>
+
+
+
+
+
+  <title>撩妹？你就得知道的几个DOS命令。 | 风清月朗沃野千里</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">风清月朗沃野千里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">java专题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/08/18/20170818/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朗沃java团队">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/JAVA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风清月朗沃野千里">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">撩妹？你就得知道的几个DOS命令。</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T21:02:00+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机常识/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机常识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+          	
+          
+          
+            <span id="busuanzi_container_page_pv">&nbsp;&nbsp;|&nbsp;&nbsp;阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+          
+
+
+
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作为程序猿，要想熟练操纵电脑使其为我们工作，那么久必须学会一些常用的DOS命令。我们现在使用的系统开发环境大多是采用的Windows系列操作系统，其实是构建在DOS内核的基础上的。因此，掌握一些DOS命令的用法，可以大大方便我们日常的维护工作，那么有哪些DOS命令是需要我们做为程序猿要掌握的呢？<br><a id="more"></a><br><strong>DOS命令扩展知识</strong><br>通俗地讲，DOS命令其实就是一系列的英文组成的命令行，在键盘上输入了这些命令行后，电脑会执行一定的操作。</p>
+<p>1、dir命令 </p>
+<p>功能：Dir命令主要是用来显示一个目录下的文件和子目录<br>格式：Dir ｛路径｝ ｛参数｝<br>参数详解：Dir命令可以显示一个目录下的文件和子目录。Dir命令可以直接使用，不需要加任何参数。<br>在当前的路径下使用Dir命令查看时，显示的是当前路径下的所有文件和所有子目录。同时，Dir也可以与通配符结合使用。<br>/p：分页显示，显示信息满一屏时，暂停显示，按任意键后显示下一屏<br>/w：宽行显示，只显示文件名目录名，每行五个文件名。<br>/ah：显示隐含属性的文件，使用此参数会当前路径下的所有隐含文件</p>
+<p>具体应用：<br>①我们当前在C:>提示符下，如果我们要查看C盘Windows目录下的文件与子目录，可以直接在提示符下执行dir c:\windows就可以了。注意，dir命令与C:>之间有空格存在。<br>②我们要查看C盘目录下扩展名为txt的所有文件，格式为：dir *.txt<br>③我们要查看D盘System目录下的文件和子目录，在C:>提示符下的正确格式为：dir d:\system</p>
+<p>说明：<br>①由于我们的硬盘存在多个分区，我们可以直接在提示符下键入X：后回车，这样我们就切换到另外一个硬盘分区了，其中X代表硬盘分区的符号。<br>②dir命令的参数，可以多个同时使用。多个参数同时使用时，每个参数之间，用空格隔开就可以了。<br>2、cd 命令  </p>
+<p>在学习Cd命令前，我们要先了解什么是根目录和子目录。随着硬盘容量的增大，我们对硬盘一般都划分了多个逻辑分区。从第一个硬盘分区开始分配盘符，依次为C、D等。这样，我们就有了C:>或D:>这样的提示符，这提示符下的路径，称为根目录。在根目录下，建立的目录为一级子目录，如果我们在一级子目录下建立了一个目录，则称之为二级子目录，以此类推。  </p>
+<p>小技巧：我们可以通过看提示符，查看自己处在几级目录下，如果我们的提示符是这样的C:\Windows\system32&gt;，则证明我们在二级子目录System32  功能：改变系统当前路径或工作目录  </p>
+<p>格式：cd 目录名<br>  参数详解：对于Cd命令来说，有两个格式，一个是cd..（Cd后面两个点），另外一个是Cd\。在DOS命令中，执行Cd..的功能是返回上一级子目录；而Cd\的功能是无论在哪一级子目录下，使用此命令可以直接返回根目录。  </p>
+<p>具体应用：<br>①进入目录：我们在C:>提示符下，如果要进入C盘的Windows目录，可以直接输入cd空格Windows回车就可以了。<br>②进入多级了目录：我们在C:>提示符下，如果要进入C盘的Windows目录下的二级子目录Command，可以有两种方法。一种方法是：先执行cd空格Windows，然后在C:\Windows&gt;下执行Cd空格Command；另外一种方法是，直接执行Cd\Windows\Command就可以了。  </p>
+<p>小技巧：在DOS系统中，如果对哪一命令的参数不明白的话，可以使用？查找帮助。如果我们对Cd命令的参数不了解，可以输入Cd /?查看该命令的所有参数。  </p>
+<p>在DOS命令中，Dir和Cd是我们使用频率最高的两个命令。结合Dir和Cd命令，我们可以查出磁盘中的可执行文件，这样我们就掌握了如何操作DOS系统了！<br>通过DOS命令，我们在磁盘内的建立文件、复制文件、移动文件等操作。本篇着重介绍使用DOS命令如何建立、复制、删除文件及目录。</p>
+<p>3、md 命令  </p>
+<p>功能：创建新的子目录</p>
+<p>格式：MD [盘符：][路径名][子目录名]</p>
+<p>具体应用：<br>①盘符：指定要建立子目录的磁盘驱动器字母，若省略，则为当前驱动器。<br>②路径名：要建立的子目录的上级目录名，若缺省则建在当前目录下。<br>③目录命名：这里在给新目录命名时，必须遵守文件命名的8.3制。目录名字也不能超过8个英文字母。</p>
+<p>注意：我们在使用MD命令时，盘符与路径名之间，一般用\来隔开。在DOS系统中，盘符与路径名之间用\隔开，参数与命令之间用/隔开，在使用中请注意区别。在DOS命令中，命令词与盘符之间，需要空格。</p>
+<p>使用特例：<br>我们如果要在D盘下建立一个名字为Network的子目录，在C:>提示符下的正确命令格式为：C:>md d:\network。如果我们是在D:>的提示符下，正确的命令格式为：md network。</p>
+<p>4、rd 命令</p>
+<p>功能：删除的空子目录</p>
+<p>格式：RD [盘符：][路径名][子目录名]</p>
+<p>使用说明：<br>①RD命令，只能删除空的子目录，也就是说，这个子目录下，不能有任何文件或子目录。<br>②RD命令不能删除根目录 </p>
+<p>使用特例：<br>我们如果要删除D盘下的System子目录，在C:>提示符下的正确命令格式为：C:>rd d:\system。如果我们是在D:>的提示符下进行操作，正确的命令格式为：D:>rd system。</p>
+<p>5、Del命令</p>
+<p>功能：删除指定的文件</p>
+<p>格式：Del [盘符：][路径名][子目录名][参数]</p>
+<p>使用说明：<br>①Del命令有一个参数/P，在使用了参数/P后，系统在删除前询问是否真的要删除该文件，按Y删除，按N不删除。若不使用这个参数，系统会自动删除文件。<br>②该命令不能删除属性为隐含或只读的文件，一个文件具备上述任何一种属性，使用Del命令都无法删除。<br>③在Del命令中，可以使用任何文件通配符。<br>④如要使用Del <em>.</em>或Del .命令删除磁盘上的所有文件时，系统会给会提示：Are you sure？若点Y，则开始进行删除操作；若回答N，则取消此次删除操作。</p>
+<p>使用特例：<br>我们如果要删除D盘System目录下的readme.txt文件，在C:>提示符下的正确格式为：C:>del d:\system\readme.txt。<br>我们如果要删除D盘System目录下的所有扩展名为txt的文件，在C:>提示符下的正确格式为：C:>del d:\system*.txt。</p>
+<p>6、Copy 命令</p>
+<p>功能：复制一个或多个文件到磁盘的指定位置</p>
+<p>格式：COPY [源盘][路径]〈源文件名〉[目标盘][路径][目标文件名]</p>
+<p>使用说明：<br>①COPY是文件对文件的数据复制模式，复制前必须保证目标盘有足够的空间。如果目标盘空间不足，系统会给出提示并中止操作。<br>②复制过程中，目标盘上相同文件名称的旧文件会被源文件取代。<br>③Copy命令在使用时，文件名中允许使用通配符，而且一次可以同时复制多个文件。<br>④Copy命令中源文件名必须指出，不可以省略，目标文件名如果与源文件名要保持一致的话，目标文件名可以省略。<br>⑤使用Copy命令复制文件时，目标文件名也可以与源文件名不相同，这样的复制称为“更名拷贝”。操作时，直接把要更改的文件名写到目标文件名的位置中。注意，更名拷贝不支持多个文件同时操作。<br>⑥在Copy命令格式中，Copy与源文件名之间、源文件名与目标盘之间有空格，操作时请务必注意。</p>
+<p>Copy的特殊功能：<br>①合并文件：使用Copy命令，可以将几个文件合并为一个文件，具体的格式为：格式如下：COPY [源盘][路径]〈源文件名1〉〈源文件名2〉…[目标盘][路径]〈目标文件名〉。在使用Copy命令合并文件命令，并不保证所有合并后的文件可以正常使用，因为有一部分文件是不能合并的。<br>②建立文件：我们可以使用Copy命令，建立一个文件。原理就是我们将在屏幕上输入的数据，存储为一个文件。格式为：Copy con [源盘][路径] 〈新建文件名〉，在屏幕上输入数据后，按F6或者Ctrl+Z存盘即可。<br>说明：在DOS操作系统中，Con指屏幕，Prn指打印机。<br>③打印文件：我们可以使用Copy命令，将一个文件的内容打印出来。格式为：Copy [源盘][路径] 〈打印文件名〉 prn。注意，如果使用此命令打印非文本类的文件，打印机打印出来的将会是乱码。</p>
+<p>使用特例：<br>①文件复制：<br>我们如果要将F盘下Win98目录下的所有文件，复制到D盘System目录下的Win98子目录下，在C:>提示符下的正确格式为：C:>copy f:\win98*.<em> d:\system\win98\</em>.*。<br>②更名拷贝：<br>我们如果要将E盘下Bak目录下的Serial.no文件复制到D盘System目录下，并更名为sn.txt，在C:>提示符下的正确格式为：C:>copy e:\bak\serial.no d:\system\sn.txt</p>
+<p>7、Ren命令</p>
+<p>功能：更改文件或目录的名字</p>
+<p>格式：REN[盘符：][路径]〈旧文件名〉〈新文件名〉</p>
+<p>使用说明：<br>①Ren文件更名命令，允许使用通配符更改一组文件名或扩展名。<br>②Ren更名命令，在Windows 95以上的DOS版本中，可以对目录进行更名操作，其他低版本的DOS命令只能对文件进行更名。<br>③使用Ren对文件进行更名时，可以同时更改文件基本名和扩展名，也可以单独更改文件基本名或扩展名。</p>
+<p>使用特例：<br>我们要将E盘System下的lan.doc更名为network.txt，在C:>提示符下正确的命令格式为：C:>ren e:\system\lan.doc network.txt。</p>
+<p>8、Move文件移动命令</p>
+<p>功能：移动系统中的文件</p>
+<p>格式：Move [源文件路径][源文件名] [目标文件路径] [目标文件名]</p>
+<p>使用说明：<br>①Move命令在使用时，支持文件通配符。对于Windows 95及以上版本的DOS中，Move不但可以移动文件，也可以移动目录。<br>②使用Move命令移动文件时，源文件名与目标文件名，可以相同，也可以不同。<br>③使用Move命令移动文件后，源文件就不存在了。</p>
+<p>使用特例：<br>我们可以将D盘Web目录下的所有EXE文件，移动到C盘Windows目录下的Command目录下，正确的格式为：C:>move d:\web*.exe c:\windows\command</p>
+<p>9、Xcopy文件复制命令</p>
+<p>功能：文件复制命令，与Copy命令不同的是，Xcopy可以复制目录及目录下的子目录和所有文件</p>
+<p>格式：Xcopy [源文件路径][源文件名] [目标文件路径] [目标文件名] [参数]</p>
+<p>使用说明：<br>①/s参数指在使用Xcopy命令复制目录时，此目录下的子目录包括空子目录也一块复制。<br>②使用Xcopy命令复制目录时，命令会自动在目标处建立目录名。<br>③Xcopy命令也支持文件通配符，一次可以复制多个文件。Xcopy命令的其他用法，与Copy命令相同。</p>
+<p>使用特例：<br>我们把F盘System目录下的所有文件和子目录，全部复制到D盘的jiaweb目录下，正确的格式为：C:>xcopy f:\system*.<em> d:\jiaweb\system\</em>.* /s。</p>
+<p>10、Deltree删除命令</p>
+<p>功能：删除目录和文件</p>
+<p>格式：Deltree [盘符：][路径名][子目录名][参数]</p>
+<p>使用说明：<br>①Deltree命令可以删除文件、目录，而且Deltree命令可以删除非空子目录。如果一个子目录中，即有大量的文件，还有大量的二级子目录，使用Deltree命令就可以删除这一个子目录。<br>②/y参数是表示在使用Deltree命令删除文件或目录时，不出现是否确认删除的提示对话框。<br>③Deltree /y .表示删除所有的文件和目录，并且不出现是否确认删除的对话框。</p>
+<p>使用特例：由于此命令与Del命令的格式完全相同，因此不再详细说明用法。</p>
+<p>11、ping命令</p>
+<p>它是用来检查网络是否通畅或者网络连接速度的命令。作为一个生活在网络上的管理员或者黑客来说，ping命令是第一个必须掌握的DOS命令，它所利用的原理是这样的:网络上的机器都有唯一确定的IP地址，我们给目标IP地址发送一个数据包，对方就要返回一个同样大小的数据包，根据返回的数据包我们可以确定目标主机的存在，可以初步判断目标主机的操作系统等。下面就来看看它的一些常用的操作。先看看帮助吧，在DOS窗口中键入:ping /? 回车，出现如图1所示的帮助画面。在此，我们只掌握一些基本的很有用的参数就可以了(下同)。<br> <img src="/img/20170818/1.jpeg" width="656" height="351"><br>-t 表示将不间断向目标IP发送数据包，直到我们强迫其停止。试想，如果你使用100M的宽带接入，而目标IP是56K的小猫，那么要不了多久，目标IP就因为承受不了这么多的数据而掉线，呵呵，一次攻击就这么简单的实现了。<br>-l 定义发送数据包的大小，默认为32字节，我们利用它可以最大定义到65500字节。结合上面介绍的-t参数一起使用，会有更好的效果哦。<br>-n 定义向目标IP发送数据包的次数，默认为3次。如果网络速度比较慢，3次对我们来说也浪费了不少时间，因为现在我们的目的仅仅是判断目标IP是否存在，那么就定义为一次吧。<br>说明一下，如果-t 参数和 -n参数一起使用，ping命令就以放在后面的参数为标准，比如“ping IP -t -n 3”，虽然使用了-t参数，但并不是一直ping下去，而是只ping 3次。另外，ping命令不一定非得ping IP，也可以直接ping主机域名，这样就可以得到主机的IP。<br>下面我们举个例子来说明一下具体用法，如图2。这里time=2表示从发出数据包到接受到返回数据包所用的时间是2秒，从这里可以判断网络连接速度的大小 。从TTL的返回值可以初步判断被ping主机的操作系统，之所以说“初步判断”是因为这个值是可以修改的。这里TTL=32表示操作系统可能是win98。<br> <img src="/img/20170818/2.jpeg" width="656" height="351"><br>(小知识:如果TTL=128，则表示目标主机可能是Win2000;如果TTL=250，则目标主机可能是Unix)</p>
+<p>12、nbtstat命令</p>
+<p>该命令使用TCP/IP上的NetBIOS显示协议统计和当前TCP/IP连接，使用这个命令你可以得到远程主机的NETBIOS信息，比如用户名、所属的工作组、网卡的MAC地址等。在此我们就有必要了解几个基本的参数。<br>-a 使用这个参数，只要你知道了远程主机的机器名称，就可以得到它的NETBIOS信息。如图3。<br>-A 这个参数也可以得到远程主机的NETBIOS信息，但需要你知道它的IP。<br>-n 列出本地机器的NETBIOS信息。<br> <img src="/img/20170818/3.jpeg" width="592" height="446"><br>当得到了对方的IP或者机器名的时候，就可以使用nbtstat命令来进一步得到对方的信息了，这又增加了我们入侵的保险系数。</p>
+<p>13、netstat命令</p>
+<p>这是一个用来查看网络状态的命令，操作简便功能强大。<br>-a 查看本地机器的所有开放端口，可以有效发现和预防木马，可以知道机器所开的服务等信息，如图4，这里可以看出本地机器开放有FTP服务、Telnet服务、邮件服务、WEB服务等。用法:netstat -a IP。</p>
+ <img src="/img/20170818/4.jpeg" width="592" height="446"> 
+<p>-r 列出当前的路由信息，告诉我们本地机器的网关、子网掩码等信息。用法:netstat -r IP</p>
+<p>14、tracert命令</p>
+<p>跟踪路由信息，使用此命令可以查出数据从本地机器传输到目标主机所经过的所有途径，这对我们了解网络布局和结构很有帮助。如图5，这里说明数据从本地机器传输到192.168.0.1的机器上，中间没有经过任何中转，说明这两台机器是在同一段局域网内。用法:tracert IP。<br><img src="/img/20170818/5.jpeg" width="592" height="446"> </p>
+<p>15、net命令</p>
+<p>这个命令是网络命令中最重要的一个，必须透彻掌握它的每一个子命令的用法，因为它的功能实在是太强大了，这简直就是微软为我们提供的最好的入侵工具。首先让我们来看一看它都有那些子命令，键入net /?回车如图6。在这里，我们重点掌握几个入侵常用的子命令。 net view<br><img src="/img/20170818/6.jpeg" width="592" height="446"><br>使用此命令查看远程主机的所以共享资源。命令格式为net view \IP。如图7。<br><img src="/img/20170818/7.jpeg" width="592" height="446"><br>net use<br>把远程主机的某个共享资源影射为本地盘符，图形界面方便使用，呵呵。命令格式为net use x: \IP\sharename。上面一个表示把192.168.0.5IP的共享名为magic的目录影射为本地的Z盘。下面表示和192.168.0.7建立IPC$连接(net use \IP\IPC$ “password” /user:”name”)，如图8。建立了IPC$连接后，呵呵，就可以上传文件了:copy nc.exe \192.168.0.7\admin$，表示把本地目录下的nc.exe传到远程主机，结合后面要介绍到的其他DOS命令就可以实现入侵了。<br><img src="/img/20170818/8.jpeg" width="592" height="446"> </p>
+<p>net start<br>使用它来启动远程主机上的服务。当你和远程主机建立连接后，如果发现它的什么服务没有启动，而你又想利用此服务怎么办?就使用这个命令来启动吧。用法:net start servername，如图9，成功启动了telnet服务。<br><img src="/img/20170818/9.jpeg" width="592" height="446"> </p>
+<p>net stop<br>入侵后发现远程主机的某个服务碍手碍脚，怎么办?利用这个命令停掉就ok了，用法和net start同。<br>net user<br>查看和帐户有关的情况，包括新建帐户、删除帐户、查看特定帐户、激活帐户、帐户禁用等。这对我们入侵是很有利的，最重要的，它为我们克隆帐户提供了前提。键入不带参数的net user，可以查看所有用户，包括已经禁用的。下面分别讲解。<br><img src="/img/20170818/10.jpeg" width="592" height="446"><br>1，net user abcd 1234 /add，新建一个用户名为abcd，密码为1234的帐户，默认为user组成员。<br>2，net user abcd /del，将用户名为abcd的用户删除。<br>3，net user abcd，查看用户名为abcd的用户的情况，如图10。<br>4，net user abcd /active:no，将用户名为abcd的用户禁用。<br>5，net user abcd /active:yes，激活用户名为abcd的用户。<br>net localgroup<br>查看所有和用户组有关的信息和进行相关操作。键入不带参数的net localgroup即列出当前所有的用户组。在入侵过程中，我们一般利用它来把某个帐户提升为administrator组帐户，这样我们利用这个帐户就可以控制整个远程主机了。用法:net localgroup groupname username /add，如图11。 现在我们把刚才新建的用户abcd加到administrator组里去了，这时候abcd用户已经是超级管理员了，呵呵，你可以再使用net user abcd来查看他的状态，和图10进行比较就可以看出来。<br><img src="/img/20170818/11.jpeg" width="592" height="446"> </p>
+<p>net time<br>这个命令可以查看远程主机当前的时间。如果你的目标只是进入到远程主机里面，那么也许就用不到这个命令了。但简单的入侵成功了，难道只是看看吗?我们需要进一步渗透。这就连远程主机当前的时间都需要知道，因为利用时间和其他手段(后面会讲到)可以实现某个命令和程序的定时启动，为我们进一步入侵打好基础。用法:net time \IP。如图12。<br><img src="/img/20170818/12.jpeg" width="592" height="446"> </p>
+<p>16、at命令</p>
+<p>这个命令的作用是安排在特定日期或时间执行某个特定的命令和程序(知道net time的重要了吧?)。当我们知道了远程主机的当前时间，就可以利用此命令让其在以后的某个时间(比如2分钟后)执行某个程序和命令。用法:at time command \computer。如图13，表示在6点55分时，让名称为a-01的计算机开启telnet服务(这里net start telnet即为开启telnet服务的命令)。<br><img src="/img/20170818/13.jpeg" width="592" height="446"> </p>
+<p>17、ftp命令</p>
+<p>大家对这个命令应该比较熟悉了吧?网络上开放的ftp的主机很多，其中很大一部分是匿名的，也就是说任何人都可以登陆上去。现在如果你扫到了一台开放ftp服务的主机(一般都是开了21端口的机器)，如果你还不会使用ftp的命令怎么办?下面就给出基本的ftp命令使用方法。<br>首先在命令行键入ftp回车，出现ftp的提示符，这时候可以键入“help”来查看帮助(任何DOS命令都可以使用此方法查看其帮助)，如图14。大家可能看到了，这么多命令该怎么用?其实也用不到那么多，掌握几个基本的就够了。<br><img src="/img/20170818/14.jpeg" width="592" height="446"><br>首先是登陆过程，这就要用到open了，直接在ftp的提示符下输入“open 主机IP ftp端口”回车即可，一般端口默认都是21，可以不写。接着就是输入合法的用户名和密码进行登陆了，这里以匿名ftp为例介绍，如图15。用户名和密码都是ftp，密码是不显示的。当提示<em>**</em> logged in时，就说明登陆成功。这里因为是匿名登陆，所以用户显示为Anonymous。<br><img src="/img/20170818/15.jpeg" width="592" height="446"><br>接下来就要介绍具体命令的使用方法了，如图16:<br><img src="/img/20170818/16.jpeg" width="592" height="446"><br>dir 跟DOS命令一样，用于查看服务器的文件，直接敲上dir回车，就可以看到此ftp服务器上的文件。<br>cd 进入某个文件夹。<br>get 下载文件到本地机器。<br>put 上传文件到远程服务器。这就要看远程ftp服务器是否给了你可写的权限了，如果可以，呵呵，该怎么 利用就不多说了，大家就自由发挥去吧。<br>delete 删除远程ftp服务器上的文件。这也必须保证你有可写的权限。<br>bye 退出当前连接。<br>quit 同上。</p>
+<p>18、telnet命令</p>
+<p>功能强大的远程登陆命令，几乎所有的入侵者都喜欢用它，屡试不爽。为什么?它操作简单，如同使用自己的机器一样，只要你熟悉DOS命令，在成功以administrator身份连接了远程机器后，就可以用它来干你想干的一切了。下面介绍一下使用方法，首先键入telnet回车，再键入help查看其帮助信息，如图17。<br><img src="/img/20170818/17.jpeg" width="592" height="446"><br>然后在提示符下键入open IP回车，这时就出现了登陆窗口，让你输入合法的用户名和密码，这里输入任何密码都是不显示的，如图18。<br><img src="/img/20170818/18.jpeg" width="592" height="446"><br>当输入用户名和密码都正确后就成功建立了telnet连接，这时候你就在远程主机上具有了和此用户一样的权限，利用DOS命令就可以实现你想干的事情了，如图19。这里我使用的超级管理员权限登陆的。 到这里为止，网络DOS命令的介绍就告一段落了，这里介绍的目的只是给菜鸟网管一个印象，让其知道熟悉和掌握网络DOS命令的重要性。其实和网络有关的DOS命令还远不止这些，这里只是抛砖引玉，希望能对广大菜鸟网管有所帮助。学好DOS对当好网管有很大的帮助，特别的熟练掌握了一些网络的DOS命令。<br><img src="/img/20170818/19.jpeg" width="592" height="446"><br>另外大家应该清楚，任何人要想进入系统，必须得有一个合法的用户名和密码，哪怕你拿到帐户的只有一个很小的权限，你也可以利用它来达到最后的目的。所以坚决消灭空口令，给自己的帐户加上一个强壮的密码，是最好的防御弱口令入侵的方法。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/15/20170815/" rel="prev" title="SQL注入攻击，吓死宝宝了">
+                SQL注入攻击，吓死宝宝了 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/JAVA.jpg"
+               alt="朗沃java团队" />
+          <p class="site-author-name" itemprop="name">朗沃java团队</p>
+           
+              <p class="site-description motion-element" itemprop="description">知难行亦难，吾辈上下求索。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xiaojichao.com" title="网络埋伏纪事" target="_blank">网络埋伏纪事</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hyktech.github.io" title="把酒临江" target="_blank">把酒临江</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://asbdk.com" title="白德柯的微博" target="_blank">白德柯的微博</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yuannima.com" title="袁的技术空间" target="_blank">袁的技术空间</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朗沃java团队</span>
+</div>
+
+
+<div class="powered-by">
+  由  LOVO教育驱动
+</div>
+
+<div class="theme-info">
+  博客 - 
+  朗沃教育Java团队
+</div>
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp
+本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
