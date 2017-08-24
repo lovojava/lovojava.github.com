@@ -99,17 +99,24 @@
 
 
 
-<meta name="description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
+<meta name="description" content="我们知道在java中注释有三种，第一种，单行注释 //注释的内容，第二种，多行注释  /*…注释的内容…*/，第三种 文档注释 /**..注释的内容….*/。不难发现，第三种注释方式和第二种方式很相似，那它出现的目的是什么呢？就是为了便于javadoc程序自动生成文档。接下来咱们聊一聊这个文档注释⋯⋯">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型，你也可以自定义">
-<meta property="og:url" content="http://www.lovoedu.com/2017/07/10/20170710/index.html">
+<meta property="og:title" content="JavaDoc注释与帮助说明文档">
+<meta property="og:url" content="http://www.lovoedu.com/2017/08/24/20170824/index.html">
 <meta property="og:site_name" content="风清月朗沃野千里">
-<meta property="og:description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
-<meta property="og:updated_time" content="2017-07-17T02:54:08.000Z">
+<meta property="og:description" content="我们知道在java中注释有三种，第一种，单行注释 //注释的内容，第二种，多行注释  /*…注释的内容…*/，第三种 文档注释 /**..注释的内容….*/。不难发现，第三种注释方式和第二种方式很相似，那它出现的目的是什么呢？就是为了便于javadoc程序自动生成文档。接下来咱们聊一聊这个文档注释⋯⋯">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170824/01.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170824/02.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170824/03.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170824/04.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170824/05.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170824/06.jpg">
+<meta property="og:updated_time" content="2017-08-24T01:03:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型，你也可以自定义">
-<meta name="twitter:description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
+<meta name="twitter:title" content="JavaDoc注释与帮助说明文档">
+<meta name="twitter:description" content="我们知道在java中注释有三种，第一种，单行注释 //注释的内容，第二种，多行注释  /*…注释的内容…*/，第三种 文档注释 /**..注释的内容….*/。不难发现，第三种注释方式和第二种方式很相似，那它出现的目的是什么呢？就是为了便于javadoc程序自动生成文档。接下来咱们聊一聊这个文档注释⋯⋯">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170824/01.jpg">
 
 
 
@@ -137,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://www.lovoedu.com/2017/07/10/20170710/"/>
+  <link rel="canonical" href="http://www.lovoedu.com/2017/08/24/20170824/"/>
 
 
 
 
 
-  <title>泛型，你也可以自定义 | 风清月朗沃野千里</title>
+  <title>JavaDoc注释与帮助说明文档 | 风清月朗沃野千里</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +313,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/07/10/20170710/">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/08/24/20170824/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朗沃java团队">
@@ -323,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">泛型，你也可以自定义</h1>
+          <h1 class="post-title" itemprop="name headline">JavaDoc注释与帮助说明文档</h1>
         
 
         <div class="post-meta">
@@ -335,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T21:16:32+08:00">
-                2017-07-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T00:00:00+08:00">
+                2017-08-24
               </time>
             
 
@@ -400,53 +407,13 @@
       
 
       
-        <p>一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。<br><a id="more"></a></p>
-<h1 id="1、为什么要使用泛型？"><a href="#1、为什么要使用泛型？" class="headerlink" title="1、为什么要使用泛型？"></a>1、为什么要使用泛型？</h1><p>首先，我们来看一下ArrayList集合类的定义：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;</div><div class="line">	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以看到，ArrayList底层是使用数组实现的。而且，该数组是Object数组。这就意味着，在该数组中，我们可以存放任何类型的元素</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List list = <span class="keyword">new</span> ArrayList();</div><div class="line">list.add(<span class="string">"123"</span>);</div><div class="line">list.add(<span class="keyword">new</span> Integer(<span class="number">200</span>));</div><div class="line">list.add(<span class="keyword">new</span> JFrame());</div></pre></td></tr></table></figure>
-<p>元素存放进集合后，我们遍历数组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</div><div class="line">        Object obj = list.get(i);<span class="comment">//1</span></div><div class="line">        String str = (String)obj;<span class="comment">//2</span></div><div class="line">        System.out.println(name);<span class="comment">//3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行代码，在2处，会抛出java.lang.ClassCastException。这是类型转换异常。</p>
-<p>原因是，在1处，我们先取出集合元素，创建了Object变量obj。按照多态的概念，父类变量可以指向任何一个子类对象。而Object是所有类的父类，所以变量obj可以指向任何一个子类对象。所以，1处的代码实际是：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object obj = <span class="string">"123"</span>;</div><div class="line">Object obj = <span class="keyword">new</span> Integer(<span class="number">200</span>);</div><div class="line">Object obj = <span class="keyword">new</span> JFrame();</div></pre></td></tr></table></figure>
-<p>很明显，在2处，将obj类型强转为String类型时，对于第一个元素是可以的。第一个元素指向的是字符串对象。但第二个元素是Integer对象，第三个元素是JFrame对象。将这样两个对象强转为String类型，当然会转换失败。</p>
-<p>在以上代码中，存在的问题在于，ArrayList集合元素定义的是Object数组。该数组中可以存放任何类型的对象。所以，我们并不清楚集合元素，到底指向的是什么样的对象。所以，在使用集合元素时，会先进行类型转换，再调用方法。这时，如果不清楚集合中存放元素的类型，那么，就很容易抛出java.lang.ClassCastException类型转换异常。</p>
-<p>那么能不能规定，集合中只能存放什么类型的元素，从而在使用集合元素时，开发者可以清晰的知道集合元素的类型，因此避免这样的类型转换异常呢？泛型，可以解决这些问题。</p>
-<h1 id="2、什么是泛型？"><a href="#2、什么是泛型？" class="headerlink" title="2、什么是泛型？"></a>2、什么是泛型？</h1><p>泛型，大家可以理解为“参数化类型”。也就是，可以将一个类中的某些属性的数据类型、方法参数类型、返回类型，都以变量方式表示。在使用/调用时传入具体的类型。</p>
-<p>我们来看一下，集合中是如何规定集合元素类型的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt;</span>&#123;</div><div class="line">	……</div><div class="line">	<span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;……&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;……&#125;</div><div class="line">	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意这个E。这可以看做是参数化的类型，ArrayList中采用泛型化定义之后，<e>中的E表示类型形参，可以接收具体的类型实参，凡是出现E的地方，均表示相同的接受自外部的类型实参。换句话说，在定义ArrayList对象时，规定是什么类型，那么凡是引用类型变量E的地方，就是什么类型。</e></p>
-<p>例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义了E参数的类型为String</span></div><div class="line">ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();  </div><div class="line"><span class="comment">//添加元素时，add方法参数为E变量类型。由于定义list对象时，定义了类型为String，那么add方法形参变量类型就是String类型</span></div><div class="line">list.add(<span class="string">"abc"</span>);</div><div class="line"><span class="comment">//编译错误，定义list对象时，泛型为String，只能添加String对象</span></div><div class="line">list.add(<span class="keyword">new</span> JFrame());</div><div class="line"><span class="comment">//get方法返回的是E变量类型。由于定义list对象时，定义了类型为String，那么get方法返回的就是String类型</span></div><div class="line">String str = list.get(<span class="number">0</span>);  </div></pre></td></tr></table></figure>  
-<p>集合中解决类型转换异常的思路是：通过对象中泛型的定义，在添加元素时，规定只能添加某个类型的元素。如果添加其他类型的对象，那么编译错误。这样，取集合元素时，当然也只能取出同一类型的对象。这样就避免了类型转换异常。</p>
-<p>所以，从在加上泛型定义的集合中取出元素时，无需进行类型转换，直接可以定义泛型变量接收集合元素。同样的两个ArrayList集合，也可以通过不同泛型的定义，从而规定存放集合的元素类型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; slist = <span class="keyword">new</span> ArrayList&lt;String&gt;(); <span class="comment">//只能存放String对象 </span></div><div class="line">ArrayList&lt;Integer&gt; ilist = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();<span class="comment">//只能存放Integer对象</span></div></pre></td></tr></table></figure> 
-<p>我们也可以给一个类或一个接口，定义多个泛型参数。</p>
-<p>例如，Map集合定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</div><div class="line">	<span class="function">V <span class="title">put</span><span class="params">(K key, V value)</span></span>;</div><div class="line">	<span class="function">V <span class="title">get</span><span class="params">(Object key)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
-<p>定义Map对象时，我们可以给其中的键对象K，和值对象V，指明具体的类型。那么，凡是引用K类型的属性类型、方法参数，方法返回类型，就必须和定义Map对象时的K类型一致。同样，凡是引用V类型的属性类型、方法参数、方法返回类型，也必须和定义Map对象时的V类型一致。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//键定义为Integer类型，值定义为Student类型</span></div><div class="line">Map&lt;Integer,Student&gt; map = <span class="keyword">new</span> HashMap&lt;Integer,Student);</div><div class="line"><span class="comment">//通过，1在添加元素时，会自动包装成Integer。键和值类型和定义map的类型匹配</span></div><div class="line">map.put(<span class="number">1</span>,<span class="keyword">new</span> Student());</div><div class="line"><span class="comment">//编译错误，添加元素键对象的类型，和map对象中定义的键类型不匹配</span></div><div class="line">map.put(<span class="string">"1"</span>,<span class="keyword">new</span> Student());</div><div class="line"></div><div class="line"><span class="comment">//返回类型和V值类型一致</span></div><div class="line">Student s = map.get(<span class="number">1</span>);</div></pre></td></tr></table></figure> 
-<h1 id="3、自定义泛型"><a href="#3、自定义泛型" class="headerlink" title="3、自定义泛型"></a>3、自定义泛型</h1><p>那么，泛型的定义是否只限于集合框架呢？当然不是，凡是需要定义类型参数的类、接口、方法都可以使用泛型。</p>
-<p>例如：集合框架中有一个工具类：Collections。该类中提供了一个sort排序方法，定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Collections</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(List&lt;T&gt; list, Comparator&lt;T&gt; c)</span></span>&#123;……&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure> 
-<p>sort方法在给集合元素排序时，需要由开发者定义排序的规则。这样，要由开发者实现Comparator接口，从而定义集合元素的比较规则。</p>
-<p>不过，开发者在实现Comparator接口时，需要指出，是给什么样类型元素定义比较规则。</p>
-<p>Comparator接口定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>开发者在实现接口时，定义了Comparator比较器泛型类型后，compare方法参数的类型，就变成了定义比较器泛型的类型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Comparator&lt;Student&gt;()&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>开发者在重写compare()方法时，就可以定义两个Student对象比较的规则了。</p>
-<p>从以上内容，大家已经明白了泛型的具体运作过程。也知道了接口、类和方法也都可以使用泛型去定义。在具体使用时，可以分为泛型接口、泛型类和泛型方法。</p>
-<p>在实际开发中，我们也可以通过泛型的定义，来规范一些属性、方法参数，以及返回类型。</p>
-<p>例如，我们在做分页时，可以将页面显示的数据、总记录数和总页数，封装成专门用于分页的实体类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CutPageBean</span></span>&#123;</div><div class="line">   <span class="keyword">private</span> List list = <span class="keyword">new</span> ArrayList();</div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> count;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> totalPage;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在需要分页的方法中，以CutPageBean做为返回类型。不过，在设计时，为了让开发者更清楚的知道，list属性中存放元素的类型，我们可以定义泛型去规范。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CutPageBean</span>&lt;<span class="title">T</span>&gt;</span>&#123;</div><div class="line">   <span class="keyword">private</span> List&lt;T&gt; list = <span class="keyword">new</span> ArrayList&lt;T&gt;();;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> count;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">int</span> totalPage;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这就意味着，创建CutPageBean时，规定了泛型类型后，list属性中存放元素的类型，就和定义CutPageBean对象时的类型一致。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CutPageBean&lt;Student&gt; cutBean = <span class="keyword">new</span> CutPagBean&lt;Student&gt;();</div><div class="line">cutBean.getList().add(<span class="keyword">new</span> Student());    <span class="comment">//在list集合属性中只能存放Student类型。</span></div></pre></td></tr></table></figure>
-<p>这样，在设计业务接口方法，以及实现时，可以明确的知道应该将什么样的对象，存放进分页实体对象定义的集合属性中。</p>
-<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>1、泛型，表示参数化类型。可以将一个类中的某些属性的数据类型、方法参数类型、返回类型，都以变量方式表示。在使用/调用时传入具体的类型。<br>2、可以给一个类或一个接口，定义一个或多个泛型参数。使用的类型和泛型定义的类型一致。<br>3、泛型，我们也可以根据业务需要进行自定义。接口、类和方法也都可以使用泛型去定义。</p>
+        <p>我们知道在java中注释有三种，第一种，单行注释 //注释的内容，第二种，多行注释  /*…注释的内容…*/，第三种 文档注释 /**..注释的内容….*/。不难发现，第三种注释方式和第二种方式很相似，那它出现的目的是什么呢？就是为了便于javadoc程序自动生成文档。接下来咱们聊一聊这个文档注释⋯⋯<br><a id="more"></a></p>
+<h2 id="添加注释的原则"><a href="#添加注释的原则" class="headerlink" title="添加注释的原则"></a>添加注释的原则</h2><p>代码注释是架起程序设计者与程序阅读者之间的通信桥梁，最大限度的提高团队开发合作效率，也是程序代码可维护性的重要环节之一。所以看起来非常简单的注释也是有些原则需要遵守：</p>
+<h3 id="1、注释形式统一"><a href="#1、注释形式统一" class="headerlink" title="1、注释形式统一"></a>1、注释形式统一</h3><p>在整个应用程序中，使用具有一致的标点和结构的样式来构造注释。如果在其它项目中发现它们的注释规范与这份文档不同，按照这份规范写代码，不要试图在既成的规范系统中引入新的规范。</p>
+<h3 id="2、注释内容准确简洁"><a href="#2、注释内容准确简洁" class="headerlink" title="2、注释内容准确简洁"></a>2、注释内容准确简洁</h3><p>内容要简单、明了、含义准确，防止注释的多义性，错误的注释不但无益反而有害。</p>
+<h2 id="注释可以添加的位置"><a href="#注释可以添加的位置" class="headerlink" title="注释可以添加的位置"></a>注释可以添加的位置</h2><p>作为注释，语法上当然是可以添加在程序的任意位置啦！但是我们在添加时候还是要添加在合适的位置，一般添加在类和方法上。如下图所示：<br><img src="/img/20170824/01.jpg" width="300" height="300"><br>大家仔细看，可以发现注释中有这些东西@author，@version，@see，@param ⋯⋯，这些都是什么含义呢？<br>这些都称之为java doc标记，含义如下：<br>@author 标明开发该类模块的作者<br>@version 标明该类模块的版本<br>@see 参考转向，也就是相关主题<br>@param 对方法中某参数的说明<br>@return 对方法返回值的说明<br>@exception 对方法可能抛出的异常进行说明 </p>
+<p>其中，@author 可以多次使用，以指明多个作者，生成的文档中每个作者之间使用逗号 (,) 隔开。@version 也可以使用多次，只有第一次有效。@param、@return 和 @exception 这三个标记都是只用于方法的。</p>
+<h2 id="把注释生成文档的方式"><a href="#把注释生成文档的方式" class="headerlink" title="把注释生成文档的方式"></a>把注释生成文档的方式</h2><p>通常在编写程序时我们会用IDE工具，比如eclipse，咱们来看看怎么用eclipse生成文档。如下图：<br>第一步：<br><img src="/img/20170824/02.jpg" width="200" height="400"><br>下一步：<br><img src="/img/20170824/03.png" width="300" height="300"><br>下一步：<br><img src="/img/20170824/04.png" width="300" height="400"><br>接着点finish就好啦，可能在点finish的时候弹出一个框，直接选择”yes to all”就好了！找到我的E：\myapi文件夹，会发现生成了很多文件：<br><img src="/img/20170824/05.jpg" width="300" height="200"><br>用浏览器打开你就看到自己想要的东西了！<br>说完这个，咱们再说说如何用doc生成文档：<br>看图：<br><img src="/img/20170824/06.jpg" width="300" height="300"><br>参数说明<br>-public 仅为public访问级别的类及类的成员生成javaDoc文档<br>-proteceted 仅为public和protected访问级别的类及类的成员生成javadoc文档.<br>(默认选项)<br>-d 指定API文档的输出目录，默认是当前目录。建议总是指定该参数。<br>然后找到E:\mydosapi文件夹，打开index.html就看到文档已经生成好了⋯⋯<br>好了，java文档注释就说到这里，如果还有不明白的，那就自行体会，哈哈⋯⋯</p>
 
       
     </div>
@@ -483,18 +450,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/13/20170713/" rel="next" title="enum，你应该知道的枚举">
-                <i class="fa fa-chevron-left"></i> enum，你应该知道的枚举
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/07/20170707/" rel="prev" title="（转）当编程语言变成二次元萌妹">
-                （转）当编程语言变成二次元萌妹 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/21/20170821/" rel="prev" title="还不知道线程同步？请进！">
+                还不知道线程同步？请进！ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -641,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、为什么要使用泛型？"><span class="nav-number">1.</span> <span class="nav-text">1、为什么要使用泛型？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、什么是泛型？"><span class="nav-number">2.</span> <span class="nav-text">2、什么是泛型？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、自定义泛型"><span class="nav-number">3.</span> <span class="nav-text">3、自定义泛型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结："><span class="nav-number">4.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加注释的原则"><span class="nav-number">1.</span> <span class="nav-text">添加注释的原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、注释形式统一"><span class="nav-number">1.1.</span> <span class="nav-text">1、注释形式统一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、注释内容准确简洁"><span class="nav-number">1.2.</span> <span class="nav-text">2、注释内容准确简洁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释可以添加的位置"><span class="nav-number">2.</span> <span class="nav-text">注释可以添加的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把注释生成文档的方式"><span class="nav-number">3.</span> <span class="nav-text">把注释生成文档的方式</span></a></li></ol></div>
             
 
           </div>
