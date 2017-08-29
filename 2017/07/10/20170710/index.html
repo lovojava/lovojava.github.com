@@ -106,7 +106,7 @@
 <meta property="og:url" content="http://www.lovoedu.com/2017/07/10/20170710/index.html">
 <meta property="og:site_name" content="风清月朗沃野千里">
 <meta property="og:description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
-<meta property="og:updated_time" content="2017-07-17T02:54:08.000Z">
+<meta property="og:updated_time" content="2017-08-24T02:24:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型，你也可以自定义">
 <meta name="twitter:description" content="一提到泛型，大家首先想到的就是。在集合中加入泛型，来规定集合中元素的类型。那么，什么是泛型？为什么要使用泛型？泛型除了集合以外，还可以在其他地方使用吗？我们今天就来了解一下。">
@@ -435,7 +435,7 @@
 <p>Comparator接口定义如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>开发者在实现接口时，定义了Comparator比较器泛型类型后，compare方法参数的类型，就变成了定义比较器泛型的类型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Comparator&lt;Student&gt;()&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Comparator&lt;Student&gt;()&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</div><div class="line">	   <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>开发者在重写compare()方法时，就可以定义两个Student对象比较的规则了。</p>
 <p>从以上内容，大家已经明白了泛型的具体运作过程。也知道了接口、类和方法也都可以使用泛型去定义。在具体使用时，可以分为泛型接口、泛型类和泛型方法。</p>
 <p>在实际开发中，我们也可以通过泛型的定义，来规范一些属性、方法参数，以及返回类型。</p>
@@ -567,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

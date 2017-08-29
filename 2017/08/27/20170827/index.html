@@ -99,17 +99,21 @@
 
 
 
-<meta name="description" content="相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为随机数。接下来就给大家简单讲解下这个不确定的随机数。">
+<meta name="description" content="Java有了GC还会出现内存泄漏吗？虽然Java有GC垃圾自动回收功能，但并不是说Java程序就不会内存泄漏。如果一个对象没有地方会使用到，但是却仍然有引用指向他，那么垃圾回收器就无法回收他，这种情况就属于内存泄漏。这种泄漏可能属于短暂的（即程序运行一段时间后引用消除进而出发GC）也可能是程序级别的（即程序退出时才会回收）。Java的内存泄漏和C/C++的内存泄漏不一样，C/C++的内存泄漏可能是">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有了随机数，生活总算有点变化了">
-<meta property="og:url" content="http://www.lovoedu.com/2017/08/12/20170812/index.html">
+<meta property="og:title" content="GC机制和内存泄漏">
+<meta property="og:url" content="http://www.lovoedu.com/2017/08/27/20170827/index.html">
 <meta property="og:site_name" content="风清月朗沃野千里">
-<meta property="og:description" content="相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为随机数。接下来就给大家简单讲解下这个不确定的随机数。">
-<meta property="og:updated_time" content="2017-08-16T03:35:06.000Z">
+<meta property="og:description" content="Java有了GC还会出现内存泄漏吗？虽然Java有GC垃圾自动回收功能，但并不是说Java程序就不会内存泄漏。如果一个对象没有地方会使用到，但是却仍然有引用指向他，那么垃圾回收器就无法回收他，这种情况就属于内存泄漏。这种泄漏可能属于短暂的（即程序运行一段时间后引用消除进而出发GC）也可能是程序级别的（即程序退出时才会回收）。Java的内存泄漏和C/C++的内存泄漏不一样，C/C++的内存泄漏可能是">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170827/1.png">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170827/2.jpg">
+<meta property="og:image" content="http://www.lovoedu.com/img/20170827/3.jpeg">
+<meta property="og:updated_time" content="2017-08-29T09:33:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有了随机数，生活总算有点变化了">
-<meta name="twitter:description" content="相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为随机数。接下来就给大家简单讲解下这个不确定的随机数。">
+<meta name="twitter:title" content="GC机制和内存泄漏">
+<meta name="twitter:description" content="Java有了GC还会出现内存泄漏吗？虽然Java有GC垃圾自动回收功能，但并不是说Java程序就不会内存泄漏。如果一个对象没有地方会使用到，但是却仍然有引用指向他，那么垃圾回收器就无法回收他，这种情况就属于内存泄漏。这种泄漏可能属于短暂的（即程序运行一段时间后引用消除进而出发GC）也可能是程序级别的（即程序退出时才会回收）。Java的内存泄漏和C/C++的内存泄漏不一样，C/C++的内存泄漏可能是">
+<meta name="twitter:image" content="http://www.lovoedu.com/img/20170827/1.png">
 
 
 
@@ -137,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://www.lovoedu.com/2017/08/12/20170812/"/>
+  <link rel="canonical" href="http://www.lovoedu.com/2017/08/27/20170827/"/>
 
 
 
 
 
-  <title>有了随机数，生活总算有点变化了 | 风清月朗沃野千里</title>
+  <title>GC机制和内存泄漏 | 风清月朗沃野千里</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +310,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/08/12/20170812/">
+    <link itemprop="mainEntityOfPage" href="http://www.lovoedu.com/2017/08/27/20170827/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朗沃java团队">
@@ -323,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">有了随机数，生活总算有点变化了</h1>
+          <h1 class="post-title" itemprop="name headline">GC机制和内存泄漏</h1>
         
 
         <div class="post-meta">
@@ -335,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-12T00:00:00+08:00">
-                2017-08-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T00:00:00+08:00">
+                2017-08-27
               </time>
             
 
@@ -400,53 +404,56 @@
       
 
       
-        <p>相信同学们现在都可以书写一个简单的Java代码了，知道如何给一个变量赋值，也知道怎么接受键盘的输入。<br>但这些值都是定值，在我们使用前就知道了，感觉很是无趣，那我们能不能在我们的代码里添加一些使用前不确定的值呢？<br>答案是可以的，在Java中我们把这种不确定的，在使用前每次都不一样的数字称为<strong>随机数</strong>。<br>接下来就给大家简单讲解下这个不确定的随机数。<br><a id="more"></a></p>
-<h1 id="什么是随机数？"><a href="#什么是随机数？" class="headerlink" title="什么是随机数？"></a>什么是随机数？</h1><p><strong>随机数</strong>：简单的说就是在程序运行中生成一个不能确定的值，而且每次生成的数都是不确定的，随机的。<br>比如说：在登录一些网站时，屏幕上显示的验证码就是一个随机数。每一次生成的验证码都是不确定的，随机的，这就是我们程序中的随机数。<br>当然，除了上述的随机数，游戏中的概率性技能都会有随机数的影子，同样，我们生活中也有很多随机数的例子。<br>如：买彩票。彩票对于我们每一个人都不算陌生，知道彩票的人都应该了解，每一期的彩票号码都是随机的，不确定的，这里的彩票号码就是一个随机数。<br>当然，除了彩票、验证码等这些例子，还有很多使用了随机数的例子，就不一一列举了。</p>
-<h1 id="在Java程序中产生一个随机数呢？"><a href="#在Java程序中产生一个随机数呢？" class="headerlink" title="在Java程序中产生一个随机数呢？"></a>在Java程序中产生一个随机数呢？</h1><p>在Java中，如果我们想要产生一个随机数，有两种方式：</p>
-<h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h2><p><strong>使用java.lang.Math类中的random()方法</strong><br>先给大家举个例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">double</span> num = Math.random();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在上述代码中，大家可以看到可以直接使用Math类来调用random()方法。<br>相信聪明的你已经发现了，我们并没有使用import关键字去导入什么Math类，原因是Math类在java.lang包中默认会导入。</p>
-<p>其次，我们是使用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Math.random();</div></pre></td></tr></table></figure><br>的方式来得到一个double类型的数据，也就是说<strong>random()方法是静态方法</strong>，无需使用Math类的对象调用，并且该方法返回的是一个double类型的数据，当然，输出num就可以得到一个<em>[0,1)的数字<strong>，而且</strong>每次运行的结果都是不确定的**。<br>当然，在这里有同学会问了：拿到这个[0,1)的数字有啥用，这个区间也太小了吧，那我要是想要一个更大范围的int数字怎么弄了？<br>下面给大家看看，我们如何去生成一个更大范围的int的随机数字：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> num = (<span class="keyword">int</span>)(Math.random()*<span class="number">50</span>)+<span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>既然我们可以得到一个[0,1)的数字，那我们就可以把这个数字进行处理，大家看看，上述的num的取值范围是多少啊？<br>答案是：[10,59]，相信这个问题难不倒大家，一个[0,1)的数字</em>50，区间变大为：[0,50)再强转为int类型得[0,49]，加上10，最终得到[10,59]，那么上述的num则可以得到[10,59]之间一个随机的整数。<br>当然，写法的不同会对产生的随机数造成不同的影响：<br>大家来看看下面的几种随机数的取值范围：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">10</span>) + <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> num2 = (<span class="keyword">int</span>)Math.random() * <span class="number">10</span> + <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> num3 = (<span class="keyword">int</span>)(Math.random() * <span class="number">10</span> + <span class="number">10</span>);</div></pre></td></tr></table></figure></p>
-<p>相信大家很快就可以找出这三段代码的不同，在执行中会发现，不管怎么运行，num2的值永远都为10，怎么回事呢？<br>原因是，在num2产生随机数的过程中，是将[0,1)先强转为int类型，这下就尴尬了，不管是什么0.1还是0.999…，只要一强转，统统的都转为了0，然后*10，也为0，再加上10，结果永远都为10了。</p>
-<p>所以请同学们一定要<strong>注意</strong>：在使用Math生成随机数的过程中如果需要强转为其它类型，一定要注意是应该先强转，还是后强转，一定要想清楚再写，不然会出现上述的问题。</p>
-<p>而生成num1和num3的这两种写法都是一样的，区别在于：<br>num1:先得到double类型的[0,1)→再<em>10得[0,10)→再强转为int类型的[0,9]→再+10→得[10,19]；<br>num2:先得出double类型的[0,1)→再</em>10得[0,10)→再+10→得[10,20),再强转为int类型[10,19];<br>上面给大家讲解了如何获得一个随机数。</p>
-<h3 id="那我们如何获得一个指定区间的随机数呢？"><a href="#那我们如何获得一个指定区间的随机数呢？" class="headerlink" title="那我们如何获得一个指定区间的随机数呢？"></a>那我们如何获得一个指定区间的随机数呢？</h3><p>在上面的讲解中，相信同学们都可以按照代码算出其区间，那如果要写出能产生指定区间的随机数，那我们该如何书写呢？<br>其实并不难，不知道同学们在刚刚的代码中有没有发现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">10</span>) + <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上述代码中，我们可以按照代码的执行过程来描述出：<br>num1:先得到double类型的[0,1)→再<em>10得[0,10)→再强转为int类型的[0,9]→再+10→得[10,19]；<br>那如果我们有一个区间[3,15]，那我们能不能反过来求出该随机数的代码呢？<br>目标很明确，根据区间[3,15]来逆推出代码，也就是完成(int)(Math.random()</em>A)+B;中A，B的值<br>不难发现，强转为int类型的[0,9]→再+10→得[10,19]</p>
-<p>那开始进行反推：<br>(1)第一步：[3,15]如何得到起始位0的区间[0,?),其中?是需要求出来的数，那简单了，同时-3不就好了→-3得[0,12]，而B就应该是3<br>(2)第二步：得出强转为int型之前的区间–由[0,10)→再强转为int类型的[0,9]→得知强转前的区间为[0,13);<br>(3)第三步：由[0,13)来找出[0,1)乘了多少→*13，而A就应该是13<br>(4)第四步：还原代码为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">13</span>) + <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
-<p>不知道你是否理解了<br>我们再来一个例题：计算得出区间为[-3,10]的代码<br>(1)同上面的步骤一样，先得把区间变为[0,?]→得[0,13]，+3(注意：这里加了3，反过来应该-3)–B：-3；<br>(2)变成强转前的样子→[0,14)<br>(3)算出乘了多少→*15–A：15<br>(4)第四步：还原代码为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">15</span>) - <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
-<p>从上述代码中不难找到区间与代码中的关系<br>(1)区间的起始值和B一致，包括正负号<br>(2)区间的(末值-起始值+1)的结果等于A的值<br>验算一次：求出随机数范围为[6-21]的区间<br>OK，按照推出的结论：B：6，A：(21 - 6 + 1) = 16;</p>
-<p>最终结果为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//求取[6-21]区间的随机数</span></div><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>)(Math.random() * <span class="number">16</span>) + <span class="number">6</span>;</div></pre></td></tr></table></figure></p>
-<p>怎么样，简单吧！<br>上面已经给大家讲解了第一种随机数的产生方式与求得指定区间随机数的算法。<br>接下来给大家介绍第二种产生随机数和生成指定区间的方式。</p>
-<h2 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h2><p><strong>使用java.util.Random类中的方法</strong><br>在Random类中也有相应的产生随机数方法，并且，在Random类中，可以产生不同类型的随机数。<br>代码演示如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Random ran = <span class="keyword">new</span> Random();</div><div class="line">ran.nextBoolean();</div><div class="line">ran.nextDouble();</div><div class="line">ran.nextInt();</div></pre></td></tr></table></figure></p>
-<p><strong>注意事项一：</strong>由于Random类并不是java.lang包中的类，所以需要使用import关键字来导入java.util.Random；<br><strong>注意事项二：</strong>从上述代码中，同学们可以了解到，在Random类中想要得到一个随机数，需要先创建Random类的一个对象，然后再通过对象来调用产生随机数的方法，当然这点比Math类要麻烦一点。<br><strong>注意事项三：</strong>虽然Random类在使用上要比Math类麻烦一点点，但是Random类不仅可以创建整型的随机数，还可以创建实型、布尔型等等类型的随机数，所以在不同的应用领域上，Math和Random有着不同的使用优点。</p>
-<p>这里我们只拿整型的来举例，如果同学们感兴趣，可以在网上自行查阅。<br>如果我们要生成一个简单的[1,10]的随机数，则：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Random ran = <span class="keyword">new</span> Random();</div><div class="line">        <span class="keyword">int</span> num = ran.nextInt(<span class="number">10</span>)+<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>从上述代码中看到：使用Random类，需要先创建Random类对象然后再调用nextInt()方法。<br>不过和Math不同的是：nextInt()可以传入一个数字，而这个数字相当于*10的意思。<br>也就是说，下列效果是相等的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num = ran.nextInt(<span class="number">10</span>) + <span class="number">1</span>;</div><div class="line"><span class="keyword">int</span> num1 = (<span class="keyword">int</span>) (Math.random() * <span class="number">10</span>) + <span class="number">1</span>;</div></pre></td></tr></table></figure></p>
-<p>同样，我们也可以按照Math的推导方式，推导出Random中生成指定区间的随机数的代码格式：<br>例：求出指定范围[17-32]的代码<br>int num = ran.nextInt(A) + B;<br>B：17，A：（32-17+1）= 16；</p>
-<p>所以Math和Random在生成指定范围随机的代码上有很多相似之处。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>生成随机数的方式：1.使用Math类中的random方法；2.使用Random类中不同的next…()方法<br>相似之处：两种方法要得到指定区间的随机数的算法都是一样的。<br>不同之处：</p>
+        <h1 id="Java有了GC还会出现内存泄漏吗？"><a href="#Java有了GC还会出现内存泄漏吗？" class="headerlink" title="Java有了GC还会出现内存泄漏吗？"></a>Java有了GC还会出现内存泄漏吗？</h1><p>虽然Java有GC垃圾自动回收功能，但并不是说Java程序就不会内存泄漏。如果一个对象没有地方会使用到，但是却仍然有引用指向他，那么垃圾回收器就无法回收他，这种情况就属于内存泄漏。这种泄漏可能属于短暂的（即程序运行一段时间后引用消除进而出发GC）也可能是程序级别的（即程序退出时才会回收）。Java的内存泄漏和C/C++的内存泄漏不一样，C/C++的内存泄漏可能是系统级别的，即使程序退出也无法被回收，只能重启系统。<br><a id="more"></a> </p>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><p>在程序运行过程中，每创建一个对象都会被分配一定的内存用以存储对象数据。如果只是不停的分配内存，那么程序迟早面临内存不足的问题。<br>所以在任何语言中，都会有一个内存回收机制来释放过期对象的内存，以保证内存能够被重复利用。<br>内存回收机制按照实现角色的不同可以分为两种，一种是程序员手动实现内存的释放（比如C语言）另一种则是语言内建的内存回收机制比如本文将要介绍的java垃圾回收机制。</p>
+<h2 id="Java的垃圾回收机制"><a href="#Java的垃圾回收机制" class="headerlink" title="Java的垃圾回收机制"></a>Java的垃圾回收机制</h2><p>在程序的运行时环境中，java虚拟机提供了一个系统级的垃圾回收（GC，Carbage Collection）线程，它负责回收失去引用的对象占用的内存。理解GC的前提是理解一些和垃圾回收相关的概念。<br><strong>在java中GC主要回收哪些对象呢？</strong></p>
+<img src="/img/20170827/1.png">  
+<p><strong>Java对象的实例存储在jvm的堆区，对于GC线程来说，这些对象有三种状态。</strong>  </p>
 <ol>
-<li>Math类是java.lang包中的类，不需要使用import关键字导入，而Random是java.util包中的，需要导入；</li>
-<li>Math类中的random()方法是静态方法，可以直接使用类名.的方式来调用，而Random类则需要先创建对象，再使用对象.的方式调用产生不同数据类型的next…()方法。</li>
+<li>可触及状态：程序中还有变量引用，那么此对象为可触及状态。</li>
+<li>可复活状态：当程序中已经没有变量引用这个对象，那么此对象由可触及状态转为可复活状态。CG线程将在一定的时间准备调用此对象的finalize方法（finalize方法继承或重写子Object），finalize方法内的代码有可能将对象转为可触及状态，否则对象转化为不可触及状态。</li>
+<li>不可触及状态：只有当对象处于不可触及状态时，GC线程才能回收此对象的内存。</li>
 </ol>
-<p>至此，希望同学们对在Java程序中如何产生随机数和如何产生指定区间的随机数的方法有所了解。<br>当然，当同学们想再进一步去探寻随机数的原理时会发现一个问题–程序中的随机数并不是真正意义上的随机数！！！<br>这是怎么一回事呢？<br>下面将继续给大家讲解随机数的相关内容。</p>
-<h2 id="Java中，我们所看到的随机数是假的？"><a href="#Java中，我们所看到的随机数是假的？" class="headerlink" title="Java中，我们所看到的随机数是假的？"></a>Java中，我们所看到的随机数是假的？</h2><p>随机数怎么还会是假的呢？<br>原来随机数也分为两种：真随机数和伪随机数。<br>那什么是真随机数，什么是伪随机数呢？<br><strong>真随机数</strong>是：在某次产生过程中是按照实验过程中表现的分布概率随机产生的，其结果是不可预测的，是不可见的。<br><strong>伪随机数</strong>是：在计算机中的随机数是按照一定算法模拟产生的，其结果是确定的，是可见的。<br>我们可以这样认为这个可预见的结果其出现的概率是100%。所以用计算机随机函数所产生的<strong>随机数</strong>并不随机，是<strong>伪随机数</strong>。<br><strong>伪随机数</strong>看似随机实质是固定的周期性序列,也就是有规则的随机，其由确定算法生成的，通过不断算法优化,使随机数更接近真随机数；<br>请注意一点：通过真实随机事件取得的随机数才是真随机数。</p>
-<p>而Java随机数产生原理，是通过线性同余公式产生的,也就是说通过一个复杂的算法生成的–生成的是<strong>伪随机数</strong>。<br>那伪随机数在程序中使用会有什么问题吗？<br>Java自带的随机数函数是很容易被黑客破解的,因为黑客可以通过获取一定长度的随机数序列来推出你的种子,然后就可以预测下一个随机数。<br>这个种子有什么作用呢？<br>种子就是产生随机数的第一次使用值，相同的种子会产生出相同的随机数。</p>
-<p>不用种子的不随机性会增大的原因：<br>在Java中，Math.random()这个方法实际是在内部调用java.util.Random()的，并且使用一个和当前系统时间有关的数字作为种子数。两个随机数就很可能相同。</p>
-<p>当然如果我们想去设置这个种子，可以让Random类的对象去调用setSeed(int long)方法，并传入一个long型的数字，不管什么时候产生随机数，这些随机数的值都相等。</p>
-<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMath</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Random rand = <span class="keyword">new</span> Random();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">            rand.setSeed(<span class="number">100</span>);</div><div class="line">            System.out.println(rand.nextInt(<span class="number">100</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上述代码中生成的随机数根据在setSeed()中传入同一个值时，会得到相同的数值。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li><p>我们可以通过两个类：Math类和Random类的方法来得到随机数。</p>
+<img src="/img/20170827/2.jpg"> 
+<p>GC为了能够正确释放对象，必须监控每一个对象的运行状态，包括对象的申请、引用、被引用、赋值等，GC都需要进行监控，所以无论一个对象处于上文中的任何状态GC都会知道。  </p>
+<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><p>内存泄漏指由于错误的设计造成程序未能释放已经不再使用的内存，造成资源浪费。GC会自动清理失去引用的对象所占用的内存。但是，由于程序设计错误而导致某些对象始终被引用，那么将会出现内存泄漏。  </p>
+<p>说到内存泄露，就不得不提到内存溢出，这两个比较容易混淆的概念，我们来分析一下。</p>
+<ol>
+<li><p>内存泄露：程序在向系统申请分配内存空间后(new)，在使用完毕后未释放。结果导致一直占据该内存单元，我们和程序都无法再使用该内存单元，直到程序结束，这是内存泄露。</p>
 </li>
-<li><p>在得到随机数的基础上，我们还可以通过其推导过程来写出得到指定区间的随机数的代码。</p>
-</li>
-<li><p>在生成随机数是，如果我们使用同一个种子,不管生成多少个随机数,当你设定种子的时候,这些随机数是什么已经确定。相同次数生成的随机数字是完全相同的。</p>
-</li>
-<li><p>尽管我们可以通过不同的两个类的方法来生成随机数，但实际上，Java的随机数都是通过算法实现的,Math.random()本质上属于Random()类。</p>
-</li>
-<li><p>在Java中Math类可以直接通过random()方法得到一个double类型的随机数，而使用Random类中的不同方法，可以得到不同类型的随机数，相对来说Random类使用起来比较灵活一些。</p>
+<li><p>内存溢出：程序向系统申请的内存空间超出了系统能给的。比如内存只能分配一个int类型，我却要塞给他一个long类型，系统就出现oom。又比如一车最多能坐5个人，你却非要塞下10个，车就挤爆了。</p>
 </li>
 </ol>
+<p><strong>大量的内存泄露会导致内存溢出(oom)。</strong></p>
+<h3 id="分析内存泄漏"><a href="#分析内存泄漏" class="headerlink" title="分析内存泄漏"></a>分析内存泄漏</h3><img src="/img/20170827/3.jpeg">
+<p><strong>分析：</strong></p>
+<p>A对象引用B对象，A对象的生命周期（t1-t4）比B对象的生命周期（t2-t3）长的多。当B对象没有被应用程序使用之后，A对象仍然在引用着B对象。这样，垃圾回收器就没办法将B对象从内存中移除，从而导致内存问题，因为如果A引用更多这样的对象，那将有更多的未被引用对象存在，并消耗内存空间。  </p>
+<p>B对象也可能会持有许多其他的对象，那这些对象同样也不会被垃圾回收器回收。所有这些没在使用的对象将持续的消耗之前分配的内存空间。</p>
+<font color="red" size="3">如果长生命周期的对象持有短生命周期的引用，就很可能会出现内存泄露</font>
+
+<p>简单的列子说明内存泄漏：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Simple</span> </span>&#123;</div><div class="line">    Object object;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</div><div class="line">        object = <span class="keyword">new</span> Object();</div><div class="line">        <span class="comment">//...其他代码</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里的object实例，其实我们期望它只作用于method1()方法中，且其他地方不会再用到它，但是，当method1()方法执行完成后，object对象所分配的内存不会马上被认为是可以被释放的对象，只有在Simple类创建的对象被释放后才会被释放，严格的说，这就是一种内存泄露。解决方法就是将object作为method1()方法中的局部变量。<br>当然，如果一定要这么写，可以改为这样： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Simple</span> </span>&#123;</div><div class="line">    Object object;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</div><div class="line">        object = <span class="keyword">new</span> Object();</div><div class="line">        <span class="comment">//...其他代码</span></div><div class="line">        object = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，之前“new Object()”分配的内存，就可以被GC回收。</p>
+<h3 id="Java常见的内存泄漏"><a href="#Java常见的内存泄漏" class="headerlink" title="Java常见的内存泄漏"></a>Java常见的内存泄漏</h3><ol>
+<li>数组使用的时候内存泄漏。</li>
+<li>数据库连接，网络连接，IO连接等没有显示调用close关闭，会导致内存泄露</li>
+<li>监听器的使用，在释放对象的同时没有相应删除监听器的时候也可能导致内存泄露</li>
+<li>内部类和外部模块的引用</li>
+</ol>
+<h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><p>比如下面的例子。使用数组实现了一个栈，有入栈和出栈两个操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> Object[] elements;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> Increment = <span class="number">10</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> size = <span class="number">0</span>;</div><div class="line"> </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">    elements = <span class="keyword">new</span> Object[size];</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="comment">//入栈</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Object o)</span> </span>&#123;</div><div class="line">    capacity();</div><div class="line">    elements[size++] = o;</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="comment">//出栈</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (size == <span class="number">0</span>)</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</div><div class="line">    <span class="keyword">return</span> elements[--size];</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="comment">//增加栈的容量</span></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">capacity</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (elements.length != size)</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    Object[] newArray = <span class="keyword">new</span> Object[elements.length + Increment];</div><div class="line">    System.arraycopy(elements, <span class="number">0</span>, newArray, <span class="number">0</span>, size);</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    MyStack stack = <span class="keyword">new</span> MyStack(<span class="number">100</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)</div><div class="line">      stack.push(<span class="keyword">new</span> Integer(i));</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">      System.out.println(stack.pop().toString());</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
+<p>这个程序是可用的，支持常用的入栈和出栈操作。但是，有一个问题没有处理好，就是当出栈操作的时候，并没有释放数组中出栈元素的引用，这导致程序将一直保持对这个Object的引用（此object由数组引用）,GC永远认为此对象是可触及的，也就更加谈不上释放其内存了。这就是内存泄漏的一个典型案例。  </p>
+<p>针对此，修改后的代码为：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//出栈</span></div><div class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (size == <span class="number">0</span>)</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> EmptyStackException();</div><div class="line">    Object o = elements[--size];</div><div class="line">    elements[size] = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h4><p>比如数据库连接（dataSourse.getConnection()），网络连接(socket)和io连接，以及使用其他框架的时候，除非其显式的调用了其close()方法（或类似方法）将其连接关闭，否则是不会自动被GC回收的。其实原因依然是长生命周期对象持有短生命周期对象的引用。</p>
+<p>可能很多人使用过hibernate，我们操作数据库时，通过SessionFactory获取一个session：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Session session=sessionFactory.openSession();</div></pre></td></tr></table></figure>
+<p>完成后我们必须调用close()方法关闭：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.close();</div></pre></td></tr></table></figure>
+<p>SessionFactory就是一个长生命周期的对象，而session相对是个短生命周期的对象，但是框架这么设计是合理的：它并不清楚我们要使用session到多久，于是只能提供一个方法让我们自己决定何时不再使用。<br>因为在close()方法调用之前，可能会抛出异常而导致方法不能被调用，我们通常使用try语言，然后再finally语句中执行close()等清理工作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">      session=sessionFactory.openSession();</div><div class="line">      <span class="comment">//...其他操作</span></div><div class="line">  &#125;<span class="keyword">finally</span>&#123;</div><div class="line">      session.close();</div><div class="line">  &#125;    </div></pre></td></tr></table></figure>
 
       
     </div>
@@ -483,18 +490,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/15/20170815/" rel="next" title="SQL注入攻击，吓死宝宝了">
-                <i class="fa fa-chevron-left"></i> SQL注入攻击，吓死宝宝了
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/09/20170809/" rel="prev" title="5分钟搞定数据类型和变量的关系">
-                5分钟搞定数据类型和变量的关系 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/24/20170824/" rel="prev" title="JavaDoc注释与帮助说明文档">
+                JavaDoc注释与帮助说明文档 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -641,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是随机数？"><span class="nav-number">1.</span> <span class="nav-text">什么是随机数？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Java程序中产生一个随机数呢？"><span class="nav-number">2.</span> <span class="nav-text">在Java程序中产生一个随机数呢？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一"><span class="nav-number">2.1.</span> <span class="nav-text">方式一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#那我们如何获得一个指定区间的随机数呢？"><span class="nav-number">2.1.1.</span> <span class="nav-text">那我们如何获得一个指定区间的随机数呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二"><span class="nav-number">2.2.</span> <span class="nav-text">方式二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中，我们所看到的随机数是假的？"><span class="nav-number">2.4.</span> <span class="nav-text">Java中，我们所看到的随机数是假的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java有了GC还会出现内存泄漏吗？"><span class="nav-number">1.</span> <span class="nav-text">Java有了GC还会出现内存泄漏吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收机制"><span class="nav-number">1.1.</span> <span class="nav-text">垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java的垃圾回收机制"><span class="nav-number">1.2.</span> <span class="nav-text">Java的垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄露"><span class="nav-number">1.3.</span> <span class="nav-text">内存泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析内存泄漏"><span class="nav-number">1.3.1.</span> <span class="nav-text">分析内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java常见的内存泄漏"><span class="nav-number">1.3.2.</span> <span class="nav-text">Java常见的内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">例1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例2"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">例2</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
